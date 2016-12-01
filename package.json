@@ -4,7 +4,8 @@
   "description": "Online Speed Dating App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon App/Server/server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "mongodb": "^2.2.12",
     "mongoose": "^4.7.1",
     "npm": "^4.0.2",
+    "path": "^0.12.7",
     "promise": "^7.1.1",
     "q": "^1.4.1",
     "request": "^2.79.0",
