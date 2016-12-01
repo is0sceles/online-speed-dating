@@ -1,3 +1,5 @@
+//var expect = require('chai').expect;
+//var assert = require('chai').assert;
 // describe('User', function() {
 //   describe('#save()', function() {
 //     it('should save without error', function(done) {
