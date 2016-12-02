@@ -13,7 +13,8 @@ gulp.task('min', function() {
   .pipe(gulp.dest('Compiled/Bundled'))
 })
 
-gulp.watch('Compiled/Transpiled/**/*.js', 'min')
+gulp.watch('Compiled/Transpiled/**/*.js', gulp.parallel('min'))
 .on('change', function(event) {
   console.log('Bundled was changed due to ', event);
 })
+gulp.watch(paths.sass, gulp.parallel(['sass']))
