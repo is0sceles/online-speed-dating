@@ -12,8 +12,7 @@
 	export default {
 		data () {
 			return {
-			  userName: "",
-			  userId: ""
+			  userName: ""
 		  }
 		}, 
 		methods: {
