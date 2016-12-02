@@ -6,7 +6,7 @@
 export default {
   data () {
     return {
-      msg: 'asdf aasdaasdfasdfasdfasdfasdfsdfasdffsdfasdf!'
+      msg: 'Hello from vue-loader!'
     }
   }
 }
