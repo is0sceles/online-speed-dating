@@ -1,8 +1,15 @@
+var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
+var path = require('path') 
+
+
+
+
 module.exports = {
   entry: './App/Client/app.js',
   output: {
     path: './compiled/transpiled',
-    filename: 'build.js'
+    publicPath: 'compiled/transpiled',
+    filename: '[name].js'
   },
   resolve: {
     alias: {
@@ -26,5 +33,19 @@ module.exports = {
     loaders: {
       js: 'babel'
     }
-  }
+  },
+  plugins: [
+    new webpackUglifyJsPlugin({
+      cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
+      debug: true,
+      minimize: true,
+      sourceMap: false,
+      output: {
+        comments: false
+      },
+      compressor: {
+        warnings: false
+      }
+    })
+  ]
 };
