@@ -24,10 +24,10 @@ var routes = [
     //     path: '/video',
     //     component: video
     // },
-    // {
-    //     path: '/signup',
-    //     component: signup
-    // }
+    {
+        path: '/signup',
+        component: signup
+    }
 ]
 
 const router = new VueRouter({
