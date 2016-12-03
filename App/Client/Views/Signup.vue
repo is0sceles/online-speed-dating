@@ -21,7 +21,7 @@
 					username: this.userName,
 				};
 				console.log(body);
-				this.$http.post('/api/users', body)
+				$http.post('/api/users', body)
 				.then((response) => {
 					// this.router.go('/login');
 				},(response) => {
