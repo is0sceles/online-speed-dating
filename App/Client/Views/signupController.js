@@ -4,21 +4,23 @@ var signup = {
   template: temp.template,
   data: function() {
     return {
-      username: ''  
+      username: ''
     };
   },
   methods: {
     signup: function($http) {
       var body = {
-        username: this.userName, 
+        username: this.userName,
       };
-
-      this.$http.post('/api/user', body)  
+   
+      this.$http.post('/api/user', body)
       .then((response) => {
-        this.$route.router.go('/signin'); 
+        this.$router.push('/signin');
       })
-      .catch((err) => console.error(err));
-      this.$router.push('/signin');
+      .catch((err) => {
+        console.error(err);
+        this.$router.push('/signup');
+      });  
     }
   }
 };
