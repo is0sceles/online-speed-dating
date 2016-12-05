@@ -16,8 +16,9 @@ var signup = {
       this.$http.post('/api/user', body)  
       .then((response) => {
         this.$route.router.go('/signin'); 
-      }, (response) => { });
-      this.$route.router.go('/signin');
+      })
+      .catch((err) => console.error(err));
+      this.$router.push('/signin');
     }
   }
 };
