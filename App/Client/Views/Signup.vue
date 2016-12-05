@@ -8,28 +8,27 @@
 	</div>
 </template>
 
-// <script>
-// 	export default {
-// 		data () {
-// 			return {
-// 			  userName: ""
-// 		  }
-// 		}, 
-// 		methods: {
-// 			signup: function($http) {
-// 				var body = {
-// 					username: this.userName,
-// 				};
-// 				console.log(body);
-// 				this.$http.post('/api/user', body)
-// 				.then((response) => {
-// 					console.log('here?')
-// 					console.log(this.router)
-// 					this.$route.router.go('/login');
-// 				},(response) => {
-// 					console.log('Error')
-// 				})
-// 			}
-// 		}
-// 	}
-// </script>
+<script>
+	export default {
+		data () {
+			return {
+			  userName: ""
+		  }
+		}, 
+		methods: {
+			signup: function() {
+				var body = {
+					username: this.userName,
+				};
+				console.log(body);
+				this.$http.post('/api/users', body)
+				.then((response) => {
+					this.$route.router.go('/signin');
+				},(response) => {
+					console.log('Error');
+					router.push('signup')
+				})
+			}
+		}
+	}
+</script>
