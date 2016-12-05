@@ -1,7 +1,7 @@
-
+import temp from './appTemp.vue';
 
 var app = {
-  template: '<div class="message">{{ msg }}</div>',
+  template: temp.template,
   data: function() {
     return {
       msg: 'Hello from vue-loader!'
