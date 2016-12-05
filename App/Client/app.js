@@ -1,18 +1,13 @@
 import Vue from 'vue';
-import App from './appController.js';
 import VueRouter from 'vue-router';
-
-import Signup from './Views/signupvue.js';
-
-
-// import signin from './signin/signin.vue';
-// import video from './video/video.vue';
 import VueResource from 'vue-resource';
+import App from './appController.js';
+import signin from './Views/signinController.js';
+// import video from './video/video.vue';
+import signup from './Views/signupController.js';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
-
-console.log(Signup);
 
 var routes = [
 
@@ -20,17 +15,17 @@ var routes = [
     path: '/',
     component: App
   },
-  // {
-  //     path: '/signin', 
-  //     component: siginin
-  // },
+  {
+      path: '/signin', 
+      component: signin
+  },
   // {
   //     path: '/video',
   //     component: video
   // },
   {
     path: '/signup',
-    component: Signup
+    component: signup
   }
 ];
 
