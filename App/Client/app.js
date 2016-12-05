@@ -1,4 +1,5 @@
 import Vue from 'vue';
+<<<<<<< HEAD
 
 import app from './appVue.js';
 import VueRouter from 'vue-router';
