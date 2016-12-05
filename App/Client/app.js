@@ -34,10 +34,7 @@ const router = new VueRouter({
     routes
 })
 
-<<<<<<< e234507113d5ea7549cbfcc5e052e049e45512e1
+
 const app = new Vue({
-=======
-const app = new Vue(
->>>>>>> fixed typo
     router
 }).$mount('.app')
