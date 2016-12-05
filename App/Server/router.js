@@ -8,4 +8,4 @@ router.use('/auth', authRouter);
 
 //need to handle other routes/errors
 
-module.exports = router;
+module.exports = router; 

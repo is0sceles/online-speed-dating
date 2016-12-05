@@ -2,21 +2,21 @@ import temp from './signupTemplate.vue';
 
 var signup = {
   template: temp.template,
-  data: function () {
+  data: function() {
     return {
-      username: ''
+      username: ''  
     };
   },
   methods: {
-    signup: function ($http) {
+    signup: function($http) {
       var body = {
-        username: this.userName,
+        username: this.userName, 
       };
 
-      this.$http.post('/api/user', body)
-        .then((response) => {
-          this.$route.router.go('/signin');
-        }, (response) => { });
+      this.$http.post('/api/user', body)  
+      .then((response) => {
+        this.$route.router.go('/signin'); 
+      }, (response) => { });
       this.$route.router.go('/signin');
     }
   }

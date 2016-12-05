@@ -6,5 +6,5 @@
 			<button v-on:click.prevent='signup'>Submit</button>
 		</form>
 	</div>
-</template>
+</template> 
 

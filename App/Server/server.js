@@ -10,7 +10,7 @@ require('./middleware.js')(app, express);
 app.use('/', router);
 
 app.listen(PORT, function() {
-  console.log('Express listening on port', PORT);
+  console.log('Express listening on port', PORT); 
 });
 
 

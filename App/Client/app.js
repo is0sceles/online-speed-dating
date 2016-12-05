@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource';
+import VueResource from 'vue-resource'; 
 import App from './appController.js';
 import signin from './Views/signinController.js';
 // import video from './video/video.vue';
@@ -16,13 +16,13 @@ var routes = [
     component: App
   },
   {
-      path: '/signin', 
-      component: signin
+    path: '/signin',
+    component: signin
   },
-  // {
-  //     path: '/video',
-  //     component: video
-  // },
+    // {
+    //     path: '/video',
+    //     component: video
+    // },
   {
     path: '/signup',
     component: signup
@@ -37,6 +37,6 @@ const router = new VueRouter({
 
 
 const app = new Vue({
-    router
-}).$mount('.app')
+  router
+}).$mount('.app');
 
