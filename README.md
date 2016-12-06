@@ -17,13 +17,13 @@ The Hot Date Boyz--back at it again!
 * [License](#license)
 
 ##Team Members
-[![Dan "Keep it in the Kitchen" Gilday](https://avatars0.githubusercontent.com/u/22085449?v=3&s=460&dl=0)](http://github.com/gildilocks)
+[![Dan "Keep it in the Kitchen" Gilday](photo)](http://github.com/gildilocks)
 
-[![Elliott "Erect Elliott" Birch](https://avatars3.githubusercontent.com/u/9787500?v=3&s=400&dl=0)](http://github.com/elliottabirch)
+[![Elliott "Erect Elliott" Birch](photo)](http://github.com/elliottabirch)
 
-[![Eric "Chris" Lau](https://avatars2.githubusercontent.com/u/18693873?v=3&s=460&dl=0)](http://github.com/elau002)
+[![Eric "Chris" Lau](photo)](http://github.com/elau002)
 
-[![Wasiff "White Shadow" Afzal](https://avatars2.githubusercontent.com/u/12284006?v=3&s=400&dl=0)](http://github.com/is0sceles)
+[![Wasiff "White Shadow" Afzal](photo)](http://github.com/is0sceles)
 
 ##Tech Stack, API's and Third-party Tools
 * 
