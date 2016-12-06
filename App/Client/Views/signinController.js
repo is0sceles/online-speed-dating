@@ -1,7 +1,3 @@
-
-var pubnub = require('pubnub');
-var PHONE = require('node-pubnub-webrtc');
-
 import template from './signinTemplate.vue';
 
 const Login = {
