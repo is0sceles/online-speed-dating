@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource'; 
-import App from './appController.js';
+import AppTEST from './appController.js';
 import signin from './Views/signinController.js';
 // import video from './video/video.vue';
 import signup from './Views/signupController.js';
@@ -13,8 +13,8 @@ var routes = [
 
   {
     path: '/',
-    component: App
-  },
+    component: AppTEST
+  },  
   {
     path: '/signin',
     component: signin

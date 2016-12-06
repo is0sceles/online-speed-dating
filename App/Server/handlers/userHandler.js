@@ -1,5 +1,5 @@
-var db = require('../../config.js');
-var User = require('../../models/userModel.js');
+var db = require('../../Database/config.js');
+var User = require('../../Database/models/userModel.js');
 
 exports.signUpUser = function(req, res) {
   var username = req.body.username;
