@@ -1,3 +1,4 @@
+
 import template from './signinTemplate.vue';
 
 const Login = {
