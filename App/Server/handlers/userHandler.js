@@ -19,9 +19,7 @@ exports.signUpUser = function(req, res) {
 };
 
 exports.loginUser = function(req, res) {
-  // console.log('username is ', req.query.username);
   var username = req.query.username; //change me
-  // User.find({username: username}).then((res)=>console.log(res));
   User.findOne({username: username})
     .exec(function(err, user) {
       if (!user) {
