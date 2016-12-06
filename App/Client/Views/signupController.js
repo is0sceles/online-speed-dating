@@ -7,20 +7,20 @@ var signup = {
       username: ''
     };
   },
-  methods: {
+  methods: {   
     signup: function($http) {
       var body = {
-        username: this.userName,
+        username: this.username,
       };
-   
+
       this.$http.post('/api/user', body)
       .then((response) => {
         this.$router.push('/signin');
       })
       .catch((err) => {
-        console.error(err);
-        this.$router.push('/signup');
-      });  
+        alert('username already exists');
+                    // this.$router.push('/signup');
+      });
     }
   }
 };
