@@ -4,7 +4,7 @@ var router = require('../App/Server/router.js');
 
 var app = express();
 var PORT = process.env.PORT || 4321;
-require('./middleware.js')(app, express);
+require('../App/Server/middleware.js')(app, express);
 
 app.use('/', router);
 
