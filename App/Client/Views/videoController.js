@@ -1,3 +1,27 @@
+
+import template from './videoTemplate.vue';
+
+var video = {
+  template: template.template,
+  data: function () {
+    return {
+      videoOut: 'video',
+      html: 'asdf'
+    };
+  },
+  methods: {
+    connected: function(session) {
+      console.log('this is the video ', session.video);
+      var that = this;
+      console.dir(this);
+      vm.videoOut = session.status;
+      vm.html = 'hello';
+      console.log(this.html);
+    }
+  }
+};
+
+
 var video_out = PUBNUB.$('video-display');
 var img_out = PUBNUB.$('video-thumbnail');
 var img_self = PUBNUB.$('video-self');
@@ -10,12 +34,14 @@ var phone = window.phone = PHONE({
 });
 
 function connected(session) {
-  console.log('connected');
-  video_out.innerHTML = '';
-  video_out.appendChild(session.video);
-  console.log(session.number, 'should equal 1');
-  PUBNUB.$('number').value = '' + 1;
-  console.log('Hi!');
+  console.log('connected with', session);
+  video.methods.connected(session);
+  // console.log('connected');
+  // video_out.innerHTML = '';
+  // video_out.appendChild(session.video);
+  // console.log(session.number, 'should equal 1');
+  // PUBNUB.$('number').value = '' + 1;
+  // console.log('Hi!');
 }
 
 function dial(number) {
@@ -27,11 +53,11 @@ phone.ready(function() {
   console.log('hey dude im ready');
 });
 
-function thumbnail(session) {
-  img_out.innerHTML = '';
-  img_out.appendChild(session.image);
-  img_out.appendChild(phone.snap().image);
-}
+// function thumbnail(session) {
+//   img_out.innerHTML = '';
+//   img_out.appendChild(session.image);
+//   img_out.appendChild(phone.snap().image);
+// }
 
 function ended(session) {
   img_out.innerHTML = '';
@@ -39,15 +65,15 @@ function ended(session) {
 
 phone.receive(function(session) {
   console.log( 'i receieved');
-  session.message(message);
-  session.thumbnail(thumbnail);
+  // session.message(message);
+  // session.thumbnail(thumbnail);
   session.connected(connected);
   session.ended(ended);
 });
 
-function message( session, message ) {
-  add_chat( session.number, message.text );
-}
+// function message( session, message ) {
+//   add_chat( session.number, message.text );
+// }
 
 phone.unable(function(details) {
   console.log('Alert! - Reload Page.');
@@ -58,5 +84,6 @@ phone.debug(function(details) {
   // console.log(details);
 });
 
-var hey;
-export default hey;
+
+export default video;
+
