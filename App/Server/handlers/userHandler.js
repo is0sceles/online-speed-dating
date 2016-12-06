@@ -10,6 +10,7 @@ exports.signUpUser = function(req, res) {
         var newUser = new User ({
           username: username
         });
+        newUser.save();
       } else {
         console.log('Username already used');
         res.redirect('/login');
@@ -27,7 +28,7 @@ exports.loginUser = function(req, res) {
         res.redirect('/signup');
 
       } else {
-        res.status(200).send(user.username); 
+        res.status(200).send(user.data.username); 
       }
     });
 };
