@@ -12,7 +12,7 @@ const Login = {
     login: function() {
 
       this.$http.get('/api/user', {params: {username: this.username}})
-      .then((res) => {  
+      .then((res) => {
 
 
       })
