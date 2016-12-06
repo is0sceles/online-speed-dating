@@ -10,7 +10,8 @@ const Login = {
   },
   methods: {
     login: function() {
-      this.$http.get('/api/users/', {username: this.username})
+
+      this.$http.get('/api/user', {params: {username: this.username}})
       .then((res) => {
 
 
