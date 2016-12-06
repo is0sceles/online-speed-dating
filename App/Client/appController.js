@@ -3,12 +3,12 @@ import temp from './appTemp.vue';
 var app = {
   template: temp.template,
   data: function() {
-    return {
+    return { 
       msg: 'Hello from vue-loader!'
-    }
+    };
   }
-}
+};
 
-console.log(app)
+console.log(app);
 
 export default app;

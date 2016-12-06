@@ -1,4 +1,4 @@
-import temp from './Signup.vue';
+import temp from './signupTemplate.vue';
 
 var signup = {
   template: temp.template,
@@ -12,15 +12,15 @@ var signup = {
       var body = {
         username: this.userName,
       };
-      console.log(body);
+   
       this.$http.post('/api/user', body)
-			.then((response) => {
-       console.log('here?')
-				console.log(this.router)
-        this.$route.router.go('/login');
-}, (response) => {
-			console.log('Error')
-});
+      .then((response) => {
+        this.$router.push('/signin');
+      })
+      .catch((err) => {
+        console.error(err);
+        this.$router.push('/signup');
+      });  
     }
   }
 };
