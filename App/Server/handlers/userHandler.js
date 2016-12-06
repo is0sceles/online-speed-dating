@@ -12,20 +12,20 @@ exports.signUpUser = function(req, res) {
         });
         newUser.save();
       } else {
-        console.log('Username already used');
-        res.redirect('/login');
+        
+        res.send(404, 'Username already exists');
       }
     });
 };
 
 exports.loginUser = function(req, res) {
-  var username = req.body.username;
+  var username = req.body.username; //change me
 
   User.findOne({username: username})
     .exec(function(err, user) {
       if (!user) {
-        console.log('Username does not exist');
-        res.redirect('/signup');
+
+        res.send(404, 'Username does not exist');
 
       } else {
         res.status(200).send(user.data.username); 
