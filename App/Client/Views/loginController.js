@@ -1,7 +1,7 @@
 
-import template from './signinTemplate.vue';
+import template from './loginTemplate.vue';
 
-const signin = {
+const login = {
   template: template.template,
   data () {
     return {
@@ -12,7 +12,7 @@ const signin = {
   methods: {
     login: function() {
 
-      this.$http.post('/auth/signin', {
+      this.$http.post('/auth/login', {
         username: this.username,
         password: this.password 
       })
@@ -20,7 +20,7 @@ const signin = {
       .catch((err) => console.error(err));
     },
   },
-  name: 'signin'
+  name: 'login'
 };
 
-export default signin;
+export default login;

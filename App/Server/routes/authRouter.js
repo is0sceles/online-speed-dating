@@ -2,7 +2,7 @@ var router = require('express').Router();
 var userHandler = require('../handlers/userHandler.js');
 var passport = require('passport');
 
-router.post('/signin', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local'), function(req, res) {
   res.status(200).send(req.user);
 });
 
