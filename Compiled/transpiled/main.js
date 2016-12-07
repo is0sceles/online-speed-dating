@@ -12184,13 +12184,11 @@
 	  methods: {
 	    login: function login() {
 
-	      this.$http.get('/api/user', {
-	        params: {
-	          username: this.username,
-	          password: this.password
-	        }
+	      this.$http.post('/auth/signin', {
+	        username: this.username,
+	        password: this.password
 	      }).then(function (res) {
-	        console.log('request sent');
+	        console.log(res);
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
