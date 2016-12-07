@@ -1,4 +1,4 @@
-var userModel = require('../models/userModels.js');
+var userModel = require('../../Database/models/userModel.js');
 
 exports.signUpUser = function (req, res) {
   var username = req.body.username;
