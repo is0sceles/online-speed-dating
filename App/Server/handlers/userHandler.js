@@ -1,12 +1,32 @@
 var userModel = require('../../Database/models/userModel.js');
+var db = require('../../Database/config.js');
+var User = require('../../Database/models/userModel.js');
+ 
+exports.getUserDB = function(username, cb) {
+  User.findOne({ username: username})
+   .exec(function(err, user) {
+     if (err) { cb(err); }
+     cb(null, user);
+   });
+};
+ 
+exports.createUserDB = function(user, cb) {
+  User.create(user, function (err, user) {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+}; 
 
 exports.signUpUser = function (req, res) {
+  console.log('called signUpUser in handler');
   var username = req.body.username;
   var password = req.body.password;
 
-  userModel.getUser(username, function(err, user) {
+  exports.getUserDB(username, function(err, user) {
+    console.log('user.getUser returned with ', user);
+    if (err) { console.error(err); }
     if (!user) {
-      userModel.createUser({username: username, password: password}, function(err, user) {
+      exports.createUserDB({username: username, password: password}, function(err, user) {
         res.send('user created');
       });
     } else {
@@ -16,10 +36,12 @@ exports.signUpUser = function (req, res) {
 };
 
 exports.getUser = function (req, res) {
-  userModel.getUser(req.query.username, function(err, user) {
+  console.log('called getUser in handler');
+  exports.getUserDB(req.query.username, function(err, user) {
     if (err) { console.error(err); }
     res.status(200).send(user);
   });
 };
 
 
+ 

@@ -6,7 +6,7 @@ var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var facebookStrategy = require('passport-facebook').Strategy;
 
-var User = require('../Database/models/userModel.js');
+var userHandler = require('./handlers/userHandler.js');
 
 var sessionOptions = { 
   secret: 'keyboard cat',
