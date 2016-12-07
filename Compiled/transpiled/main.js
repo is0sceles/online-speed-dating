@@ -12184,11 +12184,21 @@
 	  methods: {
 	    login: function login() {
 
+<<<<<<< HEAD
 	      this.$http.post('/auth/signin', {
 	        username: this.username,
 	        password: this.password
 	      }).then(function (res) {
 	        console.log(res);
+=======
+	      this.$http.get('/api/user', {
+	        params: {
+	          username: this.username,
+	          password: this.password
+	        }
+	      }).then(function (res) {
+	        console.log('request sent');
+>>>>>>> eb9564c551e7d15e8722cad156336a5710ad4aa3
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
@@ -12427,7 +12437,11 @@
 /* 13 */
 /***/ function(module, exports) {
 
+<<<<<<< HEAD
 	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>login</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>call this user</button>\n</div>\n";
+=======
+	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>call</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>dial</button>{{session}}\n</div>\n";
+>>>>>>> eb9564c551e7d15e8722cad156336a5710ad4aa3
 
 /***/ },
 /* 14 */
