@@ -12427,7 +12427,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>call</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>dial</button>{{session}}\n</div>\n";
+	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>login</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>call this user</button>\n</div>\n";
 
 /***/ },
 /* 14 */
