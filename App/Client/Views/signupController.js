@@ -4,13 +4,15 @@ var signup = {
   template: temp.template,
   data: function() {
     return {
-      username: ''
+      username: '',
+      password: ''
     };
   },
   methods: {   
     signup: function($http) {
       var body = {
         username: this.username,
+        password: this.password
       };
 
       this.$http.post('/api/user', body)
