@@ -7,7 +7,7 @@ db.collections.users.drop( function() {
 
 
 for (var i = 0; i < 5; i++) { 
-  user.create({username: i}, function(err) {
+  user.create({username: i, password: i}, function(err) {
     if (err) { console.error(err); }
   });
 }
