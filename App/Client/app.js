@@ -9,16 +9,14 @@ import signup from './Views/signupController.js';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
+Vue.component('signin', signin);
+
 var routes = [
 
   {
     path: '/',
     component: AppTEST
   },  
-  {
-    path: '/signin',
-    component: signin
-  },
   {
     path: '/video',
     component: video

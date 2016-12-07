@@ -1,7 +1,7 @@
 
 import template from './signinTemplate.vue';
 
-const Login = {
+const signin = {
   template: template.template,
   data () {
     return {
@@ -19,7 +19,8 @@ const Login = {
       .then((res) => { console.log(res); })
       .catch((err) => console.error(err));
     },
-  }
+  },
+  name: 'signin'
 };
 
-export default Login;
+export default signin;
