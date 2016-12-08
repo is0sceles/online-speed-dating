@@ -79,6 +79,29 @@
 	_vue2.default.use(_vueResource2.default);
 	_vue2.default.use(_vueRouter2.default);
 
+	var store = new Vuex.Store({
+	  state: {
+	    username: ''
+	  },
+	  getters: {
+	    isUsername: function isUsername(state) {
+	      return state.username;
+	    }
+	  },
+	  mutation: {
+	    set_Name: function set_Name(state, name) {
+	      state.username = name;
+	    }
+	  },
+	  action: {
+	    setName: function setName(_ref, name) {
+	      var commit = _ref.commit;
+
+	      commit(set_Name, name);
+	    }
+	  }
+	});
+
 	_vue2.default.component('login', _loginController2.default);
 
 	var routes = [{
@@ -12141,7 +12164,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/appTemp.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/appTemp.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12182,12 +12205,14 @@
 
 	  methods: {
 	    login: function login() {
+	      var _this = this;
 
 	      this.$http.post('/auth/login', {
 	        username: this.username,
 	        password: this.password
 	      }).then(function (res) {
 	        console.log(res);
+	        _this.$router.push('/profile/' + res.body.username);
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
@@ -12211,7 +12236,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/loginTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/loginTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12415,7 +12440,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/videoTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/videoTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12487,7 +12512,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/signupTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/signupTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
