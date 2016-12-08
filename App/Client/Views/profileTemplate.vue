@@ -2,10 +2,8 @@
 
   <div>
     <h1>{{$route.params.id}}</h1>
-      <div>
-
-					<img v-bind:src="profileImg">
-
+    <div class='profilePhoto'>
+			<img v-bind:src="profileImg">
 		<div>        
 		  <span>Name :{{name}}</span>
         </div>
@@ -22,7 +20,7 @@
 	      <span>Description: {{userinfo}}</span>
 	    </div>
 	</div>
-	<button v-on:click='update'>Update User Info</button>
+	<button v-if='verified' v-on:click='update'>Update User Info</button>
 	<!--<div>*Place holder for matchs*</div>-->
   </div>
 

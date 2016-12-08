@@ -7,6 +7,7 @@ var profile = {
   data: function() {
     return {
 <<<<<<< HEAD
+<<<<<<< HEAD
       username: '',
       userinfo: '',
       name: '',
@@ -17,6 +18,9 @@ var profile = {
 =======
       verified: this.username === this.$route.params.id
 >>>>>>> minor testing on page load
+=======
+      verified: false
+>>>>>>> Show/hide profile edit button depending on user.
     };
   },
   created () {
@@ -33,9 +37,13 @@ var profile = {
     },
     loadUserProfile: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       console.log(this.verified)
       console.log('id:', this.$route.params.id);
+=======
+      console.log(this.$route.params.id);
+>>>>>>> Show/hide profile edit button depending on user.
       console.log(this.$store.state.username);
 >>>>>>> minor testing on page load
       if (this.$route.params.id !== this.$store.state.username) {
@@ -54,7 +62,9 @@ var profile = {
           this.$store.commit('setUser', res.body);
 
         });
-
+      } else {
+        this.verified = true;
+                console.log(this.verified);
       }
 
     },

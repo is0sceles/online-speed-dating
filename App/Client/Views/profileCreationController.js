@@ -19,12 +19,12 @@ var profileCreation = {
       console.log('setting');
       var body = {
         username: this.username,
-        name: this.name,
+        name: this.name || 'Anonymouse',
         age: this.age,
-        location: this.location,
-        profileImg: this.profileImg,
-        gender: this.gender,
-        userinfo: this.userinfo
+        location: this.location || 'Here, There',
+        profileImg: this.profileImg || 'https://www.svgimages.com/svg-image/s4/question-mark-face-256x256.png',
+        gender: this.gender || 'gender',
+        userinfo: this.userinfo || 'User did not provide info'
       };
       this.$http.put('/api/user', body)
       .then((response) => {

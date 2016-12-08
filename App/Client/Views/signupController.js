@@ -12,7 +12,9 @@ var signup = {
     signup: function($http) {
       var body = {
         username: this.username,
-        password: this.password
+        password: this.password,
+        admin: false,
+        loggedIn: true
       };
 
       this.$http.post('/api/user', body)

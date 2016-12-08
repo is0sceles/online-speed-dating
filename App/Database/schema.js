@@ -8,8 +8,9 @@ var userSchema = mongoose.Schema({
   age: Number,
   location: String,
   profileImg: String,
-  gender: String
-
+  gender: String,
+  admin: Boolean,
+  loggedIn: Boolean
 });
  
 exports.userSchema = userSchema;

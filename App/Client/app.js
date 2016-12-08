@@ -12,6 +12,7 @@ Vue.use(VueRouter);
 
 Vue.component('login', login);
 
+
 const app = new Vue({
   store,
   router
