@@ -6,6 +6,7 @@ var profile = {
   template: temp.template,
   data: function() {
     return {
+<<<<<<< HEAD
       username: '',
       userinfo: '',
       name: '',
@@ -13,6 +14,9 @@ var profile = {
       location: '',
       profileImg: '',
       gender: ''
+=======
+      verified: this.username === this.$route.params.id
+>>>>>>> minor testing on page load
     };
   },
   created () {
@@ -28,6 +32,12 @@ var profile = {
       }
     },
     loadUserProfile: function() {
+<<<<<<< HEAD
+=======
+      console.log(this.verified)
+      console.log('id:', this.$route.params.id);
+      console.log(this.$store.state.username);
+>>>>>>> minor testing on page load
       if (this.$route.params.id !== this.$store.state.username) {
         this.$http.get(
           '/api/user',
