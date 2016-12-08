@@ -6,40 +6,42 @@ var profile = {
   template: temp.template,
   data: function() {
     return {
+      username: '',
+      userinfo: '',
+      name: '',
+      age: '',
+      location: '',
+      profileImg: '',
+      gender: ''
     };
   },
-  //mapping local variables to state variables
-  computed: mapState(['username', 'name', 'age', 'userinfo', 'location', 'profileImg', 'gender']),
+  created () {
+    this.loadUserProfile();
+  },
+  watch: {
+    '$route': 'loadUserProfile'
+  },
   methods: {
+    setProfileInfo: function(res) {
+      for (var key in res) {
+        this[key] = res[key]; 
+      }
+    },
     loadUserProfile: function() {
-      console.log('id:', this.$route.params.id);
-      console.log(this.$store.state.username);
       if (this.$route.params.id !== this.$store.state.username) {
         this.$http.get(
           '/api/user',
           { params: {username: this.$route.params.id}}
         )
-        .then((res)=>{
-          console.log(res);
-          this.$store.commit('setUser', res.body);
-
-        });
-
-      }
-      console.log (this);
-
-    },
-    setUserInfo: function() {
-      
-      this.$store.commit('setUser', {name: 'elliott'});
+        .then((res)=>{ this.setProfileInfo(res.body); });
+      } else { 
+        this.setProfileInfo(this.$store.getters.getProfileInfo); 
+      } 
     },
     update: function() {
       this.$router.push('/profileCreate/' + this.username);
     }	
   },
-  created: function() {
-    this.loadUserProfile();
-  }
 };
 
 export default profile;
