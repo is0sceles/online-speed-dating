@@ -5,12 +5,37 @@ import AppTEST from './appController.js';
 import login from './Views/loginController.js';
 import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
-
+import profile from './Views/profileController.js';
+import Vuex from 'vuex';
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
+<<<<<<< HEAD
 Vue.component('login', login);
 
+=======
+var store = new Vuex.Store({
+  state: {
+    username: ''
+  },
+  getters: {
+    isUsername(state) {
+      return state.username;
+    }
+  },
+  mutation: {
+    set_Name (state, name) {
+      state.username = name;
+    }
+  },
+  action: {
+    setName ({commit}, name) {
+      commit(set_Name, name)
+    }
+  }
+})
+>>>>>>> access to current user id established
 var routes = [
 
   {
@@ -18,12 +43,17 @@ var routes = [
     component: AppTEST
   },  
   {
-    path: '/video',
+  path: '/video',
     component: video
   },
   {
     path: '/signup',
     component: signup
+  },
+  {
+    path: '/profile/:id',
+    component: profile,
+    name: 'profile'
   }
 ];
 
@@ -35,6 +65,7 @@ const router = new VueRouter({
 
 
 const app = new Vue({
-  router
+  router,
+  store
 }).$mount('.app');
 
