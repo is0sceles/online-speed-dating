@@ -41,7 +41,14 @@ var profile = {
     update: function() {
       this.$router.push('/profileCreate/' + this.username);
     }	
+<<<<<<< HEAD
   },
+=======
+  },``
+  created: function() {
+    this.loadUserProfile();
+  }
+>>>>>>> merge issues resolved
 };
 
 export default profile;
