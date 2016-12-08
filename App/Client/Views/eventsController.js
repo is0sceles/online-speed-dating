@@ -6,14 +6,11 @@ var events = {
   template: temp.template,
   data () {
     return {
-      username: '',
-      date: '',
-      event: {
-        time: '',
-        eventName: 'linkedList',
-        eventType: '',
-        users: []
-      }
+      username: this.username,
+      date: this.date,
+      time: '',
+      eventName: '',
+      eventType: '',
     };
   },
   methods: {
@@ -27,7 +24,9 @@ var events = {
       console.log(body);
       this.$http.post(dbUrl, body)
       .then((res) => {
-        //post to db
+        //post to db from here
+        //go create the schema first 
+          //table should hold information about what events a user is registered for
         console.log('inside res: ', res);
       })
       .catch((err) => {
