@@ -6,13 +6,10 @@ var userSchema = mongoose.Schema({
   userinfo: String,
   name: String,
   age: Number,
-<<<<<<< 1d4592bd5d622420620ab925d9a52e921bf3ac82
   location: String,
   profileImg: String,
   gender: String
-=======
-  location: String
->>>>>>> implent vuex
+
 });
  
 exports.userSchema = userSchema;

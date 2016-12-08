@@ -58,25 +58,27 @@
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
-	var _appController = __webpack_require__(5);
+	var _vuex = __webpack_require__(5);
+
+	var _vuex2 = _interopRequireDefault(_vuex);
+
+	var _appController = __webpack_require__(6);
 
 	var _appController2 = _interopRequireDefault(_appController);
 
-	var _loginController = __webpack_require__(8);
+	var _loginController = __webpack_require__(9);
 
 	var _loginController2 = _interopRequireDefault(_loginController);
 
-	var _videoController = __webpack_require__(11);
+	var _videoController = __webpack_require__(12);
 
 	var _videoController2 = _interopRequireDefault(_videoController);
 
-	var _signupController = __webpack_require__(14);
+	var _signupController = __webpack_require__(15);
 
 	var _signupController2 = _interopRequireDefault(_signupController);
 
-<<<<<<< HEAD
-=======
-	var _profileController = __webpack_require__(17);
+	var _profileController = __webpack_require__(18);
 
 	var _profileController2 = _interopRequireDefault(_profileController);
 
@@ -84,44 +86,16 @@
 
 	var _profileCreationController2 = _interopRequireDefault(_profileCreationController);
 
-	var _vuex = __webpack_require__(18);
+	var _store = __webpack_require__(24);
 
-	var _vuex2 = _interopRequireDefault(_vuex);
+	var _store2 = _interopRequireDefault(_store);
 
->>>>>>> suggestion added in sudo code in profControl
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vueResource2.default);
 	_vue2.default.use(_vueRouter2.default);
-<<<<<<< HEAD
 
-	var store = new Vuex.Store({
-=======
-	_vue2.default.use(_vuex2.default);
-
-	var store = new _vuex2.default.Store({
->>>>>>> suggestion added in sudo code in profControl
-	  state: {
-	    username: ''
-	  },
-	  getters: {
-	    isUsername: function isUsername(state) {
-	      return state.username;
-	    }
-	  },
-	  mutation: {
-	    set_Name: function set_Name(state, name) {
-	      state.username = name;
-	    }
-	  },
-	  action: {
-	    setName: function setName(_ref, name) {
-	      var commit = _ref.commit;
-
-	      commit(set_Name, name);
-	    }
-	  }
-	});
+	console.log(_store2.default);
 
 	_vue2.default.component('login', _loginController2.default);
 
@@ -134,33 +108,26 @@
 	}, {
 	  path: '/signup',
 	  component: _signupController2.default
-<<<<<<< HEAD
-=======
+
 	}, {
-	  path: '/profile/:id',
+	  path: '/profile',
 	  component: _profileController2.default,
 	  name: 'profile'
-<<<<<<< HEAD
->>>>>>> suggestion added in sudo code in profControl
-=======
 	}, {
 	  path: '/profileCreate/:id',
 	  component: _profileCreationController2.default,
 	  name: _profileCreationController2.default
->>>>>>> working on updating user info in database
 	}];
 
 	var router = new _vueRouter2.default({
+
 	  routes: routes
 	});
 
 	var app = new _vue2.default({
-<<<<<<< HEAD
+
+	  store: _store2.default,
 	  router: router
-=======
-	  router: router,
-	  store: store
->>>>>>> suggestion added in sudo code in profControl
 	}).$mount('.app');
 
 /***/ },
@@ -12168,483 +12135,6 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _appTemp = __webpack_require__(6);
-
-	var _appTemp2 = _interopRequireDefault(_appTemp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var app = {
-	  template: _appTemp2.default.template,
-	  data: function data() {
-	    return {
-	      msg: 'Hello from vue-loader!'
-	    };
-	  }
-	};
-
-	exports.default = app;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(7)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/appTemp.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"message\">{{ msg }}</div>\n";
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _loginTemplate = __webpack_require__(9);
-
-	var _loginTemplate2 = _interopRequireDefault(_loginTemplate);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var login = {
-	  template: _loginTemplate2.default.template,
-	  data: function data() {
-	    return {
-	      username: '',
-	      password: ''
-	    };
-	  },
-
-	  methods: {
-	    login: function login() {
-	      var _this = this;
-
-	      this.$http.post('/auth/login', {
-	        username: this.username,
-	        password: this.password
-	      }).then(function (res) {
-	        _this.$router.push('/profile/' + res.body.username);
-	      }).catch(function (err) {
-	        return console.error(err);
-	      });
-	    }
-	  },
-	  name: 'login'
-	};
-
-	exports.default = login;
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(10)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/loginTemplate.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = " \n  <div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputEmail2\">Email address</label>\n      <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"username\" v-model=\"username\" required>\n    </div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputPassword2\">Password</label>\n      <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword2\" placeholder=\"Password\" v-model=\"password\" required>\n                              <div class=\"help-block text-right\"><a href=\"\">Forget the password ?</a></div>\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary btn-block\" v-on:click.prevent=\"login\">Sign in</button>\n    </div>\n  </div>\n";
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _videoTemplate = __webpack_require__(12);
-
-	var _videoTemplate2 = _interopRequireDefault(_videoTemplate);
-
-	var _vue = __webpack_require__(1);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var video = {
-	  template: _videoTemplate2.default.template,
-	  data: function data() {
-	    return {
-	      videoOut: '',
-	      phone: {},
-	      session: {},
-	      yourNumber: 0,
-	      myNumber: 0
-	    };
-	  },
-	  methods: {
-	    makePhone: function makePhone(myNumber) {
-<<<<<<< HEAD
-	      var that = this;
-=======
->>>>>>> suggestion added in sudo code in profControl
-	      this.phone = window.phone = PHONE({
-	        number: myNumber, // listen on username line else Anonymous
-	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
-	        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
-	        ssl: true
-	      });
-	      var sessionConnected = function sessionConnected(session) {
-	        console.log('connected with', session);
-	        console.log(this);
-	        console.log(this.video);
-<<<<<<< HEAD
-	        that.videoOut = session.video.outerHTML;
-=======
-	        this.videoOut = session.video.outerHTML;
->>>>>>> suggestion added in sudo code in profControl
-	      };
-	      this.phone.ready(function () {
-	        console.log('phone ready');
-	      });
-	      this.phone.receive(function (session) {
-	        console.log('i receieved');
-
-	        // session.message(message);
-	        // session.thumbnail(thumbnail);
-	        session.connected(sessionConnected);
-	        session.ended(function (idk) {
-	          console.log('sessionn ended', idk);
-	        });
-	      });
-	    },
-	    makeBroadcaster: function makeBroadcaster() {
-<<<<<<< HEAD
-	      var that = this;
-=======
->>>>>>> suggestion added in sudo code in profControl
-	      this.phone = window.phone = PHONE({
-	        number: 'BROADCASTER', // listen on username line else Anonymous
-	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
-	        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
-	        ssl: true
-	      });
-	      var sessionConnected = function sessionConnected(session) {
-	        console.log('connected with', session);
-	        console.log(this);
-	        console.log(this.video);
-<<<<<<< HEAD
-	        that.videoOut = session.video.outerHTML;
-=======
-	        this.videoOut = session.video.outerHTML;
->>>>>>> suggestion added in sudo code in profControl
-	      };
-	      this.phone.ready(function () {
-	        console.log('phone ready');
-	      });
-	      this.phone.receive(function (session) {
-	        console.log('i receieved');
-
-	        // session.message(message);
-	        // session.thumbnail(thumbnail);
-	        session.connected(sessionConnected);
-	        session.ended(function (idk) {
-	          console.log('sessionn ended', idk);
-	        });
-	      });
-	    },
-	    sessionConnected: function sessionConnected(session) {
-	      console.log('connected with', session);
-	      this.videoOut = session.video;
-	    },
-	    sessionEnded: function sessionEnded(session) {
-	      console.log('session ended');
-	    },
-	    dial: function dial(number) {
-	      // console.dir(phone, 'window phone ');
-	      // console.dir(this.phone, 'our phone ');
-	      // console.log('dialed ', number);
-	      this.session = this.phone.dial(number);
-	      // console.log(this.session);
-	      var session = this.session;
-	      if (!session) {
-	        console.log('couldnt connect');return;
-	      }
-	    }
-	  }
-	};
-	// var phone = window.phone;
-
-	// // var video_out = PUBNUB.$('video-display');
-	// // var img_out = PUBNUB.$('video-thumbnail');
-	// // var img_self = PUBNUB.$('video-self');
-
-	// // var phone = window.phone = PHONE({
-	// //   number: 1, // listen on username line else Anonymous
-	// //   publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
-	// //   subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
-	// //   ssl: true
-	// // });
-
-	// function connected(session) {
-	//   console.log('connected with', session);
-	//   video.methods.connected(session);
-	//   // console.log('connected');
-	//   // video_out.innerHTML = '';
-	//   // video_out.appendChild(session.video);
-	//   // console.log(session.number, 'should equal 1');
-	//   // PUBNUB.$('number').value = '' + 1;
-	//   // console.log('Hi!');
-	// }
-	// var event = new CustomEvent('ready');
-	// function dial(number) {
-	//   var session = phone.dial(number);
-	//   if (!session) { return; }
-	// }
-
-	// phone.ready(function() {
-	//   // var event = new CustomEvent('ready');
-	//   console.log('phone ready', event);
-	//   return event;
-	// });
-
-	// // function thumbnail(session) {
-	// //   img_out.innerHTML = '';
-	// //   img_out.appendChild(session.image);
-	// //   img_out.appendChild(phone.snap().image);
-	// // }
-
-	// function ended(session) {
-	//   img_out.innerHTML = '';
-	// }
-
-	// phone.receive(function(session) {
-	//   console.log( 'i receieved');
-	//   // session.message(message);
-	//   // session.thumbnail(thumbnail);
-	//   session.connected(connected);
-	//   session.ended(ended);
-	// });
-
-	// // function message( session, message ) {
-	// //   add_chat( session.number, message.text );
-	// // }
-
-	// phone.unable(function(details) {
-	//   console.log('Alert! - Reload Page.');
-	//   console.log(details);
-	// });
-
-	// phone.debug(function(details) {
-	//   // console.log(details);
-	// });
-
-
-	exports.default = video;
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(13)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/videoTemplate.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>login</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>call this user</button>\n</div>\n";
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _signupTemplate = __webpack_require__(15);
-
-	var _signupTemplate2 = _interopRequireDefault(_signupTemplate);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var signup = {
-	  template: _signupTemplate2.default.template,
-	  data: function data() {
-	    return {
-	      username: '',
-	      password: ''
-	    };
-	  },
-	  methods: {
-	    signup: function signup($http) {
-	      var _this = this;
-
-	      var body = {
-	        username: this.username,
-	        password: this.password
-	      };
-
-	      this.$http.post('/api/user', body).then(function (response) {
-	        _this.$router.push('/');
-	      }).catch(function (err) {
-	        alert('username already exists');
-	        // this.$router.push('/signup');
-	      });
-	    }
-	  }
-	};
-
-	exports.default = signup;
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(16)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/signupTemplate.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	module.exports = "\n\t<div class=\"container\">\n\n  \t<form class=\"well form-horizontal\" action=\" \" method=\"post\"  id=\"contact_form\">\n\t\t\t<legend>Sign Up!</legend>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\">Username</label>  \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input  name=\"username\" placeholder=\"Username\" class=\"form-control\"  type=\"text\" v-model=\"username\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<!-- Text input-->\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\" >Password</label> \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input name=\"password\" placeholder=\"Password\" class=\"form-control\"  type=\"password\" v-model=\"password\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\"></label>\n\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-warning\" v-on:click.prevent='signup'>Join! <span class=\"glyphicon glyphicon-send\"></span></button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n";
-
-<<<<<<< HEAD
-=======
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _profileTemplate = __webpack_require__(19);
-
-	var _profileTemplate2 = _interopRequireDefault(_profileTemplate);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var profile = {
-	  name: 'profile',
-	  template: _profileTemplate2.default.template,
-	  data: function data() {
-	    return {
-	      username: this.$route.params.id,
-	      name: '',
-	      age: '',
-	      gender: '',
-	      location: '',
-	      profileImg: 'profile_img_here',
-	      userinfo: ''
-	    };
-	  },
-	  methods: {
-	    loadUserProfile: function loadUserProfile() {
-	      var _this = this;
-
-	      console.log('before page loaded ', this.$route.params.id);
-	      this.$http.get('/api/user', { params: { username: this.$route.params.id } }).then(function (res) {
-	        var user = res.body;
-	        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
-	          _this.name = user.name;
-	          _this.age = user.age;
-	          _this.location = user.location;
-	          _this.gender = user.gender;
-	          _this.profileImg = user.profileImg;
-	          _this.userinfo = user.userinfo;
-	        }
-	      }).catch(function (err) {
-	        return console.error(err);
-	      });
-	    },
-	    update: function update() {
-	      this.$router.push('/profileCreate/' + this.username);
-	    }
-	  },
-	  created: function created() {
-	    this.loadUserProfile();
-	  }
-	};
-
-	exports.default = profile;
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * vuex v2.0.0
 	 * (c) 2016 Evan You
@@ -13175,6 +12665,487 @@
 	})));
 
 /***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _appTemp = __webpack_require__(7);
+
+	var _appTemp2 = _interopRequireDefault(_appTemp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var app = {
+	  template: _appTemp2.default.template,
+	  data: function data() {
+	    return {
+	      msg: 'Hello from vue-loader!'
+	    };
+	  }
+	};
+
+	exports.default = app;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(8)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/appTemp.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"message\">{{ msg }}</div>\n";
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _loginTemplate = __webpack_require__(10);
+
+	var _loginTemplate2 = _interopRequireDefault(_loginTemplate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var login = {
+	  template: _loginTemplate2.default.template,
+	  data: function data() {
+	    return {
+	      username: '',
+	      password: ''
+	    };
+	  },
+
+	  methods: {
+	    login: function login() {
+	      var _this = this;
+
+	      this.$http.post('/auth/login', {
+	        username: this.username,
+	        password: this.password
+	      }).then(function (res) {
+	        _this.$router.push('/profile/' + res.body.username);
+	      }).catch(function (err) {
+	        return console.error(err);
+	      });
+	    }
+	  },
+	  name: 'login'
+	};
+
+	exports.default = login;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(11)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/loginTemplate.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = " \n  <div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputEmail2\">Email address</label>\n      <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"username\" v-model=\"username\" required>\n    </div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputPassword2\">Password</label>\n      <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword2\" placeholder=\"Password\" v-model=\"password\" required>\n                              <div class=\"help-block text-right\"><a href=\"\">Forget the password ?</a></div>\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary btn-block\" v-on:click.prevent=\"login\">Sign in</button>\n    </div>\n  </div>\n";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _videoTemplate = __webpack_require__(13);
+
+	var _videoTemplate2 = _interopRequireDefault(_videoTemplate);
+
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var video = {
+	  template: _videoTemplate2.default.template,
+	  data: function data() {
+	    return {
+	      videoOut: '',
+	      phone: {},
+	      session: {},
+	      yourNumber: 0,
+	      myNumber: 0
+	    };
+	  },
+	  methods: {
+	    makePhone: function makePhone(myNumber) {
+	      var that = this;
+	      this.phone = window.phone = PHONE({
+	        number: myNumber, // listen on username line else Anonymous
+	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
+	        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
+	        ssl: true
+	      });
+	      var sessionConnected = function sessionConnected(session) {
+	        console.log('connected with', session);
+	        console.log(this);
+	        console.log(this.video);
+	        that.videoOut = session.video.outerHTML;
+	      };
+	      this.phone.ready(function () {
+	        console.log('phone ready');
+	      });
+	      this.phone.receive(function (session) {
+	        console.log('i receieved');
+
+	        // session.message(message);
+	        // session.thumbnail(thumbnail);
+	        session.connected(sessionConnected);
+	        session.ended(function (idk) {
+	          console.log('sessionn ended', idk);
+	        });
+	      });
+	    },
+	    makeBroadcaster: function makeBroadcaster() {
+	      var that = this;
+	      this.phone = window.phone = PHONE({
+	        number: 'BROADCASTER', // listen on username line else Anonymous
+	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
+	        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
+	        ssl: true
+	      });
+	      var sessionConnected = function sessionConnected(session) {
+	        console.log('connected with', session);
+	        console.log(this);
+	        console.log(this.video);
+	        that.videoOut = session.video.outerHTML;
+	      };
+	      this.phone.ready(function () {
+	        console.log('phone ready');
+	      });
+	      this.phone.receive(function (session) {
+	        console.log('i receieved');
+
+	        // session.message(message);
+	        // session.thumbnail(thumbnail);
+	        session.connected(sessionConnected);
+	        session.ended(function (idk) {
+	          console.log('sessionn ended', idk);
+	        });
+	      });
+	    },
+	    sessionConnected: function sessionConnected(session) {
+	      console.log('connected with', session);
+	      this.videoOut = session.video;
+	    },
+	    sessionEnded: function sessionEnded(session) {
+	      console.log('session ended');
+	    },
+	    dial: function dial(number) {
+	      // console.dir(phone, 'window phone ');
+	      // console.dir(this.phone, 'our phone ');
+	      // console.log('dialed ', number);
+	      this.session = this.phone.dial(number);
+	      // console.log(this.session);
+	      var session = this.session;
+	      if (!session) {
+	        console.log('couldnt connect');return;
+	      }
+	    }
+	  }
+	};
+	// var phone = window.phone;
+
+	// // var video_out = PUBNUB.$('video-display');
+	// // var img_out = PUBNUB.$('video-thumbnail');
+	// // var img_self = PUBNUB.$('video-self');
+
+	// // var phone = window.phone = PHONE({
+	// //   number: 1, // listen on username line else Anonymous
+	// //   publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
+	// //   subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
+	// //   ssl: true
+	// // });
+
+	// function connected(session) {
+	//   console.log('connected with', session);
+	//   video.methods.connected(session);
+	//   // console.log('connected');
+	//   // video_out.innerHTML = '';
+	//   // video_out.appendChild(session.video);
+	//   // console.log(session.number, 'should equal 1');
+	//   // PUBNUB.$('number').value = '' + 1;
+	//   // console.log('Hi!');
+	// }
+	// var event = new CustomEvent('ready');
+	// function dial(number) {
+	//   var session = phone.dial(number);
+	//   if (!session) { return; }
+	// }
+
+	// phone.ready(function() {
+	//   // var event = new CustomEvent('ready');
+	//   console.log('phone ready', event);
+	//   return event;
+	// });
+
+	// // function thumbnail(session) {
+	// //   img_out.innerHTML = '';
+	// //   img_out.appendChild(session.image);
+	// //   img_out.appendChild(phone.snap().image);
+	// // }
+
+	// function ended(session) {
+	//   img_out.innerHTML = '';
+	// }
+
+	// phone.receive(function(session) {
+	//   console.log( 'i receieved');
+	//   // session.message(message);
+	//   // session.thumbnail(thumbnail);
+	//   session.connected(connected);
+	//   session.ended(ended);
+	// });
+
+	// // function message( session, message ) {
+	// //   add_chat( session.number, message.text );
+	// // }
+
+	// phone.unable(function(details) {
+	//   console.log('Alert! - Reload Page.');
+	//   console.log(details);
+	// });
+
+	// phone.debug(function(details) {
+	//   // console.log(details);
+	// });
+
+
+	exports.default = video;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(14)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/videoTemplate.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div>\n  <div v-html='videoOut'></div>\n  <input v-model='myNumber'>\n  <button v-on:click='makePhone(myNumber)'>login</button>\n  <input type=\"number\" v-model='yourNumber'>\n  <button v-on:click='dial(yourNumber)'>call this user</button>\n</div>\n";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _signupTemplate = __webpack_require__(16);
+
+	var _signupTemplate2 = _interopRequireDefault(_signupTemplate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var signup = {
+	  template: _signupTemplate2.default.template,
+	  data: function data() {
+	    return {
+	      username: '',
+	      password: ''
+	    };
+	  },
+	  methods: {
+	    signup: function signup($http) {
+	      var _this = this;
+
+	      var body = {
+	        username: this.username,
+	        password: this.password
+	      };
+
+	      this.$http.post('/api/user', body).then(function (response) {
+	        _this.$router.push('/');
+	      }).catch(function (err) {
+	        alert('username already exists');
+	        // this.$router.push('/signup');
+	      });
+	    }
+	  }
+	};
+
+	exports.default = signup;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(17)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/signupTemplate.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<div class=\"container\">\n\n  \t<form class=\"well form-horizontal\" action=\" \" method=\"post\"  id=\"contact_form\">\n\t\t\t<legend>Sign Up!</legend>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\">Username</label>  \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input  name=\"username\" placeholder=\"Username\" class=\"form-control\"  type=\"text\" v-model=\"username\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<!-- Text input-->\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\" >Password</label> \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input name=\"password\" placeholder=\"Password\" class=\"form-control\"  type=\"password\" v-model=\"password\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\"></label>\n\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-warning\" v-on:click.prevent='signup'>Join! <span class=\"glyphicon glyphicon-send\"></span></button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n";
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _profileTemplate = __webpack_require__(19);
+
+	var _profileTemplate2 = _interopRequireDefault(_profileTemplate);
+
+	var _vuex = __webpack_require__(5);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var profile = {
+	  name: 'profile',
+	  template: _profileTemplate2.default.template,
+	  data: function data() {
+	    return {
+	      username: '',
+	      name: '',
+	      age: '',
+	      gender: '',
+	      location: '',
+	      profileImg: 'profile_img_here',
+	      userinfo: ''
+	    };
+	  },
+	  //mapping local variables to state variables
+	  computed: (0, _vuex.mapState)(['username', 'name', 'age', 'location']),
+	  methods: {
+	    setUserInfo: function setUserInfo() {
+	      var body = {
+	        '_id': {
+	          '$oid': '5848beeedd9d206204a7aab1'
+	        },
+	        'username': '0',
+	        'password': '0',
+	        'userinfo': 'a',
+	        'name': 'b',
+	        'age': 0,
+	        'location': 'c',
+	        '__v': 0
+	      };
+	      console.log('clicked');
+	      this.$store.commit('setUser', body);
+	    },
+	    loadUserProfile: function loadUserProfile() {
+	      var _this = this;
+
+	      console.log('before page loaded ', this.$route.params.id);
+	      this.$http.get('/api/user', { params: { username: this.$route.params.id } }).then(function (res) {
+	        var user = res.body;
+	        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+	          _this.name = user.name;
+	          _this.age = user.age;
+	          _this.location = user.location;
+	          _this.gender = user.gender;
+	          _this.profileImg = user.profileImg;
+	          _this.userinfo = user.userinfo;
+	        }
+	      }).catch(function (err) {
+	        return console.error(err);
+	      });
+	    },
+	    update: function update() {
+	      this.$router.push('/profileCreate/' + this.username);
+	    }
+	  },
+	  created: function created() {
+	    this.loadUserProfile();
+	  }
+	};
+
+	exports.default = profile;
+
+/***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -13187,7 +13158,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/profileTemplate.vue"
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/profileTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13199,11 +13170,8 @@
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<button v-on:click='update'>Update User Info</button>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n";
+	module.exports = "\n\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<button v-on:click='update'>Update User Info</button>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n\n";
 
-<<<<<<< HEAD
->>>>>>> suggestion added in sudo code in profControl
-=======
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
@@ -13222,7 +13190,7 @@
 
 	var profileCreation = {
 	  template: _profileCreationTemplate2.default.template,
-	  name: profileCreation,
+	  name: 'profileCreation',
 	  data: function data() {
 	    return {
 	      username: this.$route.params.id,
@@ -13288,7 +13256,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/profileCreationTemplate.vue"
+	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/profileCreationTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13302,6 +13270,63 @@
 
 	module.exports = "\n  <div>\n    <h1>Profile Update</h1>\n      <div>\n        <form>\n          <div>\n            <input name='name' placeholder='Enter name' type='text' v-model='name'>\n          </div>\n          <div>\n            <input name='age' placeholder='age' type='number' v-model='age'>\n          </div>\n          <div>\n            <input name='gender' placeholder='Gender' type='text' v-model='gender'>\n          </div>\n          <div>\n            <input name='location' placeholder='Where Are You?' type='text' v-model='location'>\n          </div>\n          <div>\n            <input name='profileImg' placeholder='Upload a photo' type='text' v-model='profileImg'>\n          </div>\n          <div>\n            <input name='userinfo' placeholder='Tell Us about yourself' type='text' v-model='userinfo'>\n          </div>       \n        </form> \n\t  <button v-on:click='setUserInfo'>Save User Info</button>\n    </div>\n  </div>\n";
 
->>>>>>> working on updating user info in database
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _vuex = __webpack_require__(5);
+
+	var _vuex2 = _interopRequireDefault(_vuex);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_vue2.default.use(_vuex2.default);
+
+	var store = new _vuex2.default.Store({
+	  state: {
+	    username: 'elliottabirch',
+	    name: 'elliott',
+	    age: '25',
+	    location: 'SF'
+
+	  },
+	  getters: {
+	    isUsername: function isUsername(state, name) {
+	      return state.username = name;
+	    }
+	  },
+	  mutations: {
+	    setUser: function setUser(state, _ref) {
+	      var age = _ref.age,
+	          name = _ref.name,
+	          username = _ref.username,
+	          location = _ref.location,
+	          userinfo = _ref.userinfo;
+
+	      state.age = age;state.name = name;state.username = username;state.location = location;state.userinfo = userinfo;
+	    }
+	  }
+	  // action: {
+	  //   setName ({commit}, name) {
+	  //     commit(set_Name, name);
+	  //   }
+	  // }
+	});
+
+	// console.log(store.state);
+
+
+	exports.default = store;
+
 /***/ }
 /******/ ]);

@@ -17,8 +17,6 @@ var profile = {
   //mapping local variables to state variables
   computed: mapState(['username', 'name', 'age', 'location']),
   methods: {
-<<<<<<< 1d4592bd5d622420620ab925d9a52e921bf3ac82
-=======
     setUserInfo: function() {
       var body = {
         '_id': { 
@@ -34,33 +32,25 @@ var profile = {
       };
       console.log('clicked');
       this.$store.commit('setUser', body);
-      // this.$http.post('/api/user', body)
-      // .then((response) => {
-
-      // })
-      // .catch((err) => {
-
-      // });
     },
->>>>>>> implent vuex
     loadUserProfile: function() {
       console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
-          if(user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo){
-            this.name = user.name;
-            this.age = user.age;
-            this.location = user.location;
-            this.gender = user.gender;
-            this.profileImg = user.profileImg;
-            this.userinfo = user.userinfo
-          } 
-        })
+        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+          this.name = user.name;
+          this.age = user.age;
+          this.location = user.location;
+          this.gender = user.gender;
+          this.profileImg = user.profileImg; 
+          this.userinfo = user.userinfo;
+        } 
+      })
       .catch((err) => console.error(err));
     },
     update: function() {
-      this.$router.push('/profileCreate/' + this.username)
+      this.$router.push('/profileCreate/' + this.username);
     }	
   },
   created: function() {
