@@ -1,5 +1,5 @@
 import temp from './profileCreationTemplate.vue';
-
+// import { mapState } from 'vuex';
 var profileCreation = {
   template: temp.template,
   name: 'profileCreation',
@@ -28,6 +28,7 @@ var profileCreation = {
       };
       this.$http.put('/api/user', body)
       .then((response) => {
+        this.$store.commit('setUser', body);
         this.$router.push('/profile/' + this.username);
       })
       .catch((err) => {
