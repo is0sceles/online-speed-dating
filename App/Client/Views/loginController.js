@@ -16,6 +16,7 @@ const login = {
         password: this.password 
       })
       .then((res) => { 
+        this.$store.commit('setUser', res.body);
         this.$router.push('/profile/' + res.body.username);
       })
       .catch((err) => console.error(err)); 

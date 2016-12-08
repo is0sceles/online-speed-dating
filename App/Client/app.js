@@ -37,7 +37,7 @@ var routes = [
 
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     component: profile,
     name: 'profile'
   },

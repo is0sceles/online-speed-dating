@@ -30,7 +30,7 @@ var profile = {
         'location': 'c',
         '__v': 0
       };
-      this.$store.commit('setUser', body);
+      this.$store.commit('setUser', {name: 'elliott'});
     },
     loadUserProfile: function() {
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})

@@ -20,15 +20,7 @@ var store = new Vuex.Store({
     }
   },
   mutations: {
-    setUser (state, {
-    username,
-    userinfo,
-    name,
-    age,
-    location,
-    profileImg,
-    gender
-  }) {
+    setUser (state, {username, userinfo, name, age, location, profileImg, gender}) {
       state.age = age; state.name = name; state.username = username; state.location = location; state.userinfo = userinfo;
     }
   }
