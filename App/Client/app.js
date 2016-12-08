@@ -5,7 +5,13 @@ import AppTEST from './appController.js';
 import login from './Views/loginController.js';
 import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
+<<<<<<< HEAD
 
+=======
+import profile from './Views/profileController.js';
+import profileCreate from './Views/profileCreationController.js';
+import Vuex from 'vuex';
+>>>>>>> working on updating user info in database
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
@@ -30,7 +36,6 @@ var store = new Vuex.Store({
   }
 });
 
-
 Vue.component('login', login);
 
 
@@ -47,6 +52,17 @@ var routes = [
   {
     path: '/signup',
     component: signup
+
+  },
+  {
+    path: '/profile/:id',
+    component: profile,
+    name: 'profile'
+  },
+  {
+    path: '/profileCreate/:id',
+    component: profileCreate,
+    name: profileCreate
   }
 ];
 
