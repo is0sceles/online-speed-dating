@@ -28,12 +28,7 @@ var profileCreation = {
       };
       this.$http.put('/api/user', body)
       .then((response) => {
-<<<<<<< HEAD
-        console.log(response);
-
-=======
         this.$router.push('/profile/' + this.username);
->>>>>>> Added profile update feature.
       })
       .catch((err) => {
 
