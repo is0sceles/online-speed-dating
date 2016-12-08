@@ -16,7 +16,7 @@ var profileCreation = {
   },
   methods: {
     setUserInfo: function() {
-      console.log('setting')
+      console.log('setting');
       var body = {
         username: this.username,
         name: this.name,
@@ -35,11 +35,9 @@ var profileCreation = {
       });
     },
     loadUserProfile: function() {
-      console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
-        console.log(user);
         if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
           this.name = user.name;
           this.age = user.age;

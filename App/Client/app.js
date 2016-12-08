@@ -15,7 +15,6 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-console.log(store);
 
 Vue.component('login', login);
 
@@ -38,7 +37,7 @@ var routes = [
 
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     component: profile,
     name: 'profile'
   },
