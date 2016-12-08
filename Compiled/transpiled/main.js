@@ -12211,7 +12211,6 @@
 	        username: this.username,
 	        password: this.password
 	      }).then(function (res) {
-	        console.log(res);
 	        _this.$router.push('/profile/' + res.body.username);
 	      }).catch(function (err) {
 	        return console.error(err);
