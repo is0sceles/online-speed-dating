@@ -33,10 +33,25 @@ var profile = {
           '/api/user',
           { params: {username: this.$route.params.id}}
         )
+<<<<<<< HEAD
         .then((res)=>{ this.setProfileInfo(res.body); });
       } else { 
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
+=======
+        .then((res)=>{
+          console.log(res);
+          this.$store.commit('setUser', res.body);
+
+        });
+
+      }
+
+    },
+    setUserInfo: function() {
+      
+      this.$store.commit('setUser', {name: 'elliott'});
+>>>>>>> Basic Profile Buttons added.
     },
     update: function() {
       this.$router.push('/profileCreate/' + this.username);
