@@ -24,8 +24,6 @@ var video = {
       });
       var sessionConnected = function(session) {
         console.log('connected with', session);
-        console.log(this);
-        console.log(this.video);
         that.videoOut = session.video.outerHTML;
       };
       this.phone.ready(function() {

@@ -28,18 +28,20 @@ var profileCreation = {
       };
       this.$http.put('/api/user', body)
       .then((response) => {
+<<<<<<< 15a45788439ca9fc1794bc7bd23503cfb89c6727
         this.$router.push('/profile/' + this.username);
+=======
+
+>>>>>>> removed console.logs
       })
       .catch((err) => {
 
       });
     },
     loadUserProfile: function() {
-      console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
-        console.log(user);
         if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
           this.name = user.name;
           this.age = user.age;

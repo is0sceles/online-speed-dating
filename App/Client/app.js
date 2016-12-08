@@ -15,7 +15,6 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-console.log(store);
 
 Vue.component('login', login);
 
