@@ -9,8 +9,6 @@ import signup from './Views/signupController.js';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
-
-
 var store = new Vuex.Store({
   state: {
     username: ''
