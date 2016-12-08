@@ -1,11 +1,11 @@
 import temp from './profileTemplate.vue';
-
+import { mapState } from 'vuex';
 var profile = {
   name: 'profile',
   template: temp.template,
   data: function() {
     return {
-      username: this.$route.params.id,
+      username: '',
       name: '',
       age: '',
       gender: '',
@@ -14,7 +14,35 @@ var profile = {
       userinfo: '',
     };
   },
+  //mapping local variables to state variables
+  computed: mapState(['username', 'name', 'age', 'location']),
   methods: {
+<<<<<<< 1d4592bd5d622420620ab925d9a52e921bf3ac82
+=======
+    setUserInfo: function() {
+      var body = {
+        '_id': { 
+          '$oid': '5848beeedd9d206204a7aab1'
+        }, 
+        'username': '0',
+        'password': '0',
+        'userinfo': 'a',
+        'name': 'b',
+        'age': 0,
+        'location': 'c',
+        '__v': 0
+      };
+      console.log('clicked');
+      this.$store.commit('setUser', body);
+      // this.$http.post('/api/user', body)
+      // .then((response) => {
+
+      // })
+      // .catch((err) => {
+
+      // });
+    },
+>>>>>>> implent vuex
     loadUserProfile: function() {
       console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})

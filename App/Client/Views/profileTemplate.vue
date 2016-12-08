@@ -1,4 +1,5 @@
 <template>
+<<<<<<< 1d4592bd5d622420620ab925d9a52e921bf3ac82
   <div>
     <h1>{{$route.params.id}}</h1>
       <div>
@@ -24,4 +25,15 @@
 	<button v-on:click='update'>Update User Info</button>
 	<!--<div>*Place holder for matchs*</div>-->
   </div>
+=======
+
+	<div>
+	<div>{{name}}</div>
+	<div>{{username}}</div>
+	<div>{{age}}</div>
+	<div>{{location}}</div>
+	      <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="setUserInfo">Sign in</button>
+
+	<div>
+>>>>>>> implent vuex
 </template>
