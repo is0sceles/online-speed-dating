@@ -2,7 +2,7 @@ import temp from './profileCreationTemplate.vue';
 
 var profileCreation = {
   template: temp.template,
-  name: profileCreation,
+  name: 'profileCreation',
   data: function() {
     return {
       username: this.$route.params.id,
@@ -12,7 +12,7 @@ var profileCreation = {
       location: '',
       profileImg: '',
       userinfo: '',
-    }
+    };
   },
   methods: {
     setUserInfo: function() {
@@ -26,7 +26,7 @@ var profileCreation = {
       };
       this.$http.post('/api/user', body)
       .then((response) => {
-          console.log(response)
+        console.log(response);
 
       })
       .catch((err) => {
@@ -38,21 +38,21 @@ var profileCreation = {
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
-        console.log(user)
-          if(user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo){
-            this.name = user.name;
-            this.age = user.age;
-            this.location = user.location;
-            this.gender = user.gender;
-            this.profileImg = user.profileImg;
-            this.userinfo = user.userinfo
-          } 
-        })
+        console.log(user);
+        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+          this.name = user.name;
+          this.age = user.age;
+          this.location = user.location;
+          this.gender = user.gender;
+          this.profileImg = user.profileImg;
+          this.userinfo = user.userinfo;
+        } 
+      })
       .catch((err) => console.error(err));
     }
   },
   created: function() {
-      this.loadUserProfile();
+    this.loadUserProfile();
   }
 };
 
