@@ -3,9 +3,9 @@
   <div>
     <h1>{{$route.params.id}}</h1>
       <div>
-        <div>
-          <div class='profileImg' v-html='profileImg'></div>
-        </div>
+
+					<img v-bind:src="profileImg">
+
 		<div>        
 		  <span>Name :{{name}}</span>
         </div>

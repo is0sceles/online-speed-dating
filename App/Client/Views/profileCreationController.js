@@ -16,7 +16,7 @@ var profileCreation = {
   },
   methods: {
     setUserInfo: function() {
-      console.log('setting')
+      console.log('setting');
       var body = {
         username: this.username,
         name: this.name,
@@ -28,11 +28,7 @@ var profileCreation = {
       };
       this.$http.put('/api/user', body)
       .then((response) => {
-<<<<<<< 15a45788439ca9fc1794bc7bd23503cfb89c6727
         this.$router.push('/profile/' + this.username);
-=======
-
->>>>>>> removed console.logs
       })
       .catch((err) => {
 

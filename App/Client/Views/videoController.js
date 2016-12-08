@@ -17,7 +17,7 @@ var video = {
   computed: mapState(['videoOut', 'sessionOut', 'username', 'name', 'phone', 'sessionIn']),
   methods: {
     makePhone: function(myNumber) {
-      var that = this;
+      console.log(this.$store.state.phone);
       this.$store.state.phone = window.phone = PHONE({
         number: myNumber, // listen on username line else Anonymous
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
