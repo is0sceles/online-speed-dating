@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var facebookStrategy = require('passport-facebook').Strategy;
 
 var userHandler = require('./handlers/userHandler.js');
+var User = require('../Database/models/userModel.js');
 
 var sessionOptions = { 
   secret: 'keyboard cat',
@@ -28,13 +29,13 @@ module.exports = function(app, express) {
     done(null, user._id);
   });
   passport.deserializeUser(function(id, done) {
-    User.user.findById(id, function (err, user) {
+    User.findById(id, function (err, user) {
       done(err, user);
     });
   }); 
   passport.use(new LocalStrategy(
     function(username, password, done) {
-      User.getUser(username, function(err, user) {
+      userHandler.getUserDB(username, function(err, user) {
         if (err) { return done(err); }
         if (!user) {
           console.log('failed username');
