@@ -6,11 +6,13 @@ Vue.use(Vuex);
 
 var store = new Vuex.Store({
   state: {
-    username: 'elliottabirch',
-    name: 'elliott',
-    age: '25',
-    location: 'SF'
-
+    username: '',
+    userinfo: '',
+    name: '',
+    age: '',
+    location: '',
+    profileImg: '',
+    gender: ''
   },
   getters: {
     isUsername(state, name) {
@@ -18,7 +20,15 @@ var store = new Vuex.Store({
     }
   },
   mutations: {
-    setUser (state, {age: age, name: name, username: username, location: location, userinfo: userinfo }) {
+    setUser (state, {
+    username,
+    userinfo,
+    name,
+    age,
+    location,
+    profileImg,
+    gender
+  }) {
       state.age = age; state.name = name; state.username = username; state.location = location; state.userinfo = userinfo;
     }
   }
@@ -29,7 +39,6 @@ var store = new Vuex.Store({
   // }
 });
 
-// console.log(store.state);
 
 
 export default store;
