@@ -27,11 +27,11 @@ var routes = [
   },
   {
     path: '/Admin',
-    meta: { requiresAdmin: true },
+    //meta: { requiresAdmin: true },
     component: blank,
     children: [
       {
-        path: '/eventcreate',
+        path: 'eventsCreate',
         component: eventsCreate
       }
     ]

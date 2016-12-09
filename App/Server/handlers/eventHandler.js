@@ -19,7 +19,9 @@ exports.postEvent = (req, res) => {
   event.save((err, result) => {
     if (err) { 
       console.error('Could not save to database..', err);
+      res.status(400).send(result);
+    } else {
+      res.status(200).send(result);
     }
-    res.status(200).send(result);
   });
 };

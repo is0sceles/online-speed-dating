@@ -10,12 +10,12 @@ var userSchema = mongoose.Schema({
   profileImg: {type: String, default: 'https://www.svgimages.com/svg-image/s4/question-mark-face-256x256.png'},
   gender: {type: String, default: 'please fill out'},
   admin: {type: Boolean, default: false},
-  events: {type: Array, default: '[]'},
+  events: {type: Array, default: []},
 });
 
 var eventSchema = mongoose.Schema({
-  dateCreated: {type: Date, required: true, index: { unique: true } },
-  usernames: {type: Array, default: '[]'},
+  date: {type: Date, required: true, index: { unique: true } },
+  usernames: {type: Array, default: []},
   eventType: {type: String, default: 'please fill out'},
   eventName: {type: String, default: 'please fill out'},
 });

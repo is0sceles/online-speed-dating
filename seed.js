@@ -15,7 +15,7 @@ db.collections.events.drop( function() {
 for (var i = 0; i < 5; i++) {
 
 
-  user.create({username: i, password: i, userinfo: 'a', name: 'b', age: i, location: 'c'}, function(err) {
+  user.create({username: i, password: i, userinfo: 'a', name: 'b', age: i, location: 'c', admin: true}, function(err) {
     if (err) { console.error(err); }
   });
   
