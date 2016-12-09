@@ -24,7 +24,9 @@ var profileCreation = {
         location: this.location || 'Here, There',
         profileImg: this.profileImg || 'https://www.svgimages.com/svg-image/s4/question-mark-face-256x256.png',
         gender: this.gender || 'gender',
-        userinfo: this.userinfo || 'User did not provide info'
+        userinfo: this.userinfo || 'User did not provide info',
+        admin: false,
+        loggedIn: true
       };
       this.$http.put('/api/user', body)
       .then((response) => {
@@ -52,7 +54,12 @@ var profileCreation = {
     }
   },
   created: function() {
-    this.loadUserProfile();
+    var status = this.$store.getters.getProfileInfo.username;
+    if(status){
+      this.loadUserProfile();
+    } else {
+      this.$router.push('/');
+    }
   }
 };
 

@@ -46,6 +46,7 @@ var profile = {
       } else {
         this.verified = true; 
        console.log(this.verified)
+       console.log(this.$store.getters.getProfileInfo)
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
     },

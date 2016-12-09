@@ -19,7 +19,7 @@ const profileLink = {
         var user = this.$store.getters.getProfileInfo;
         this.loggedIn = user.loggedIn;
         this.username = user.username;
-        this.edit = '/profileCreate/' + user.username
+        this.edit = '/edit/' + user.username
       },
       logout: function() {
         var body = {
@@ -34,8 +34,7 @@ const profileLink = {
           loggedIn: false
         };
         this.$store.commit('setUser', body);
-        this.loggedIn = !this.loggedIn;
-        this.$router.push('/');  
+        this.$router.go('/');  
       }
     },
 };
