@@ -13,7 +13,8 @@ var store = new Vuex.Store({
     location: '',
     profileImg: '',
     gender: '',
-    admin: '',
+    admin: false,
+    loggedIn: false
   },
   getters: {
     getProfileInfo(state, name) {
@@ -24,7 +25,9 @@ var store = new Vuex.Store({
         age: state.age,
         location: state.location,
         profileImg: state.profileImg,
-        gender: state.gender
+        gender: state.gender,
+        admin: state.admin,
+        loggedIn: state.loggedIn
       };
       return userInfo;
     }
@@ -38,6 +41,8 @@ var store = new Vuex.Store({
       state.location = location; 
       state.userinfo = userinfo;
       state.gender = gender;
+      state.admin = admin;
+      state.loggedIn = loggedIn;
     }
   }
   // action: {

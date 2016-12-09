@@ -17,13 +17,9 @@ const profileLink = {
     methods: {
       checking: function() {
         var user = this.$store.getters.getProfileInfo;
-        // logged in to be cookie or session
-        //if(cookie/session){
-        //this.loggedIn = true
-        //}
+        this.loggedIn = user.loggedIn;
         this.username = user.username;
-        //change to edit before commiting
-        this.edit = '/edit/' + user.username
+        this.edit = '/profileCreate/' + user.username
       },
       logout: function() {
         var body = {
@@ -38,7 +34,8 @@ const profileLink = {
           loggedIn: false
         };
         this.$store.commit('setUser', body);
-        this.$router.push('/');
+        this.loggedIn = !this.loggedIn;
+        this.$router.push('/');  
       }
     },
 };

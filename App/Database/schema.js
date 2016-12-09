@@ -9,6 +9,8 @@ var userSchema = mongoose.Schema({
   location: String,
   profileImg: String,
   gender: String,
+  admin: Boolean,
+  loggedIn: Boolean
 });
  
 exports.userSchema = userSchema;

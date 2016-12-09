@@ -8,7 +8,7 @@
     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Profile</b> <span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
         <li><router-link :to='{name: "profile", params: {id: username}}'><a>Home</a></router-link></li>
-        <li><router-link :to='profileCreate'><a>Update Profile</a></router-link></li>
+        <li><router-link :to='edit'><a>Update Profile</a></router-link></li>
       </ul>
     </li>
   </div>
