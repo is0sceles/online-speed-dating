@@ -6,31 +6,15 @@ var profileCreation = {
   name: 'edit',
   data: function() {
     return {
-      username: '',
-      name: '',
-      age: '',
-      gender: '',
-      location: '',
-      profileImg: '',
-      userinfo: '',
     };
   },
-  computed: mapState({
-    username: 'user', 
-    name: 'user.name', 
-    age: 'user.age', 
-    gender: 'user.gender', 
-    location: 'user.location', 
-    userinfo: 'user.userinfo', 
-    profileImg: 'user.profileImg'
-  }),
   watch: {
     '$route': 'checkRoute'
   },
   methods: {
     checkRoute () {
       if (this.$route.params.id !== this.$store.state.user.username) {
-        console.error('dont do that HO!', this.username);
+        console.error('dont do that HO!');
         this.$router.go(-1);
       } else {
         this.$router.push('/profile/' + this.$route.params.id + '/edit');
