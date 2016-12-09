@@ -6,9 +6,18 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
+<<<<<<< HEAD
 import edit from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 
+=======
+import profileCreate from '../Views/profileCreationController.js';
+import blank from '../Views/blank.vue';
+
+
+
+
+>>>>>>> c8a8d92a74630a4719718a88e19969dcc951f41e
 
 var routes = [
   {
@@ -81,6 +90,10 @@ var routes = [
   //     },
   //   ]
   // },
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8a8d92a74630a4719718a88e19969dcc951f41e
 ];
 
 const router = new VueRouter({
