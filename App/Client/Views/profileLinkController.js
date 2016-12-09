@@ -16,7 +16,6 @@ const profileLink = {
 
   methods: {
     goToProfile: function() {
-      console.log('called');
       this.$router.push('/profile/' + this.username);
     },   
     editProfile: function() {

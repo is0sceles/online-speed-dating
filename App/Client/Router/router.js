@@ -93,17 +93,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    console.log(store.state.username);
     if (!store.state.username) {
       Vue.http.post('auth/authorize')
       .then((res) => {
-        console.log(to);
         store.commit('setUser', res.body);
         next({
         });
       })
       .catch((res) => {
-        console.log(res.body);
         window.alert('you must log in to do that');
         next(false);
       });
