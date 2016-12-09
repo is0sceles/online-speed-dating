@@ -12,8 +12,7 @@ var profile = {
       age: '',
       location: '',
       profileImg: '',
-      gender: '',
-      verified: false
+      gender: ''
     };
   },
   created () {
@@ -23,6 +22,9 @@ var profile = {
     '$route': 'loadUserProfile'
   },
   methods: {
+    editProfile: function() {
+      this.$router.push('/profile/' + this.username + '/edit');
+    }, 
     setProfileInfo: function(res) {
       for (var key in res) {
         this[key] = res[key]; 
