@@ -51,7 +51,7 @@ var profile = {
       } 
     },
     update: function() {
-      this.$router.push('/profileCreate/' + this.username);
+      this.$router.push('/profile/' + this.username + '/edit' );
     }	
   },
 };

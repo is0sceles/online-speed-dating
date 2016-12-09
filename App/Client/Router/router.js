@@ -6,7 +6,16 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
+<<<<<<< e6d77b0200a9a140838f4c5d6e5f1dcb5f573ed4
 import edit from '../Views/profileCreationController.js';
+=======
+import profileCreate from '../Views/profileCreationController.js';
+import blank from '../Views/blank.vue';
+
+
+
+
+>>>>>>> create layout for app in vue-router
 
 var routes = [
   {
@@ -15,28 +24,101 @@ var routes = [
   },  
   {
     path: '/video',
-    component: video
+    component: video,
   },
   {
     path: '/signup',
     component: signup
 
   },
+  // {
+  //   path: '/Admin',
+  //   meta: { requiresAdmin: true },
+  //   component: blank,
+  //   children: [
+  //     {
+  //       path: '/eventcreate',
+  //       component: createEventController
+  //     }
+  //   ]
+  // },
   {
     path: '/profile/:id',
-    component: profile,
-    name: 'profile'
+    meta: { requiresAuth: true },
+    component: blank,
+    children: [
+      {
+        path: 'edit',
+        name: 'edit',
+        component: profileCreate,
+      },
+      {
+        path: '',
+        component: profile,
+      }
+    ]
   },
+<<<<<<< e6d77b0200a9a140838f4c5d6e5f1dcb5f573ed4
   {
     path: '/edit/:id',
     component: edit,
     name: edit
   }
+=======
+  // {
+  //   path: '/events',
+  //   component: blank,
+  //   children: [
+  //     {
+  //       path: '/signup',
+  //       component: eventSignup,
+  //       meta: { requiresAuth: true },
+  //     },
+  //     {
+  //       path: '',
+  //       component: events,
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/date/:dateid',
+  //   meta: { requiresAuth: true },
+  //   component: blank,
+  //   children: [
+  //     {
+  //       path: '/active',
+  //       component: activeController,
+  //     },
+  //     {
+  //       path: '/inactive',
+  //       component: inactiveController,
+  //     },
+  //   ]
+  // },
+
+>>>>>>> create layout for app in vue-router
 ];
 
 const router = new VueRouter({
 
   routes
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     if (!auth.loggedIn()) {
+//       next({
+//         path: '/login',
+//         query: { redirect: to.fullPath }
+//       });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next(); // make sure to always call next()!
+//   }
+// });
 
 export default router;
