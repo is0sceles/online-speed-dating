@@ -6,9 +6,14 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
+<<<<<<< 6f87d055cc122b1dd1412ccf4d2ab3f4e020c1c3
 import edit from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 
+=======
+import blank from '../Views/blank.vue';
+import profileCreate from '../Views/profileCreationController.js';
+>>>>>>> refactor to implement router
 
 var routes = [
   {

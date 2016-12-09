@@ -35,18 +35,9 @@ var profile = {
           { params: {username: this.$route.params.id}}
         )
         .then((res)=>{
-          //redirecting to home page if username does not exist
-            //believe there is a more fluid way to do so with vue-router
-          if(res.body.username){
-           this.setProfileInfo(res.body);
-          } else {
-          this.$router.push('/');
-          }
+          this.setProfileInfo(res.body); 
         });
       } else {
-        this.verified = true; 
-       console.log(this.verified)
-       console.log(this.$store.getters.getProfileInfo)
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
     },
