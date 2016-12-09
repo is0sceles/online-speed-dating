@@ -12,7 +12,9 @@ var store = new Vuex.Store({
     age: '',
     location: '',
     profileImg: '',
-    gender: ''
+    gender: '',
+    admin: false,
+    loggedIn: false
   },
   getters: {
     getProfileInfo(state, name) {
@@ -23,13 +25,15 @@ var store = new Vuex.Store({
         age: state.age,
         location: state.location,
         profileImg: state.profileImg,
-        gender: state.gender
+        gender: state.gender,
+        admin: state.admin,
+        loggedIn: state.loggedIn
       };
       return userInfo;
     }
   },
   mutations: {
-    setUser (state, {username, userinfo, name, age, location, profileImg, gender}) {
+    setUser (state, {username, userinfo, name, age, location, profileImg, gender, admin, loggedIn}) {
       state.age = age; 
       state.profileImg = profileImg; 
       state.name = name; 
@@ -37,6 +41,8 @@ var store = new Vuex.Store({
       state.location = location; 
       state.userinfo = userinfo;
       state.gender = gender;
+      state.admin = admin;
+      state.loggedIn = loggedIn;
     }
   }
   // action: {

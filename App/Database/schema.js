@@ -8,8 +8,8 @@ var userSchema = mongoose.Schema({
   age: Number,
   location: String,
   profileImg: String,
-  gender: String
-
+  gender: String,
+  admin: false
 });
  
 exports.userSchema = userSchema;

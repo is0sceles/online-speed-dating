@@ -1,5 +1,5 @@
 import temp from './profileCreationTemplate.vue';
-
+// import { mapState } from 'vuex';
 var profileCreation = {
   template: temp.template,
   name: 'profileCreation',
@@ -19,15 +19,18 @@ var profileCreation = {
       console.log('setting');
       var body = {
         username: this.username,
-        name: this.name,
+        name: this.name || 'Anonymouse',
         age: this.age,
-        location: this.location,
-        profileImg: this.profileImg,
-        gender: this.gender,
-        userinfo: this.userinfo
+        location: this.location || 'Here, There',
+        profileImg: this.profileImg || 'https://www.svgimages.com/svg-image/s4/question-mark-face-256x256.png',
+        gender: this.gender || 'gender',
+        userinfo: this.userinfo || 'User did not provide info',
+        admin: false,
+        loggedIn: true
       };
       this.$http.put('/api/user', body)
       .then((response) => {
+        this.$store.commit('setUser', body);
         this.$router.push('/profile/' + this.username);
       })
       .catch((err) => {
@@ -51,7 +54,12 @@ var profileCreation = {
     }
   },
   created: function() {
-    this.loadUserProfile();
+    var status = this.$store.getters.getProfileInfo.username;
+    if(status){
+      this.loadUserProfile();
+    } else {
+      this.$router.push('/');
+    }
   }
 };
 

@@ -15,9 +15,15 @@ const login = {
         username: this.username,
         password: this.password 
       })
-      .then((res) => { 
-        this.$store.commit('setUser', res.body);
-        this.$router.push('/profile/' + res.body.username);
+      .then((res) => {
+        var body = res.body;
+        body.loggedIn = true;
+        this.$store.commit('setUser', body);
+        if(this.$route.params.id){
+          this.$router.push('/');
+        }
+          this.$router.push('/profile/' + res.body.username)
+        
       })
       .catch((err) => console.error(err)); 
     },
