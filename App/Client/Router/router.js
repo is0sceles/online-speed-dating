@@ -6,11 +6,16 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
+<<<<<<< HEAD
 <<<<<<< 6f87d055cc122b1dd1412ccf4d2ab3f4e020c1c3
+=======
+<<<<<<< HEAD
+>>>>>>> 9cb194989fab4fb00bdded4fcddeef15f3955997
 import edit from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 
 =======
+<<<<<<< HEAD
 import blank from '../Views/blank.vue';
 import profileCreate from '../Views/profileCreationController.js';
 <<<<<<< 57b1807c32c6649c86d00c78ddb2ddb77b95a370
@@ -18,6 +23,15 @@ import profileCreate from '../Views/profileCreationController.js';
 =======
 import store from '../store.js';
 >>>>>>> implement router authorization
+=======
+import profileCreate from '../Views/profileCreationController.js';
+import blank from '../Views/blank.vue';
+
+
+
+
+>>>>>>> c8a8d92a74630a4719718a88e19969dcc951f41e
+>>>>>>> 9cb194989fab4fb00bdded4fcddeef15f3955997
 
 var routes = [
   {
@@ -90,6 +104,13 @@ var routes = [
   //     },
   //   ]
   // },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8a8d92a74630a4719718a88e19969dcc951f41e
+>>>>>>> 9cb194989fab4fb00bdded4fcddeef15f3955997
 ];
 
 const router = new VueRouter({
@@ -120,5 +141,22 @@ router.beforeEach((to, from, next) => {
     next(); // make sure to always call next()!
   }
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     if (!auth.loggedIn()) {
+//       next({
+//         path: '/login',
+//         query: { redirect: to.fullPath }
+//       });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next(); // make sure to always call next()!
+//   }
+// });
 
 export default router;

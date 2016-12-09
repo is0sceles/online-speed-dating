@@ -40,7 +40,14 @@ var profile = {
       } else {
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
+<<<<<<< HEAD
     }
+=======
+    },
+    update: function() {
+      this.$router.push('/profile/' + this.username + '/edit' );
+    }	
+>>>>>>> 9cb194989fab4fb00bdded4fcddeef15f3955997
   },
 };
 
