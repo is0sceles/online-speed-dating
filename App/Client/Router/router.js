@@ -10,6 +10,7 @@ import profileCreate from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 import store from '../store.js';
 import events from '../Views/eventsController.js';
+import eventsCreate from '../Views/eventsCreationController.js';
 
 var routes = [
   {
@@ -31,7 +32,7 @@ var routes = [
     children: [
       {
         path: '/eventcreate',
-        component: createEventController
+        component: eventsCreate
       }
     ]
   },
@@ -55,11 +56,11 @@ var routes = [
     path: '/events',
     component: blank,
     children: [
-      {
-        path: '/signup',
-        component: eventSignup,
-        meta: { requiresAuth: true },
-      },
+      // {
+      //   path: '/signup',
+      //   component: eventSignup,
+      //   meta: { requiresAuth: true },
+      // },
       {
         path: '',
         component: events,

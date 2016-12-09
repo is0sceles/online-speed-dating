@@ -1,7 +1,6 @@
 <template>
     <div>
         <a id="signIn" class="btn btn-primary" role="button" v-on:click.prevent="getEvents"> Get Events </a>
-        <span> Sign in for an event </span>
         <table>
         <tr> 
             <th>Next Event</th>
@@ -14,15 +13,14 @@
             <td> {{ item.eventType }} </td>
         </tr>
         </table>
-        <form>
-            <input type="text" placeholder="enter your name" v-model="username" >
-            <input type="datetime-local" placeholder="enter a date" v-model="date">
-            <button role="button" v-on:click.prevent="submit">Submit</button>
-        </form>
+        <button class='btn btn-info'><router-link to='Admin/eventsCreate'>Create an Event</router-link></button>
    </div>
 </template>
 
 <style>
+    .btn-info {
+        color: #fff;
+    }
     #signIn {
         display: block;
     }
@@ -32,11 +30,11 @@
         width: 100%;
     }
     td, th {
-        border: 1px solid #dddddd;
+        border: 1px solid #ddd;
         text-align: left;
         padding: 8px;
     }
     tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #ddd;
     }
 </style>

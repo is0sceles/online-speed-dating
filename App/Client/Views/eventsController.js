@@ -14,26 +14,6 @@ var events = {
     };
   },
   methods: {
-    submit ($http) {
-      let list = [];
-      //this may have to move to create events page
-      let body = {
-        username: this.username,
-        date: this.date
-      };
-      let dbUrl = '/api/events';
-      //this may have to move to create events page
-      this.$http.post(dbUrl, body)
-      .then((res) => {
-        //post to db from here
-
-          //table should hold information about what events a user is registered for
-        console.log('inside res: ', res); //delteMe
-      })
-      .catch((err) => {
-        console.error('Something went wrong with POST: ', err);
-      });
-    },
     getEvents ($http) {
       console.log('accessing events controller'); //deleteMe
       this.$http.get('/api/events')
