@@ -14,7 +14,9 @@ Vue.use(VueRouter);
 Vue.component('login', login);
 Vue.component('profilelink', profileLink);
 
+
 const app = new Vue({
   store,
   router
 }).$mount('.app');
+
