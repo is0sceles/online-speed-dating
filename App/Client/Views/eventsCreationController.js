@@ -12,8 +12,7 @@ var eventsCreate = {
   },
   methods: {
     submit ($http) {
-      let list = [];
-      let body = {
+      var body = {
         username: this.username,
         date: this.date,
         eventType: this.eventType,
@@ -22,8 +21,11 @@ var eventsCreate = {
       let dbUrl = '/api/events';
       this.$http.post(dbUrl, body)
       .then((res) => {
-        //post to db from here
-
+        //clear form fields
+        this.username = '',
+        this.date = '',
+        this.eventType = '',
+        this.eventName = '';
         console.log('inside res: ', res); //deleteMe
       })
       .catch((err) => {

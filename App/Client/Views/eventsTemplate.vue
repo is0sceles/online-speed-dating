@@ -13,13 +13,15 @@
             <td> {{ item.eventType }} </td>
         </tr>
         </table>
-        <button class='btn btn-info'><router-link to='Admin/eventsCreate'>Create an Event</router-link></button>
+        <div id='eventLink'>
+            <a><router-link to='Admin/eventsCreate'>Create an Event</router-link></a>
+        </div>
    </div>
 </template>
 
 <style>
-    .btn-info {
-        color: #fff;
+    #eventLink {
+        margin-top: 20px;
     }
     #signIn {
         display: block;
