@@ -1,7 +1,7 @@
 <template>
 <div>
-  <ul class="nav navbar-nav navbar-right" v-if='this.$store.state.username'>
-    <li><p class="navbar-text">Welcome, {{this.$store.state.username}} !!</p></li>
+  <ul class="nav navbar-nav navbar-right" v-if='this.$store.state.user.username'>
+    <li><p class="navbar-text">Welcome, {{this.$store.state.user.username}} !!</p></li>
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle " data-toggle="dropdown"><b>Profile Options</b> <span class="caret"></span></a>
 						<ul id="login-dp" class="dropdown-menu logout-profile">

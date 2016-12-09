@@ -31,7 +31,7 @@ var profile = {
       }
     },
     loadUserProfile: function() {
-      if (this.$route.params.id !== this.$store.state.username) {
+      if (this.$route.params.id !== this.$store.state.user.username) {
         this.$http.get(
           '/api/user',
           { params: {username: this.$route.params.id}}
