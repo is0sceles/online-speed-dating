@@ -27,6 +27,7 @@ var eventsCreate = {
         this.eventType = '',
         this.eventName = '';
         console.log('inside res: ', res); //deleteMe
+        
       })
       .catch((err) => {
         console.error('Something went wrong with POST: ', err);
