@@ -11,18 +11,15 @@ db.collections.events.drop( function() {
 });
 
 
-<<<<<<< f8692ba9869f0337c8a6f44a11cfcaff9629160f
 
-for (var i = 0; i < 5; i++) { 
-=======
 for (var i = 0; i < 5; i++) {
->>>>>>> create/update eventModel, schema and seed for events
+
 
   user.create({username: i, password: i, userinfo: 'a', name: 'b', age: i, location: 'c'}, function(err) {
     if (err) { console.error(err); }
   });
   
-  event.create({usernames: ['spinoza', 'sagan', 'ada'], eventType: 'something', eventName: 'somethingElse', dateCreated: 2016}, function(err) {
+  event.create({usernames: ['spinoza', 'sagan', 'ada'], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
     if (err) { console.error(err); }
   });
 }
