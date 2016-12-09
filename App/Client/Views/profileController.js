@@ -12,7 +12,7 @@ var profile = {
       age: '',
       location: '',
       profileImg: '',
-      gender: ''
+      gender: '',
       verified: false
     };
   },
@@ -29,16 +29,23 @@ var profile = {
       }
     },
     loadUserProfile: function() {
-      console.log(this.verified)
-      console.log('id:', this.$route.params.id);
-      console.log(this.$store.state.username);
       if (this.$route.params.id !== this.$store.state.username) {
         this.$http.get(
           '/api/user',
           { params: {username: this.$route.params.id}}
         )
-        .then((res)=>{ this.setProfileInfo(res.body); });
-      } else { 
+        .then((res)=>{
+          //redirecting to home page if username does not exist
+            //believe there is a more fluid way to do so with vue-router
+          if(res.body.username){
+           this.setProfileInfo(res.body);
+          } else {
+          this.$router.push('/');
+          }
+        });
+      } else {
+        this.verified = true; 
+       console.log(this.verified)
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
     },
