@@ -91,7 +91,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.state.username) {
+    if (!store.state.user.username) {
       Vue.http.post('auth/authorize')
       .then((res) => {
         store.commit('setUser', res.body);

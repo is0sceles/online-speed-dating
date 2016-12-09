@@ -6,41 +6,26 @@ Vue.use(Vuex);
 
 var store = new Vuex.Store({
   state: {
-    username: '',
-    userinfo: '',
-    name: '',
-    age: '',
-    location: '',
-    profileImg: '',
-    gender: '',
+    user: {
+      username: '',
+    }
   },
   getters: {
     getProfileInfo(state, name) {
-      var userInfo = {
-        username: state.username,
-        userinfo: state.userinfo,
-        name: state.name,
-        age: state.age,
-        location: state.location,
-        profileImg: state.profileImg,
-        gender: state.gender,
-        admin: state.admin,
-        loggedIn: state.loggedIn
-      };
-      return userInfo;
+      return state.user;
     }
   },
   mutations: {
-    setUser (state, {username, userinfo, name, age, location, profileImg, gender, admin, loggedIn}) {
-      state.age = age; 
-      state.profileImg = profileImg; 
-      state.name = name; 
-      state.username = username; 
-      state.location = location; 
-      state.userinfo = userinfo;
-      state.gender = gender;
-      state.admin = admin;
-      state.loggedIn = loggedIn;
+    clearUser (state) {
+      state.user = {
+        username: ''
+      };
+    },
+    setUser (state, obj) {
+      for (var key in obj) {
+        state.user[key] = obj[key];
+      }
+      console.log(state);
     }
   }
   // action: {

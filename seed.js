@@ -15,11 +15,11 @@ db.collections.events.drop( function() {
 for (var i = 0; i < 5; i++) {
 
 
-  user.create({username: i, password: i, userinfo: 'a', name: 'b', age: i, location: 'c', admin: true}, function(err) {
+  user.create({username: i, events: ['Menergy', 'FunParty'], password: i, userinfo: 'a', name: 'b', age: i, location: 'c', admin: true}, function(err) {
     if (err) { console.error(err); }
   });
   
-  event.create({usernames: ['spinoza', 'sagan', 'ada'], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
+  event.create({usernames: [i, i + 1, i + 2], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
     if (err) { console.error(err); }
   });
 }

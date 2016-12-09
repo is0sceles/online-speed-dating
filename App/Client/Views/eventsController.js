@@ -7,9 +7,6 @@ var events = {
   template: temp.template,
   data () {
     return {
-      //these may have to move to create userpage - clear out v-model on template
-      username: this.username,
-      date: this.date,
       result: ''
     };
   },

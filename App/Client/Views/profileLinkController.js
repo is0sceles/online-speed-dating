@@ -10,7 +10,7 @@ const profileLink = {
   },
   computed: {
     username () {
-      return this.$store.state.username;
+      return this.$store.state.user.username;
     } 
   },
 
@@ -22,21 +22,12 @@ const profileLink = {
       this.$router.push('/profile/' + this.username + '/edit');
     },  
     logout: function() {
-      var body = {
-        username: '',
-        userinfo: '',
-        name: '',
-        age: '',
-        location: '',
-        profileImg: '',
-        gender: '',
-      };
-      this.$store.commit('setUser', body);
-      this.$router.go('/'); 
+      this.$router.push('/'); 
+      this.$store.commit('clearUser');
       this.$http.get('/auth/logout')
       .then(()=>{
 
-        console.alert('logged out');
+        console.log('logged out');
       });
     }
   },

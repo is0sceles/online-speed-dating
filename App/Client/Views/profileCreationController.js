@@ -6,38 +6,35 @@ var profileCreation = {
   name: 'edit',
   data: function() {
     return {
-      username: '',
-      name: '',
-      age: '',
-      gender: '',
-      location: '',
-      profileImg: '',
-      userinfo: '',
     };
   },
-  computed: mapState([
-    'username', 'name', 'age', 'gender', 'location', 'userinfo', 'profileImg'
-  ]),
+  watch: {
+    '$route': 'checkRoute'
+  },
   methods: {
-    setUserInfo: function() {
-      var body = {
-        username: this.username,
-        name: this.name,
-        age: this.age,
-        location: this.location,
-        profileImg: this.profileImg,
-        gender: this.gender,
-        userinfo: this.userinfo,
-      };
-      this.$http.put('/api/user', body)
-      .then((response) => {
-        this.$store.commit('setUser', body);
-        this.$router.push('/profile/' + this.username);
-      })
-      .catch((err) => {
-
-      });
+    checkRoute () {
+      if (this.$route.params.id !== this.$store.state.user.username) {
+        console.error('dont do that HO!');
+        this.$router.go(-1);
+      } else {
+        this.$router.push('/profile/' + this.$route.params.id + '/edit');
+      }
     },
+    setUserInfo: function() {
+      var body = this.$store.state.user;
+      if (!!body.name && !!body.gender && !! body.location) {
+        this.$http.put('/api/user', body)
+        .then((response) => {
+          this.$store.commit('setUser', body);
+          this.$router.push('/profile/' + body.username);
+        })
+        .catch((err) => {
+        });
+      } else {
+        console.error('fill out name, gender and location');
+      }
+
+    }
   },
 };
 
