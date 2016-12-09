@@ -16,16 +16,14 @@ const login = {
         password: this.password 
       })
       .then((res) => {
-        console.log(res.body);
-        var body = {
-          username: res.body.username,
-          loggedIn: true
+        var body = res.body;
+        body.loggedIn = true;
+        this.$store.commit('setUser', body);
+        if(this.$route.params.id){
+          this.$router.push('/');
         }
-        this.$http.put('/api/user', body)
-        .then((response) => {
-          this.$store.commit('setUser', res.body);
           this.$router.push('/profile/' + res.body.username)
-        });
+        
       })
       .catch((err) => console.error(err)); 
     },

@@ -22,7 +22,6 @@ var signup = {
       })
       .catch((err) => {
         alert('username already exists');
-                    // this.$router.push('/signup');
       });
     }
   }
