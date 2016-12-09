@@ -95,7 +95,6 @@ router.beforeEach((to, from, next) => {
       Vue.http.post('auth/authorize')
       .then((res) => {
         store.commit('setUser', res.body);
-        console.dir(to);
         next({
         });
       })
