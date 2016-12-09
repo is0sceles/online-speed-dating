@@ -6,16 +6,9 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
-<<<<<<< e6d77b0200a9a140838f4c5d6e5f1dcb5f573ed4
 import edit from '../Views/profileCreationController.js';
-=======
-import profileCreate from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 
-
-
-
->>>>>>> create layout for app in vue-router
 
 var routes = [
   {
@@ -58,13 +51,6 @@ var routes = [
       }
     ]
   },
-<<<<<<< e6d77b0200a9a140838f4c5d6e5f1dcb5f573ed4
-  {
-    path: '/edit/:id',
-    component: edit,
-    name: edit
-  }
-=======
   // {
   //   path: '/events',
   //   component: blank,
@@ -95,8 +81,6 @@ var routes = [
   //     },
   //   ]
   // },
-
->>>>>>> create layout for app in vue-router
 ];
 
 const router = new VueRouter({
