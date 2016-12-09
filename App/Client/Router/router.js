@@ -6,7 +6,7 @@ import login from '../Views/loginController.js';
 import video from '../Views/videoController.js';
 import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
-import profileCreate from '../Views/profileCreationController.js';
+import edit from '../Views/profileCreationController.js';
 
 var routes = [
   {
@@ -28,9 +28,9 @@ var routes = [
     name: 'profile'
   },
   {
-    path: '/profileCreate/:id',
-    component: profileCreate,
-    name: profileCreate
+    path: '/edit/:id',
+    component: edit,
+    name: edit
   }
 ];
 
