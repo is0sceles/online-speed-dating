@@ -40,10 +40,7 @@ var profile = {
       } else {
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
-    },
-    update: function() {
-      this.$router.push('/profile/' + this.username + '/edit' );
-    }	
+    }
   },
 };
 
