@@ -8,6 +8,8 @@ import signup from '../Views/signupController.js';
 import profile from '../Views/profileController.js';
 import profileCreate from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
+import store from '../store.js';
+
 
 
 var routes = [
@@ -89,21 +91,28 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     // this route requires auth, check if logged in
-//     // if not, redirect to login page.
-//     if (!auth.loggedIn()) {
-//       next({
-//         path: '/login',
-//         query: { redirect: to.fullPath }
-//       });
-//     } else {
-//       next();
-//     }
-//   } else {
-//     next(); // make sure to always call next()!
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    console.log(store.state.username);
+    if (!store.state.username) {
+      Vue.http.post('auth/authorize')
+      .then((res) => {
+        console.log(to);
+        store.commit('setUser', res.body);
+        next({
+        });
+      })
+      .catch((res) => {
+        console.log(res.body);
+        window.alert('you must log in to do that');
+        next(false);
+      });
+    } else {
+      next();
+    }
+  } else {
+    next(); // make sure to always call next()!
+  }
+});
 
 export default router;
