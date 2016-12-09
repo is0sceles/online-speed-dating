@@ -9,7 +9,17 @@ var userSchema = mongoose.Schema({
   location: {type: String, default: 'please fill out'},
   profileImg: {type: String, default: 'https://www.svgimages.com/svg-image/s4/question-mark-face-256x256.png'},
   gender: {type: String, default: 'please fill out'},
-  admin: {type: Boolean, default: false}
+  admin: {type: Boolean, default: false},
+  events: {type: Array, default: []},
 });
+
+var eventSchema = mongoose.Schema({
+  date: {type: Date, required: true, index: { unique: true } },
+  usernames: {type: Array, default: []},
+  eventType: {type: String, default: 'please fill out'},
+  eventName: {type: String, default: 'please fill out'},
+});
+
  
 exports.userSchema = userSchema;
+exports.eventSchema = eventSchema;

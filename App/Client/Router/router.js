@@ -9,8 +9,8 @@ import profile from '../Views/profileController.js';
 import profileCreate from '../Views/profileCreationController.js';
 import blank from '../Views/blank.vue';
 import store from '../store.js';
-
-
+import events from '../Views/eventsController.js';
+import eventsCreate from '../Views/eventsCreationController.js';
 
 var routes = [
   {
@@ -24,19 +24,18 @@ var routes = [
   {
     path: '/signup',
     component: signup
-
   },
-  // {
-  //   path: '/Admin',
-  //   meta: { requiresAdmin: true },
-  //   component: blank,
-  //   children: [
-  //     {
-  //       path: '/eventcreate',
-  //       component: createEventController
-  //     }
-  //   ]
-  // },
+  {
+    path: '/Admin',
+    //meta: { requiresAdmin: true },
+    component: blank,
+    children: [
+      {
+        path: 'eventsCreate',
+        component: eventsCreate
+      }
+    ]
+  },
   {
     path: '/profile/:id',
     meta: { requiresAuth: true },
@@ -53,21 +52,21 @@ var routes = [
       }
     ]
   },
-  // {
-  //   path: '/events',
-  //   component: blank,
-  //   children: [
-  //     {
-  //       path: '/signup',
-  //       component: eventSignup,
-  //       meta: { requiresAuth: true },
-  //     },
-  //     {
-  //       path: '',
-  //       component: events,
-  //     }
-  //   ]
-  // },
+  {
+    path: '/events',
+    component: blank,
+    children: [
+      // {
+      //   path: '/signup',
+      //   component: eventSignup,
+      //   meta: { requiresAuth: true },
+      // },
+      {
+        path: '',
+        component: events,
+      }
+    ]
+  },
   // {
   //   path: '/date/:dateid',
   //   meta: { requiresAuth: true },
@@ -83,7 +82,6 @@ var routes = [
   //     },
   //   ]
   // },
-
 ];
 
 const router = new VueRouter({
