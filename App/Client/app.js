@@ -6,12 +6,13 @@ import router from './Router/router.js';
 import store from './store.js';
 
 import login from './Views/loginController.js';
+import profileLink from './Views/profileLink.js';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
 Vue.component('login', login);
-
+Vue.component('profilelink', profileLink);
 
 const app = new Vue({
   store,
