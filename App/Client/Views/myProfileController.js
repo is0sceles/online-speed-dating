@@ -7,17 +7,12 @@ var myProfile = {
   template: temp.template,
   data: function() {
     return {
-      username: '',
-      name: '',
-      location: '',
-      profileImg: '',
-      gender: '',
-      events: ''
+      events: '',
     };
   },
   created () {
     this.loadUserProfile();
-    this.getEvents();
+    // this.getEvents();
   },
   watch: {
     '$route': 'checkRoute'
@@ -41,7 +36,6 @@ var myProfile = {
           this.setProfileInfo(res.body); 
         });
       } else {
-        // console.log(this.$store.getters.getProfileInfo)
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
     },

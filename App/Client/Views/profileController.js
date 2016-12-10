@@ -10,7 +10,8 @@ var profile = {
       name: '',
       location: '',
       profileImg: '',
-      gender: ''
+      gender: '',
+      userinfo: ''
     };
   },
   created () {
