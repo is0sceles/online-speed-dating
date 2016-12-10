@@ -27,7 +27,7 @@ var routes = [
   },
   {
     path: '/Admin',
-    //meta: { requiresAdmin: true },
+    meta: { requiresAdmin: true },
     component: blank,
     children: [
       {
@@ -107,6 +107,28 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     next(); // make sure to always call next()!
+  }
+  if (to.matched.some(record => record.meta.requiresAdmin)) {
+    // console.log('requres admin', store.state.user);
+    if (store.state.user) {
+      // console.log('logged in');
+      if (store.state.user.admin) {
+        // console.log('logged in as admin');
+        next();
+      } else {
+        // console.log('logged in but no admin');
+        next({
+          path: '/'  
+        });
+      }
+    } else {
+      // console.log('not logged in');
+      next({
+        path: '/'
+      }
+      );
+    }
+
   }
 });
 
