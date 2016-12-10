@@ -11,11 +11,14 @@
                         <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="logout">Logout</button>
                     </li>
                     <li>
-                        <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">My Profile</button>
+                        <button v-on:click.prevent="goToMyProfile" type="submit" class="btn btn-primary btn-block">My Room</button>
                     </li>
                     <li>
                         <button v-on:click.prevent="editProfile" type="submit" class="btn btn-primary btn-block">Update Profile</button>
-                    </li>                 
+                    </li>
+                    <li>
+                        <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">Profile</button>
+                    </li>                  
             </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" v-else>

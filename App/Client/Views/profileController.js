@@ -11,7 +11,8 @@ var profile = {
       location: '',
       profileImg: '',
       gender: '',
-      userinfo: ''
+      userinfo: '',
+      hasInfo: false
     };
   },
   created () {
@@ -37,10 +38,17 @@ var profile = {
         )
         .then((res)=>{
           this.setProfileInfo(res.body); 
+          this.hasUserInfo();
         });
       } else {
-        this.setProfileInfo(this.$store.getters.getProfileInfo); 
+        this.setProfileInfo(this.$store.getters.getProfileInfo);
+        this.hasUserInfo();
       } 
+    },
+    hasUserInfo: function() {
+      if(this.userinfo) {
+        this.hasInfo = true;
+      }
     }
   },
 };
