@@ -7,9 +7,7 @@ var profile = {
   data: function() {
     return {
       username: '',
-      userinfo: '',
       name: '',
-      age: '',
       location: '',
       profileImg: '',
       gender: ''
@@ -23,7 +21,7 @@ var profile = {
   },
   methods: {
     editProfile: function() {
-      this.$router.push('/profile/' + this.username + '/edit');
+      this.$router.push('/myprofile/' + this.username + '/edit');
     }, 
     setProfileInfo: function(res) {
       for (var key in res) {

@@ -17,7 +17,7 @@ var profileCreation = {
         console.error('dont do that HO!');
         this.$router.go(-1);
       } else {
-        this.$router.push('/profile/' + this.$route.params.id + '/edit');
+        this.$router.push('/myprofile/' + this.$route.params.id + '/edit');
       }
     },
     setUserInfo: function() {
@@ -26,12 +26,12 @@ var profileCreation = {
         this.$http.put('/api/user', body)
         .then((response) => {
           this.$store.commit('setUser', body);
-          this.$router.push('/profile/' + body.username);
+          this.$router.push('/myprofile/' + body.username);
         })
         .catch((err) => {
         });
       } else {
-        console.error('fill out name, gender and location');
+        window.alert('Please provide name, gender and location');
       }
 
     }

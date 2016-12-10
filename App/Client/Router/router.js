@@ -11,7 +11,11 @@ import blank from '../Views/blank.vue';
 import store from '../store.js';
 import events from '../Views/eventsController.js';
 import eventsCreate from '../Views/eventsCreationController.js';
+<<<<<<< HEAD
 import activeDate from '../Views/activeDateController.js';
+=======
+import myProfile from '../Views/myProfileController.js';
+>>>>>>> Change paths of profile to myprofile
 
 var routes = [
   {
@@ -38,7 +42,7 @@ var routes = [
     ]
   },
   {
-    path: '/profile/:id',
+    path: '/myprofile/:id',
     meta: { requiresAuth: true },
     component: blank,
     children: [
@@ -49,9 +53,14 @@ var routes = [
       },
       {
         path: '',
-        component: profile,
+        component: myProfile,
       }
     ]
+  },
+  {
+    path: '/profile/:id',
+    meta: { requiresAuth: true },
+    component: profile,
   },
   {
     path: '/events',

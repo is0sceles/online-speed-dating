@@ -16,10 +16,10 @@ const profileLink = {
 
   methods: {
     goToProfile: function() {
-      this.$router.push('/profile/' + this.username);
+      this.$router.push('/myprofile/' + this.username);
     },   
     editProfile: function() {
-      this.$router.push('/profile/' + this.username + '/edit');
+      this.$router.push('/myprofile/' + this.username + '/edit');
     },  
     logout: function() {
       this.$router.push('/'); 

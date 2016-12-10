@@ -10,19 +10,8 @@
                 <span>Gender: {{gender}}</span>
             </div>
             <div>
-                <span>Age: {{age}}</span>
-            </div>
-            <div>
                 <span>Location: {{location}}</span>
             </div>
-            <div>
-                <span>Description: {{userinfo}}</span>
-            </div>
-            <div>
-                <span>Description: {{events}}</span>
-            </div>
         </div>
-        <button v-if='this.$store.state.user.username' v-on:click='editProfile'>Update User Info</button>
-        <!--<div>*Place holder for matchs*</div>-->
     </div>
 </template>

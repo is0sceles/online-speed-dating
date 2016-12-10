@@ -11,11 +11,11 @@
                         <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="logout">Logout</button>
                     </li>
                     <li>
-                        <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">Home</button>
+                        <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">My Profile</button>
                     </li>
                     <li>
                         <button v-on:click.prevent="editProfile" type="submit" class="btn btn-primary btn-block">Update Profile</button>
-                    </li>
+                    </li>                 
             </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" v-else>
