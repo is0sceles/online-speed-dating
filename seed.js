@@ -13,13 +13,15 @@ db.collections.events.drop( function() {
 
 
 for (var i = 0; i < 5; i++) {
-
-
-  user.create({username: i, events: ['Menergy', 'FunParty'], password: i, userinfo: 'a', name: 'b', age: i, location: 'c', admin: true}, function(err) {
-    if (err) { console.error(err); }
-  });
   
   event.create({usernames: [i, i + 1, i + 2], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
+    if (err) { console.error(err); }
+  });
+
+}
+
+for (var j = 0; j < 20; j++) {
+  user.create({username: j, events: ['Menergy', 'FunParty'], password: j, userinfo: 'a', name: 'b', age: j, location: 'c', admin: true}, function(err) {
     if (err) { console.error(err); }
   });
 }

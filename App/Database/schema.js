@@ -11,13 +11,15 @@ var userSchema = mongoose.Schema({
   gender: {type: String, default: 'please fill out'},
   admin: {type: Boolean, default: false},
   events: {type: Array, default: []},
+  callList: {type: Array, default: []},
 });
 
 var eventSchema = mongoose.Schema({
-  date: {type: Date, required: true, index: { unique: true } },
+  date: {type: Date, required: true },
   usernames: {type: Array, default: []},
   eventType: {type: String, default: 'please fill out'},
-  eventName: {type: String, default: 'please fill out'},
+  eventName: {type: String, required: true, index: { unique: true }, default: 'please fill out'},
+  eventCallDuration: {type: Number, default: 300000},
 });
 
  
