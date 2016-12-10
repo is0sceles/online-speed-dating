@@ -14,5 +14,41 @@
         //send this array back to the client
 
 //client logic -- what is happening on the client
+  //event list-select an event to join
+    //create pubnub instance and subscribe to 3 event channels (event_start, event_round, event_end)
+    //get 'calllist' by querying database (this should check if it exists, if not, create it)--think about logic of when checking for callist might be needed (reloads/late joins)
+      //once calllist returns (async), if user is a callee, create a pub and sub channel on the pubnub instance with this users name
+    //create phone for this user
+    //display users own video on page
+
+    //display event landing page whle listening on the event_start channel--update view to active event view
+      
+    //this is the cycle for each call
+      //(1)
+      //check if target user is online (make sure subscribed with presence on event_round channel)
+        //if not, display a sorry message/wait
+        //otherwise, it's dating time!
+          //if callee
+            //have button that indicates readiness to date, when pressed publish a pubnub message to the channel with this user's name
+            //make sure phone is set up to receive calls (not sure this requires anything different than for caller)
+          
+
+          //if caller 
+            //subscribe to channel of current callee
+            //when receive ready message on calle channel, display 'start date/call/ready' button
+              //when this button is clicked connect to the callee
+                //move and/or shrink users own video
+                //connect to callee and display their video
+      
+      //a message on the event_round channel will be emitted when it is time for the round to extend, listen for this
+        //the content of the message will be the next number's round
+        //hang up all phones
+        //update the "callIndex" value for each client
+        //go back to (1) with the new callIndex number in mind
+            
+  
+    //listen on event_end for messages, when received, event is over. Destroy phone, redirect to matches page, or profile page for now
+
 
 //server logic is already in the activeEventHandlerFile
+  //this is in activeEventHandler

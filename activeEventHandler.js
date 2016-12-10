@@ -23,7 +23,7 @@ exports.initiateEvent = function(eventName) {
         //include tracking number of which round we are on (ie 7 = round 7), to keep track of where in the process we are
       //if the total number of rounds (set in event's data) not been reached, call setTimeout function recursively
       //if the total number of rounds has been reached, the event is over and a message should be sent to that effect (again, possibly on its own channel)
-    
+        //possibly update event database entry to reflect that it is "finished"
 
    });
 
