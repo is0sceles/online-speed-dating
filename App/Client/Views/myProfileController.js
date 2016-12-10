@@ -8,22 +8,26 @@ var myProfile = {
   data: function() {
     return {
       events: '',
+      match: true
     };
   },
   created () {
     this.loadUserProfile();
-    // this.getEvents();
   },
   watch: {
     '$route': 'checkRoute'
   },
   methods: {
+        // v-on:click="toDate"
+    // toDate () {
+    //   this.$router.push('/date' + this.id.$oid);
+    // },
     editProfile () {
       this.$router.push('/myprofile/' + this.username + '/edit');
     }, 
     setProfileInfo (res) {
       for (var key in res) {
-        this[key] = res[key]; 
+        this[key] = res[key];
       }
     },
     loadUserProfile () {
@@ -41,15 +45,6 @@ var myProfile = {
     },
     moment (date) {
       return moment(date);
-    },
-    getEvents () {
-      this.$http.get('api/events')
-      .then((res)=> {
-        this.events = res.body
-      })
-      .catch((err) => {
-        console.log('You have not signed up for any events')
-      })
     },
     checkRoute () {
       if (this.$route.params.id !== this.$store.state.user.username) {
