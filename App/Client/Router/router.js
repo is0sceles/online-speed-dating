@@ -43,7 +43,7 @@ var routes = [
   },
   {
     path: '/myprofile/:id',
-    meta: { requiresAuth: true },
+    // meta: { requiresAuth: true },
     component: blank,
     children: [
       {
@@ -59,7 +59,7 @@ var routes = [
   },
   {
     path: '/profile/:id',
-    meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
     component: profile,
   },
   {

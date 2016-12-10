@@ -12,6 +12,7 @@ var userSchema = mongoose.Schema({
   admin: {type: Boolean, default: false},
   events: {type: Array, default: []},
   callList: {type: Array, default: []},
+  matches: {type: Array, default: []}
 });
 
 var eventSchema = mongoose.Schema({

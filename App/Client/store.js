@@ -122,6 +122,8 @@ var store = new Vuex.Store({
     },
     signalCalleeReadyFlag (state) {
       state.calleeReadyFlag = true;
+    setEvent (state, arr) {
+      state.user.events = arr;
     }
   }
   // action: {

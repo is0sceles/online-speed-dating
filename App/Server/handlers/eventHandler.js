@@ -25,3 +25,13 @@ exports.postEvent = (req, res) => {
     }
   });
 };
+
+exports.getSingleEvent = (req, res) => {
+  Event.where({eventName: req.body.eventName}).findOne({eventName: req.body.eventName}, (err, event) => {
+    if(err) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(event)
+    }
+  });
+}
