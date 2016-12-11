@@ -12,11 +12,13 @@ var store = new Vuex.Store({
       username: '',
     },
     videoOut: '<video></video>',
+    myVideoSrc: '',
     beforeEventFlag: true,
     soloViewFlag: true,
     calleeReadyFlag: false,
     activeViewFlag: false,
     beforeStartFlag: true,
+    datePartnerOffline: false,
     currentRound: null
   },
   getters: {
@@ -42,38 +44,51 @@ var store = new Vuex.Store({
         subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
         ssl: true
       });
-      state.pubnub.message(function(message) {
-        if (message.message === 'Ready') {
-          state.calleeReadyFlag = true;
-        } else if (message.message === 'End') {
-
-          state.activeViewFlag = false;
-          state.pubnub.stop();
-          state.phone.hangup();
-          state.phone.stop();
-
-        } else {
-          state.phone.hangup();
-          if (state.currentRound) {
-            state.pubnub.unsubscribe({
-              channels: [state.user.calllist[state.currentRound]]
-            });
-          }
+      state.pubnub.addListener({
+        message: function(message) {
           console.log(message.message);
-          state.currentRound = message.message;
-          state.pubnub.subscribe({
-            channels: [state.user.calllist[state.currentRound]]
-          });
-          state.soloViewFlag = true;
-          state.beforeStartFlag = false;
-          state.calleeReadyFlag = false;
+          if (message.message === 'Ready') {
+            console.log('GotReadyMessageFromPartner');
+            state.calleeReadyFlag = true;
+          } else if (message.message === 'End') {
+            console.log('Got End MESSAGE');
+            state.activeViewFlag = false;
+            state.pubnub.stop();
+            state.phone.hangup();
+            
+            state.phone.mystream.getVideoTracks()[0].stop();
+
+          } else {
+            console.log('This is round', message.message);
+            state.phone.hangup();
+            if (state.currentRound) {
+              state.pubnub.unsubscribe({
+                channels: [state.user.callList[state.currentRound]]
+              });
+            }
+            console.log(message.message);
+            state.currentRound = message.message;
+          //possibly check if corresponding user is online currently--use presence to do this
+          //alternatively use failed call error handling
+            if (state.user.callList[0]) { 
+              state.pubnub.subscribe({
+                channels: [state.user.callList[state.currentRound]]
+              });
+            }
+            state.soloViewFlag = true;
+            state.beforeStartFlag = false;
+            state.calleeReadyFlag = false;
+          }    
+        },
+        status: function(statusEvent) {
+          console.log(statusEvent);
         }
       });
     },
     initPhone (state) {
       state.phone = window.phone = new PHONE({
-        number: state.user.username,
-        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Our Pub Key
+        number: state.user.username, 
+        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // ff Our Pub Key
         subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
         ssl: true
       });
@@ -83,7 +98,10 @@ var store = new Vuex.Store({
         state.videoOut = session.video.outerHTML;
       }; 
       state.phone.ready(function() {
+        state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
+        console.log(state.myVideo);
+        
       });
       state.phone.receive(function(session) {
         state.soloViewFlag = false;
@@ -96,6 +114,15 @@ var store = new Vuex.Store({
         });
       });
     },
+    signalEventReadyFlags (state) {
+      state.beforeStartFlag = true;
+      state.beforeEventFlag = false;
+      state.soloViewFlag = true;
+      state.activeEventFlag = true;
+    },
+    signalCalleeReadyFlag (state) {
+      state.calleeReadyFlag = true;
+    }
   }
   // action: {
   //   setName ({commit}, name) {

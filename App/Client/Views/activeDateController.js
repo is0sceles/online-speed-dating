@@ -21,7 +21,8 @@ const activeDate = {
           2
         ],
         '__v': 0
-      }
+      },
+      number: null
 
     }; 
   },
@@ -37,21 +38,46 @@ const activeDate = {
       })
       .catch((err) => console.error(err)); 
     },
-    eventReady: function() {
+    signalEventReady: function() {
       var eventId = this.event._id.$oid;
       console.log(eventId);
       //create instance of PubNub
-      this.$store.commit('initPubnub');
+      this.$store.commit('initPubNub');
+      //create our Phone instance
+      this.$store.commit('initPhone');
       //subscribe our pubnub to the channels that control calls
       console.log(this.$store.state.pubnub);
       this.$store.state.pubnub.subscribe({
-        channels: [eventId + '_start', eventId + '_round', eventId + '_end' ],
-        connect: function() { console.log('success'); },
+        channels: [eventId],
         withPresence: true, // also subscribe to presence instances.
-        
       });
 
-      
+      this.$store.commit('signalEventReadyFlags');
+    },
+    signalCalleeReady: function() {
+      this.$store.pubnub.publish({
+
+        message: 'Ready',
+        channel: this.$store.user.username
+        
+      });
+      this.$store.commit('signalCalleeReadyFlag');
+    },
+    callCallee: function() {
+      this.$store.phone.dial(this.$store.user.callList[this.$store.state.currentRound]);
+    },
+    TESTcurrentRoundButton: function(number) {
+      this.$store.state.pubnub.publish({
+        message: number,
+        channel: [this.event._id.$oid]
+      });
+    },
+    TESTendEventButton: function() {
+      this.$store.state.pubnub.publish({
+        message: 'End',
+        channel: [this.event._id.$oid]
+      });
+
     }
   },
   name: 'activeDate'
