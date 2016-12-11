@@ -8,6 +8,7 @@ router.put('/user', userHandler.updateUser);
 
 router.get('/events', eventHandler.getEvent);
 router.post('/events', eventHandler.postEvent);
+router.put('/events', eventHandler.updateEvent);
 
 router.put('/user/events', eventHandler.getSingleEvent);
 

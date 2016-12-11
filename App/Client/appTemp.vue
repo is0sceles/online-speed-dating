@@ -5,4 +5,3 @@
     {{ msg }}
 </div>
 </template>
-
