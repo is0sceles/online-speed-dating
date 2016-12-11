@@ -4,38 +4,35 @@
     <input v-model='number' type="number">
     <button v-on:click.prevent="TESTcurrentRoundButton(number)" type="submit" class="btn btn-primary btn-block">ROUND GO</button>
     <button v-on:click.prevent="TESTendEventButton" type="submit" class="btn btn-primary btn-block">END THAT QUAN</button>
-    
-    {{ number }}
-     <video v-bind:src= '$store.state.myVideoSrc' autoplay='autoplay'></video>
-    <template>
+    <template v-if='$store.state.beforeEventFlag'>
       <button v-on:click.prevent='signalEventReady'>You know what I like the most? Dates!</button>
     </template>
-    <template> 
+    <template v-else-if='$store.state.activeViewFlag'> 
       <transition name='relocate'>
-       
-        <div v-if = false key='duoView' v-html='myVideo'></div>
+        <video v-if='$store.state.soloViewFlag' v-bind:src= '$store.state.myVideoSrc' key='soloView' autoplay='autoplay'></video>
+        <video v-else v-bind:src= '$store.state.myVideoSrc' key='duoView' autoplay='autoplay'></video>
       </transition>
-      <template>
-        <template>
+      <template v-if='$store.state.soloViewFlag'>
+        <template v-if='$store.state.beforeStartFlag'>
           <div>WAIT</div>
         </template>
-        <template>
-          <template>
-            <button v-on:click.prevent='callCallee'>Let's get this done!</button>
-            <div>Please be patient while your date gets readyl</div> 
+        <template v-else>
+          <template v-if='$store.state.isCallerFlag'>
+            <button  v-if='$store.state.calleeReadyFlag' v-on:click.prevent='callCallee'>Let's get this done!</button>
+            <div v-else>Please be patient while your date gets readyl</div> 
           </template>
-          <template>
-            <div>Please be patient while your date gets readyl</div> 
-            <button v-on:click.prevent='signalCalleeReady'>I'm ready for a date!</button>
+          <template v-else>
+            <div v-if='$store.state.calleeReadyFlag'>Please be patient while your date gets readyl</div> 
+            <button v-else v-on:click.prevent='signalCalleeReady'>I'm ready for a date!</button>
           </template>
         </template>
-        <template>
+        <template v-else>
           <div v-html='$store.state.videoOut'></div>
         </template>    
       </template>
         
     </template>
-    <template>
+    <template v-else>
       <div>Byeeeeeeeeee</div>
     </template>
   </div>  
