@@ -63,7 +63,7 @@ var store = new Vuex.Store({
             state.phone.hangup();
             if (state.currentRound) {
               state.pubnub.unsubscribe({
-                channels: [state.user.callList[state.currentRound]]
+                channels: ['eventId' + state.user.callList[state.currentRound]]
               });
             }
             console.log(message.message);
@@ -72,7 +72,7 @@ var store = new Vuex.Store({
           //alternatively use failed call error handling
             if (state.user.callList[0]) { 
               state.pubnub.subscribe({
-                channels: [state.user.callList[state.currentRound]]
+                channels: ['eventId' + state.user.callList[state.currentRound]]
               });
             }
             state.soloViewFlag = true;

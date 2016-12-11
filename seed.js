@@ -14,7 +14,7 @@ db.collections.events.drop( function() {
 
 for (var i = 0; i < 5; i++) {
   
-  event.create({usernames: [i, i + 1, i + 2], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
+  event.create({usernames: [i, i + 1, i + 2, i + 3], eventType: 'All', eventName: 'Menenergy', date: 2016}, function(err) {
     if (err) { console.error(err); }
   });
 

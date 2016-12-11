@@ -55,16 +55,16 @@ const activeDate = {
       this.$store.commit('signalEventReadyFlags');
     },
     signalCalleeReady: function() {
-      this.$store.pubnub.publish({
+      this.$store.state.pubnub.publish({
 
         message: 'Ready',
-        channel: this.$store.user.username
+        channel: 'eventId' + this.$store.state.user.username
         
       });
       this.$store.commit('signalCalleeReadyFlag');
     },
     callCallee: function() {
-      this.$store.phone.dial(this.$store.user.callList[this.$store.state.currentRound]);
+      this.$store.state.phone.dial(this.$store.state.user.callList[this.$store.state.currentRound]);
     },
     TESTcurrentRoundButton: function(number) {
       this.$store.state.pubnub.publish({
