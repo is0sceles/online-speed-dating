@@ -7,12 +7,12 @@ var profile = {
   data: function() {
     return {
       username: '',
-      userinfo: '',
       name: '',
-      age: '',
       location: '',
       profileImg: '',
-      gender: ''
+      gender: '',
+      userinfo: '',
+      hasInfo: false
     };
   },
   created () {
@@ -23,7 +23,7 @@ var profile = {
   },
   methods: {
     editProfile: function() {
-      this.$router.push('/profile/' + this.username + '/edit');
+      this.$router.push('/myprofile/' + this.username + '/edit');
     }, 
     setProfileInfo: function(res) {
       for (var key in res) {
@@ -38,10 +38,17 @@ var profile = {
         )
         .then((res)=>{
           this.setProfileInfo(res.body); 
+          this.hasUserInfo();
         });
       } else {
-        this.setProfileInfo(this.$store.getters.getProfileInfo); 
+        this.setProfileInfo(this.$store.getters.getProfileInfo);
+        this.hasUserInfo();
       } 
+    },
+    hasUserInfo: function() {
+      if(this.userinfo) {
+        this.hasInfo = true;
+      }
     }
   },
 };

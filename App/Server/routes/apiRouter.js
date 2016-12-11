@@ -9,5 +9,6 @@ router.put('/user', userHandler.updateUser);
 router.get('/events', eventHandler.getEvent);
 router.post('/events', eventHandler.postEvent);
 
+router.put('/user/events', eventHandler.getSingleEvent);
 
 module.exports = router; 

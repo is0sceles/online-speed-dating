@@ -15,11 +15,14 @@ const profileLink = {
   },
 
   methods: {
-    goToProfile: function() {
-      this.$router.push('/profile/' + this.username);
+    goToMyProfile: function() {
+      this.$router.push('/myprofile/' + this.username);
     },   
     editProfile: function() {
-      this.$router.push('/profile/' + this.username + '/edit');
+      this.$router.push('/myprofile/' + this.username + '/edit');
+    },
+    goToProfile: function() {
+      this.$router.push('/profile/' + this.username);
     },  
     logout: function() {
       this.$router.push('/'); 
