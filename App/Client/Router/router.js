@@ -11,11 +11,8 @@ import blank from '../Views/blank.vue';
 import store from '../store.js';
 import events from '../Views/eventsController.js';
 import eventsCreate from '../Views/eventsCreationController.js';
-<<<<<<< HEAD
 import activeDate from '../Views/activeDateController.js';
-=======
 import myProfile from '../Views/myProfileController.js';
->>>>>>> Change paths of profile to myprofile
 
 var routes = [
   {
