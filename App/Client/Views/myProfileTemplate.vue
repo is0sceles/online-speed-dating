@@ -27,7 +27,7 @@
                 <div v-if="match" id="eventColumn" class="col-md-7 col-md-offset-2">
                     <div>
                         <h2 class="overhead">Events:</h2>
-                        <ul v-for='event in events'>
+                        <ul v-for='event in savedEvents'>
                             <div id="event" class="row">
                                 <a id="clickEvent">
                                     <li id="eventDetails"> {{ moment(event.date).format('MMMM Do YYYY, h:mm:ss a') }} </li>
@@ -117,8 +117,21 @@ h2.overhead {
     padding-top: 2  px;
     padding-bottom: 2px;
 }
+/*#eventDetails:nth-child(even) {
+    border: 1px solid tomato;
+    background-color: white;
+    padding-top: 2  px;
+    padding-bottom: 2px;
+}
+#eventDetails:nth-child(odd) {
+    border: 1px solid tomato;
+    background-color: black;
+    padding-top: 2  px;
+    padding-bottom: 2px;
+}*/
 #eventButton {
     float: right;
     padding-bottom: 3px;
 }
+
 </style>

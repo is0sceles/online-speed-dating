@@ -27,7 +27,7 @@ exports.postEvent = (req, res) => {
 };
 
 exports.getSingleEvent = (req, res) => {
-  Event.where({eventName: req.body.eventName}).findOne({eventName: req.body.eventName}, (err, event) => {
+  Event.where({ _id: req.body._id}).findOne({ _id: req.body._id}, (err, event) => {
     if(err) {
       res.status(404).send();
     } else {

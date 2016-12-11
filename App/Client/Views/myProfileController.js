@@ -7,8 +7,7 @@ var myProfile = {
   template: temp.template,
   data: function() {
     return {
-      events: '',
-      //should be preset to false, but currently match does not exit
+      savedEvents: '',
       match: true
     };
   },
