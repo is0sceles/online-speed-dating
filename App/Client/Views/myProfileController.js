@@ -8,6 +8,7 @@ var myProfile = {
   data: function() {
     return {
       events: '',
+      //should be preset to false, but currently match does not exit
       match: true
     };
   },

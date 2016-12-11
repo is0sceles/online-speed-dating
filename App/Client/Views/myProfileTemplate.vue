@@ -39,31 +39,33 @@
                         </ul>
                     </div>
                 </div>
-                <div v-else id="eventColumn" class="col-md-5">
-                    <div>
-                        <h2 class="overhead">Events:</h2   >
-                        <ul v-for='event in events'>
-                            <div id="event" class="row">
-                                <a id="clickEvent">
-                                    <li id="eventDetails"> {{ moment(event.date).format('MMMM Do YYYY, h:mm:ss a') }} </li>
-                                    <li id="eventDetails"> {{ event.eventName }} </li>
-                                    <li id="eventDetails"> {{ event.eventType }} </li>
-                                    <li id="eventDetails">Go on date<button id="eventButton" class="glyphicon glyphicon-menu-right glyphicon glyphicon-glass"></button></li>
-                                </a>
-                            </div>
-                        </ul>
+                <div v-else>
+                    <div id="eventColumn" class="col-md-5">
+                        <div>
+                            <h2 class="overhead">Events:</h2   >
+                            <ul v-for='event in events'>
+                                <div id="event" class="row">
+                                    <a id="clickEvent">
+                                        <li id="eventDetails"> {{ moment(event.date).format('MMMM Do YYYY, h:mm:ss a') }} </li>
+                                        <li id="eventDetails"> {{ event.eventName }} </li>
+                                        <li id="eventDetails"> {{ event.eventType }} </li>
+                                        <li id="eventDetails">Go on date<button id="eventButton" class="glyphicon glyphicon-menu-right glyphicon glyphicon-glass"></button></li>
+                                    </a>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id='matchHorizon' class="col-md-5 col-md-offset-1">
+                        <div>
+                            <span>Matches:</span>
+                            <ul v-for='match in matches'>
+                                <ul> {{ match.profileImg }}</ul>
+                                <ul> {{ match.name }} </ul>
+                                <ul> {{ match.location }} </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <!--<div id='matchHorizon' class="col-md-5 col-md-offset-1">
-                    <div>
-                        <span>Matches:</span>
-                        <ul v-for='match in matches'>
-                            <ul> {{ match.profileImg }}</ul>
-                            <ul> {{ match.name }} </ul>
-                            <ul> {{ match.location }} </ul>
-                        </ul>
-                    </div>
-                </div>-->
             </div>
         </div>
         <!--<div>*Place holder for matchs*</div>-->
