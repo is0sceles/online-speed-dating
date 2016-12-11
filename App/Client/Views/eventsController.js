@@ -10,6 +10,9 @@ var events = {
       result: ''
     };
   },
+  created () {
+    this.getEvents();
+  },
   methods: {
     getEvents ($http) {
       console.log('accessing events controller'); //deleteMe
@@ -22,7 +25,7 @@ var events = {
     },
     moment: function (date) {
       return moment(date);
-    },
+    }
   }
 };
 

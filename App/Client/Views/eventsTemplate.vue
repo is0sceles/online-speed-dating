@@ -1,6 +1,5 @@
 <template>
     <div>
-        <a id="signIn" class="btn btn-primary" role="button" v-on:click.prevent="getEvents"> Get Events </a>
         <table>
             <tr>
                 <th>Next Event</th>
@@ -24,6 +23,12 @@
 <style>
     #eventLink {
         margin-top: 20px;
+        font-weight: 800;
+        margin-left: 50px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.74);
+        width: 75%;
+
     }
     #signIn {
         display: block;
@@ -31,15 +36,22 @@
     table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
-        width: 100%;
+        width: 75%;
+        font-weight: 800;
+        margin-left: 50px;
+        text-align: center;
     }
-    td,
-    th {
-        border: 1px solid #ddd;
+    td, th {
+        border: 1px solid rgba(165, 166, 167, 0.08);
         text-align: left;
         padding: 8px;
+        font-weight: 800;
+        text-align: center;
     }
     tr:nth-child(even) {
-        background-color: #ddd;
+        background-color: #ffffff;
+    }
+    tr:nth-child(odd) {
+        background-color: #d9b883;
     }
 </style>

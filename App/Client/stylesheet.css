@@ -1,18 +1,32 @@
-body{
-    padding:50px;
+body {
+    background: #476c75;
 }
+
+.background {
+    min-height: 100%;
+    min-width: 100%;
+    height: 50%;
+    width: 50%;
+    position: fixed;
+    z-index: -1;
+    background-size: cover;
+    left: 50%;
+    top: 50%;
+    transform:translateX(-50%) translateY(-50%);
+}
+
 
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;
-    overflow:hidden;
+    overflow: hidden;
     background-color:rgba(255,255,255,.8);
 }
 #login-dp .help-block{
-    font-size:12px    
+    font-size: 12px    
 }
 #login-dp .bottom{
-    background-color:rgba(255,255,255,.8);
+    background-color: rgba(255,255,255,.8);
     border-top:1px solid #ddd;
     clear:both;
     padding:14px;
