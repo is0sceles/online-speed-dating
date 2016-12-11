@@ -1,4 +1,4 @@
-import temp from './profileLinkTemplate.vue';
+import temp from '../Templates/profileLinkTemplate.vue';
 import {mapState} from 'vuex';
 
 const profileLink = {

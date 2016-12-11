@@ -1,4 +1,4 @@
-import temp from './signupTemplate.vue';
+import temp from '../Templates/signupTemplate.vue';
 
 var signup = {
   template: temp.template,

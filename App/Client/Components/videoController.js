@@ -1,5 +1,5 @@
 
-import template from './videoTemplate.vue';
+import template from '../Templates/videoTemplate.vue';
 import Vue from 'vue'; 
 import { mapState } from 'vuex';
 

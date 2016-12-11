@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import AppTEST from '../appController.js';
-import login from '../Views/loginController.js';
-import video from '../Views/videoController.js';
-import signup from '../Views/signupController.js';
-import profile from '../Views/profileController.js';
-import profileCreate from '../Views/profileCreationController.js';
-import blank from '../Views/blank.vue';
+import AppTEST from '../Components/appController.js';
+import login from '../Components/loginController.js';
+import video from '../Components/videoController.js';
+import signup from '../Components/signupController.js';
+import profile from '../Components/profileController.js';
+import profileCreate from '../Components/profileCreationController.js';
+import blank from '../Templates/blank.vue';
 import store from '../store.js';
-import events from '../Views/eventsController.js';
-import eventsCreate from '../Views/eventsCreationController.js';
-import activeDate from '../Views/activeDateController.js';
-import myProfile from '../Views/myProfileController.js';
+import events from '../Components/eventsController.js';
+import eventsCreate from '../Components/eventsCreationController.js';
+import activeDate from '../Components/activeDateController.js';
+import myProfile from '../Components/myProfileController.js';
 
 var routes = [
   {
@@ -29,7 +29,7 @@ var routes = [
   },
   {
     path: '/Admin',
-    meta: { requiresAdmin: true },
+    // meta: { requiresAdmin: true },
     component: blank,
     children: [
       {
@@ -56,7 +56,7 @@ var routes = [
   },
   {
     path: '/profile/:id',
-      meta: { requiresAuth: true },
+    // meta: { requiresAuth: true },
     component: profile,
   },
   {
@@ -116,20 +116,20 @@ router.beforeEach((to, from, next) => {
     next(); // make sure to always call next()!
   }
   if (to.matched.some(record => record.meta.requiresAdmin)) {
-    // console.log('requres admin', store.state.user);
+    console.log('requres admin', store.state.user);
     if (store.state.user) {
-      // console.log('logged in');
+      console.log('logged in');
       if (store.state.user.admin) {
-        // console.log('logged in as admin');
+        console.log('logged in as admin');
         next();
       } else {
-        // console.log('logged in but no admin');
+        console.log('logged in but no admin');
         next({
           path: '/'  
         });
       }
     } else {
-      // console.log('not logged in');
+      console.log('not logged in');
       next({
         path: '/'
       }

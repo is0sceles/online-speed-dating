@@ -1,4 +1,4 @@
-import template from './eventsCreationTemplate.vue';
+import template from '../Templates/eventsCreationTemplate.vue';
 
 var eventsCreate = {
   template: template.template,

@@ -1,4 +1,4 @@
-import temp from './eventsTemplate.vue';
+import temp from '../Templates/eventsTemplate.vue';
 /* date formatting library */
 var moment = require('moment'); 
 

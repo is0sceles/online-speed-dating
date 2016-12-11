@@ -1,4 +1,4 @@
-import temp from './appTemp.vue';
+import temp from '../Templates/appTemp.vue';
 
 var app = {
   template: temp.template,
