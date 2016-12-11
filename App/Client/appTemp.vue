@@ -5,14 +5,3 @@
     {{ msg }}
 </div>
 </template>
-
-<style>
-    .message {
-        color: #fff;
-        margin-left: 20px;
-        font-weight: lighter;
-        background: #8dafa5;
-        padding-left: 20px;
-        font-size: 42px;
-    }
-</style>

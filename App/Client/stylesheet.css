@@ -2,6 +2,11 @@ body {
     background: #476c75;
 }
 
+#logo {
+    height: 50px;
+    width: 50px;
+}
+
 .background {
     min-height: 100%;
     min-width: 100%;
@@ -15,7 +20,69 @@ body {
     transform:translateX(-50%) translateY(-50%);
 }
 
+#main {
+  height: 100%;
+}
 
+#about {
+  position: absolute;
+  top:100%;
+  height: 100%;
+  background: #d9b078;
+  width: 100%;
+}
+
+.message {
+    color: #fff;
+    margin-left: 20px;
+    font-weight: lighter;
+    background: #2c4355;
+    padding-left: 20px;
+    font-size: 42px;
+}
+
+.img_icons {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+}
+
+.icons {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+    margin-top: 25%;
+    padding: 10px 10px 10px 10px;
+}
+
+.us {
+
+    display: inline-flex;
+}
+
+#techStack {
+  position: absolute;
+  top:200%;
+  height: 100%;
+  width: 100%;
+  background: rgb(154, 171, 155);
+}
+
+.techicons {
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    margin: 1em;
+    margin-left: 25%;
+    margin-top: 50px;
+    
+}
+
+#mongo {
+    padding-right: 10px;
+}
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;
