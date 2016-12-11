@@ -16,7 +16,7 @@ var store = new Vuex.Store({
     beforeEventFlag: true,
     soloViewFlag: true,
     calleeReadyFlag: false,
-    activeViewFlag: false,
+    activeViewFlag: true,
     beforeStartFlag: true,
     datePartnerOffline: false,
     currentRound: null
@@ -35,6 +35,8 @@ var store = new Vuex.Store({
     setUser (state, obj) {
       for (var key in obj) {
         state.user[key] = obj[key];
+        console.log(state.isCallerFlag = obj.callList[0]);
+        state.isCallerFlag = obj.callList[0];
       }
       console.log(state);
     },
