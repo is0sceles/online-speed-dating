@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container eventCreation">
     <p id="header"> Sign in for an event </p>
     <form>
       <input type="text" placeholder="Enter your name" v-model="username" >
@@ -8,11 +8,7 @@
       <input type="datetime-local" placeholder="Enter a date" v-model="date">
       <button role="button" v-on:click.prevent="submit">Submit</button>
     </form>
-    <p id="signin_info" class="lead">
-      <span id='title'> How does registeration work? </span> <small> Well, let us tell you. Quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-      Cum sociis natoque penatibus. Now go forth and sign up.</small>
-        </p>
-    </div>
+  </div>
 </template>
 
 <style>
@@ -28,13 +24,20 @@
     margin-left: 5px;
   }
   #title {
-    background: rgba(173, 216, 230, 0.53);
+    background: rgba(173, 216, 230,1);
   }
+  
+  .eventCreation {
+    background: #5d868a;
+    height: 150px;
+  }
+  /*
   #signin_info {
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.53);
+    background: rgba(255, 255, 255,1);
     padding-left: 10px;
   }
+  */
   title {
     font: bold;
     color: #fff;

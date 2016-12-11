@@ -28,10 +28,16 @@ exports.postEvent = (req, res) => {
 
 exports.getSingleEvent = (req, res) => {
   Event.where({ _id: req.body._id}).findOne({ _id: req.body._id}, (err, event) => {
-    if(err) {
+    if (err) {
       res.status(404).send();
     } else {
-      res.status(200).send(event)
+      res.status(200).send(event);
     }
   });
-}
+};
+
+exports.updateEvent = function (req, res) {
+  Event.findOneAndUpdate({_id: req.body._id}, {$set: req.body}, function() {
+    res.send(204);
+  });
+};

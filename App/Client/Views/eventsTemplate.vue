@@ -1,16 +1,20 @@
 <template>
     <div>
         <table>
-            <tr>
-                <th>Next Event</th>
-                <th>Event Name</th>
-                <th>Event Type</th>
-            </tr>
-            <tr v-for='item in result'>
-                <td> {{ moment(item.date).format('MMMM Do YYYY, h:mm:ss a') }} </td>
-                <td> {{ item.eventName }} </td>
-                <td> {{ item.eventType }} </td>
-            </tr>
+        <tr> 
+            <th> Do-you? </th>
+            <th> Event Id </th>
+            <th>Next Event</th>
+            <th>Event Name</th>
+            <th>Event Type</th>
+        </tr>
+        <tr v-for='(item, index) in result' :key='item._id' v-bind="item">
+            <td><button v-on:click="join(item)">Join</button></td>
+            <td> {{item._id.slice(20)}}</td>
+            <td> {{ moment(item.date).format('MMMM Do YYYY, h:mm:ss a') }}  </td>
+            <td> {{ item.eventName}}</td>
+            <td> {{ item.eventType }} </td>
+        </tr>
         </table>
         <div id='eventLink'>
             <a>
@@ -21,13 +25,22 @@
 </template>
 
 <style>
+    a {
+        color: #fff;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+
     #eventLink {
         margin-top: 20px;
         font-weight: 800;
         margin-left: 50px;
         text-align: center;
-        background: rgba(255, 255, 255, 0.74);
+        background: #2c4355;
         width: 75%;
+        color: #fff;
 
     }
     #signIn {
