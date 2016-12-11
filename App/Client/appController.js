@@ -6,7 +6,29 @@ var app = {
     return { 
       msg: 'Welcome To Do-We! ' + this.$store.state.user.username
     };
-  }
+  },
+  methods: {
+    TESTpublish: function() {
+      this.$http.post('/event/start', {
+        eventId: 1234
+      })
+      .then((res) => { 
+        var body = res.body;
+        this.$store.commit('setUser', body);
+      })
+      .catch((err) => console.error(err)); 
+    },
+    TESTpublash: function() {
+      this.$http.post('/event/setup', {
+        eventName: 'Menergy'
+      })
+      .then((res) => { 
+        var body = res.body;
+        this.$store.commit('setUser', body);
+      })
+      .catch((err) => console.error(err)); 
+    },
+  },
 };
 
 

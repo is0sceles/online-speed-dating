@@ -11,6 +11,7 @@ import blank from '../Views/blank.vue';
 import store from '../store.js';
 import events from '../Views/eventsController.js';
 import eventsCreate from '../Views/eventsCreationController.js';
+import activeDate from '../Views/activeDateController.js';
 
 var routes = [
   {
@@ -19,7 +20,7 @@ var routes = [
   },  
   {
     path: '/video',
-    component: video,
+    component: activeDate,
   },
   {
     path: '/signup',

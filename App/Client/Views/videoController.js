@@ -17,20 +17,19 @@ var video = {
   computed: mapState(['videoOut', 'sessionOut', 'username', 'name', 'phone', 'sessionIn']),
   methods: {
     makePhone: function(myNumber) {
-      console.log(this.$store.state.phone);
-      this.$store.state.phone = window.phone = PHONE({
+      console.log(this.phone);
+      this.phone = window.phone = PHONE({
         number: myNumber, // listen on username line else Anonymous
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
         subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
         ssl: true 
       });
       var sessionConnected = function(session) {
-        this.$store.state.videoOut = session;
         console.log(session);
         console.log('connected with', session);
         console.log(this);
         console.log(this.video);
-        this.$store.state.videoOut = session.video.outerHTML;
+        this.videoOut = session.video.outerHTML;
       };
       this.phone.ready(function() {
         console.log('phone ready');
@@ -48,50 +47,13 @@ var video = {
         });
       });
     },
-    makeBroadcaster: function() {
-      var that = this;
-      this.phone = window.phone = PHONE({
-        number: 'BROADCASTER', // listen on username line else Anonymous
-        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
-        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
-        ssl: true 
-      });
-      var sessionConnected = function(session) {
-        console.log('connected with', session);
-        console.log(this);
-        console.log(this.video);
-        that.videoOut = session.video.outerHTML;
-      };
-      this.phone.ready(function() {
-        console.log('phone ready');
-      });
-      this.phone.receive(function(session) {
-        console.log( 'i receieved');
-
-        // session.message(message);
-        // session.thumbnail(thumbnail);
-        session.connected(sessionConnected);
-        session.ended(function(idk) {
-          console.log('sessionn ended', idk);
-        });
-      });
+    dial (number) {
+      var session = this.$store.state.phone.dial(number);
+      if (!session) { return; }
     },
-    sessionConnected: function(session) {
-      console.log('connected with', session);
-      this.videoOut = session.video;
-    },
-    sessionEnded: function(session) {
-      console.log('session ended');
-    },
-    dial: function(number) {
-      // console.dir(phone, 'window phone ');
-      // console.dir(this.phone, 'our phone ');
-      // console.log('dialed ', number);
-      this.session = this.phone.dial(number);
-      // console.log(this.session);
-      var session = this.session;
-      if (!session) { console.log('couldnt connect'); return; }
-    }
+    initStatePhone () {
+      this.$store.commit('initPhone');
+    }  
   }
 };
 // var phone = window.phone;
