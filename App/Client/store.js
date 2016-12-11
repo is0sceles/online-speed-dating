@@ -11,7 +11,13 @@ var store = new Vuex.Store({
     user: {
       username: '',
     },
-    videoOut: '<video></video>'
+    videoOut: '<video></video>',
+    beforeEventFlag: true,
+    soloViewFlag: true,
+    calleeReadyFlag: false,
+    activeViewFlag: false,
+    beforeStartFlag: true,
+    currentRound: null
   },
   getters: {
     getProfileInfo(state, name) {
@@ -36,6 +42,33 @@ var store = new Vuex.Store({
         subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
         ssl: true
       });
+      state.pubnub.message(function(message) {
+        if (message.message === 'Ready') {
+          state.calleeReadyFlag = true;
+        } else if (message.message === 'End') {
+
+          state.activeViewFlag = false;
+          state.pubnub.stop();
+          state.phone.hangup();
+          state.phone.stop();
+
+        } else {
+          state.phone.hangup();
+          if (state.currentRound) {
+            state.pubnub.unsubscribe({
+              channels: [state.user.calllist[state.currentRound]]
+            });
+          }
+          console.log(message.message);
+          state.currentRound = message.message;
+          state.pubnub.subscribe({
+            channels: [state.user.calllist[state.currentRound]]
+          });
+          state.soloViewFlag = true;
+          state.beforeStartFlag = false;
+          state.calleeReadyFlag = false;
+        }
+      });
     },
     initPhone (state) {
       state.phone = window.phone = new PHONE({
@@ -53,6 +86,7 @@ var store = new Vuex.Store({
         console.log('phone ready');
       });
       state.phone.receive(function(session) {
+        state.soloViewFlag = false;
         console.log( 'i receieved', session);
         state.videoIn = session;
 
