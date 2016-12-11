@@ -19,7 +19,7 @@ The Hot Date Boyz--back at it again!
 ##Team Members
 [![Dan "Keep it in the Kitchen" Gilday](photo)](http://github.com/gildilocks)
 
-[![Elliott "Erect Elliott" Birch](photo)](http://github.com/elliottabirch)
+[![Elliott Birch](photo)](http://github.com/elliottabirch)
 
 [![Eric "Chris" Lau](photo)](http://github.com/elau002)
 

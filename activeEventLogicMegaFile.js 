@@ -1,0 +1,55 @@
+var javascript = function() {};
+//event model logic--use to process event data on request from a user
+
+  //get the event
+  //get all users for the event
+    //sort the users using the function/parameters on the event--if no function is provided, use a default
+    //find which array user is in, if it's the caller or callee array, and their index in it
+      //create a new array which will be the list of calls the user will have
+        //at the 0 index of this new array store a piece of information--either boolean or a string "caller" or "callee"
+        //add the members of the group the user is not in to this array starting from the index matching the user's index
+          //this should produce a list of the users this user will connect with in the order they will connect
+          //example: this user is at index = 5 of the caller group, so his call list looks like:
+          // ['caller', callee5, callee6, callee7, callee8, callee0, callee1, callee2, callee3, callee4]
+        //store this array on the "calllists" property of the user, this will hold an object {eventname: callArray, eventName: callArray .....}
+        //send this array back to the client
+
+//client logic -- what is happening on the client
+  //event list-select an event to join
+    //create pubnub instance and subscribe to 3 event channels (event_start, event_round, event_end)
+    //get 'calllist' by querying database (this should check if it exists, if not, create it)--think about logic of when checking for callist might be needed (reloads/late joins)
+      //once calllist returns (async), if user is a callee, create a pub and sub channel on the pubnub instance with this users name
+    //create phone for this user
+    //display users own video on page
+
+    //display event landing page whle listening on the event_start channel--update view to active event view
+      
+    //this is the cycle for each call
+      //(1)
+      //check if target user is online (make sure subscribed with presence on event_round channel)
+        //if not, display a sorry message/wait
+        //otherwise, it's dating time!
+          //if callee
+            //have button that indicates readiness to date, when pressed publish a pubnub message to the channel with this user's name
+            //make sure phone is set up to receive calls (not sure this requires anything different than for caller)
+          
+
+          //if caller 
+            //subscribe to channel of current callee
+            //when receive ready message on calle channel, display 'start date/call/ready' button
+              //when this button is clicked connect to the callee
+                //move and/or shrink users own video
+                //connect to callee and display their video
+      
+      //a message on the event_round channel will be emitted when it is time for the round to extend, listen for this
+        //the content of the message will be the next number's round
+        //hang up all phones
+        //update the "callIndex" value for each client
+        //go back to (1) with the new callIndex number in mind
+            
+  
+    //listen on event_end for messages, when received, event is over. Destroy phone, redirect to matches page, or profile page for now
+
+
+//server logic is already in the activeEventHandlerFile
+  //this is in activeEventHandler
