@@ -9,9 +9,6 @@ Vue.use(VueResource);
 
 var store = new Vuex.Store({
   state: {
-    user: {
-      username: '',
-    },
     videoOutSrc: '',
     myVideoSrc: '',
     beforeEventFlag: true,
@@ -21,7 +18,12 @@ var store = new Vuex.Store({
     beforeStartFlag: true,
     datePartnerOffline: false,
     currentRound: null,
-    savedEvents: []
+    savedEvents: [],
+    allEvents: [],
+    
+    user: {
+      username: '',
+    }
   },
   getters: {
     getProfileInfo(state, name) {
@@ -37,7 +39,6 @@ var store = new Vuex.Store({
     setUser(state, obj) {
       for (var key in obj) {
         state.user[key] = obj[key];
-        console.log(state.isCallerFlag = obj.callList[0]);
         state.isCallerFlag = obj.callList[0];
       }
     },
@@ -59,8 +60,7 @@ var store = new Vuex.Store({
         ssl: true
       });
       state.pubnub.addListener({
-        message: function (message) {
-          console.log(message.message);
+        message: function(message) {
           if (message.message === 'Ready') {
             console.log('GotReadyMessageFromPartner');
             state.calleeReadyFlag = true;
@@ -80,7 +80,6 @@ var store = new Vuex.Store({
                 channels: ['eventId' + state.user.callList[state.currentRound]]
               });
             }
-            console.log(message.message);
             state.currentRound = message.message;
             //possibly check if corresponding user is online currently--use presence to do this
             //alternatively use failed call error handling
@@ -94,8 +93,7 @@ var store = new Vuex.Store({
             state.calleeReadyFlag = false;
           }
         },
-        status: function (statusEvent) {
-          console.log(statusEvent);
+        status: function(statusEvent) {
         }
       });
     },
@@ -118,12 +116,12 @@ var store = new Vuex.Store({
       });
       state.phone.receive(function (session) {
         state.soloViewFlag = false;
-        console.log('i receieved', session);
+        console.log( 'i receieved');
         state.videoIn = session;
 
         session.connected(sessionConnected);
-        session.ended(function (idk) {
-          console.log('sessionn ended', idk);
+        session.ended(function(idk) {
+          console.log('sessionn ended');
         });
       });
     },
@@ -136,9 +134,19 @@ var store = new Vuex.Store({
     signalCalleeReadyFlag(state) {
       state.calleeReadyFlag = true;
     },
-    setEvents(state, arr) {
+
+    setEvents (state, arr) {
       state.user.events = arr;
     },
+
+    setAllEvents (state, arr) {
+      state.allEvents = arr;
+    },
+
+    setNewEvent (state, event) {
+      state.allEvents.push(event);
+    },
+
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;
     }

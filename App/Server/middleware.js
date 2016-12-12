@@ -24,15 +24,16 @@ module.exports = function(app, express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-
   passport.serializeUser(function(user, done) {
     done(null, user._id);
   });
+
   passport.deserializeUser(function(id, done) {
     User.findById(id, function (err, user) {
       done(err, user);
     });
   }); 
+  
   passport.use(new LocalStrategy(
     function(username, password, done) {
       userHandler.getUserDB(username, function(err, user) {

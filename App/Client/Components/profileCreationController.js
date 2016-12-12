@@ -8,9 +8,11 @@ var profileCreation = {
     return {
     };
   },
+
   watch: {
     '$route': 'checkRoute'
   },
+
   methods: {
     checkRoute () {
       if (this.$route.params.id !== this.$store.state.user.username) {
@@ -20,6 +22,7 @@ var profileCreation = {
         this.$router.push('/myprofile/' + this.$route.params.id + '/edit');
       }
     },
+
     setUserInfo: function() {
       var body = this.$store.state.user;
       if (!!body.name && !!body.gender && !! body.location) {
@@ -33,7 +36,6 @@ var profileCreation = {
       } else {
         window.alert('Please provide name, gender and location');
       }
-
     }
   },
 };

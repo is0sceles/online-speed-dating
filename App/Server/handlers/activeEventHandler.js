@@ -11,12 +11,6 @@ exports.initiateEvent = function(req, res) {
     ssl: true
   });
   
-  // pubnub.publish(
-  //   {
-  //     message: 'Start',
-  //     channel: 'a',
-      
-  // );
   Event.findOne({ _id: req.body.eventId})
    .exec(function(err, event) {
      
@@ -33,7 +27,6 @@ exports.initiateEvent = function(req, res) {
        },
       function (status, response) {
           // handle status, response
-        console.log(response);
       }
     );
 
@@ -48,7 +41,6 @@ exports.initiateEvent = function(req, res) {
 };
 
 exports.setupEvent = function(req, res) {
-  console.log(req.body);
   Event.findOne(req.body)
     .exec(function(err, event) {
       console.log(err);
@@ -69,14 +61,11 @@ exports.setupEvent = function(req, res) {
           
         User.findOneAndUpdate({username: thisCaller}, {$set: {callList: Array.prototype.concat(true, callee) }} )
         .exec(function(err, response) {
-          if (err) { console.log(err); }
-          console.log(response);
         });
 
         User.findOneAndUpdate({username: thisCallee}, {$set: {callList: Array.prototype.concat(false, caller) }} )
         .exec(function(err, response) {
           if (err) { console.log(err); }
-          console.log(response);
         });
           
         caller.push(caller.shift());

@@ -6,7 +6,7 @@ router.post('/user', userHandler.signUpUser);
 router.get('/user', userHandler.getUser);
 router.put('/user', userHandler.updateUser);
 
-router.get('/events', eventHandler.getEvent);
+router.get('/events', eventHandler.getEvents);
 router.post('/events', eventHandler.postEvent);
 router.put('/events', eventHandler.updateEvent);
 

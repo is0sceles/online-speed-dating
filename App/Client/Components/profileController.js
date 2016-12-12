@@ -15,21 +15,26 @@ var profile = {
       hasInfo: false
     };
   },
+
   created () {
     this.loadUserProfile();
   },
+
   watch: {
     '$route': 'loadUserProfile'
   },
+
   methods: {
     editProfile: function() {
       this.$router.push('/myprofile/' + this.username + '/edit');
     }, 
+
     setProfileInfo: function(res) {
       for (var key in res) {
         this[key] = res[key]; 
       }
     },
+
     loadUserProfile: function() {
       if (this.$route.params.id !== this.$store.state.user.username) {
         this.$http.get(
@@ -45,6 +50,7 @@ var profile = {
         this.hasUserInfo();
       } 
     },
+    
     hasUserInfo: function() {
       if (this.userinfo) {
         this.hasInfo = true;

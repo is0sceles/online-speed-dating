@@ -3,13 +3,11 @@ var db = require('../../Database/config.js');
 
 
 //Request handlers
-exports.getEvent = (req, res) => {
-  // console.log('called getEvent in handler'); //deleteMe
+exports.getEvents = (req, res) => {
   Event.find({}).exec((err, results) => {
     if (err) { 
       throw err;
     }
-    // console.log('ending transmission...'); //deleteMe
     res.status(200).send(results);
   });
 };

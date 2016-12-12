@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import AppTEST from '../Components/appController.js';
+import landingPage from '../Components/landingPageController.js';
 import login from '../Components/loginController.js';
+import admin from '../Components/adminController.js';
 import video from '../Components/videoController.js';
 import signup from '../Components/signupController.js';
 import profile from '../Components/profileController.js';
@@ -10,14 +11,14 @@ import profileCreate from '../Components/profileCreationController.js';
 import blank from '../Templates/blank.vue';
 import store from '../store.js';
 import events from '../Components/eventsController.js';
-import eventsCreate from '../Components/eventsCreationController.js';
 import activeDate from '../Components/activeDateController.js';
 import myProfile from '../Components/myProfileController.js';
 
+
 var routes = [
   {
-    path: '/',
-    component: AppTEST
+    path: '/', 
+    component: landingPage
   },  
   {
     path: '/video',
@@ -29,23 +30,17 @@ var routes = [
   },
   {
     path: '/Admin',
-    meta: { requiresAdmin: true },
-    component: blank,
-    children: [
-      {
-        path: 'eventsCreate',
-        component: eventsCreate
-      }
-    ]
+    // meta: { requiresAdmin: true },
+    component: admin,
   },
   {
     path: '/myprofile/:id',
-      meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
     component: blank,
     children: [
       {
         path: 'edit',
-        name: 'edit',
+        name: 'edit', 
         component: profileCreate,
       },
       {
@@ -74,21 +69,21 @@ var routes = [
       }
     ]
   },
-  // {
-  //   path: '/date/:dateid',
-  //   meta: { requiresAuth: true },
-  //   component: blank,
-  //   children: [
-  //     {
-  //       path: '/active',
-  //       component: activeController,
-  //     },
+  {
+    path: '/date/:dateid',
+    meta: { requiresAuth: true },
+    component: blank,
+    children: [
+      {
+        path: 'active',
+        component: activeDate,
+      }
   //     {
   //       path: '/inactive',
   //       component: inactiveController,
   //     },
-  //   ]
-  // },
+    ]
+  }
 ];
 
 const router = new VueRouter({
@@ -117,20 +112,20 @@ router.beforeEach((to, from, next) => {
     next(); // make sure to always call next()!
   }
   if (to.matched.some(record => record.meta.requiresAdmin)) {
-    console.log('requres admin', store.state.user);
+    // console.log('requres admin', store.state.user);
     if (store.state.user) {
-      console.log('logged in');
+      // console.log('logged in');
       if (store.state.user.admin) {
-        console.log('logged in as admin');
+        // console.log('logged in as admin');
         next();
       } else {
-        console.log('logged in but no admin');
+        // console.log('logged in but no admin');
         next({
           path: '/'  
         });
       }
     } else {
-      console.log('not logged in');
+      // console.log('not logged in');
       next({
         path: '/'
       }
