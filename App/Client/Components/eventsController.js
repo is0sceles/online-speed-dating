@@ -72,13 +72,6 @@ var events = {
 
     moment: function (date) {
       return moment(date);
-    },
-    hasNotJoined: function(id) {
-      if(this.$store.state.user.events.indexOf(id) === -1) {
-        return true;
-      } else {
-        return false;
-      }
     }
   }
 };
