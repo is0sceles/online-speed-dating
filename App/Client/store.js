@@ -35,6 +35,7 @@ var store = new Vuex.Store({
       state.user = {
         username: ''
       };
+      state.savedEvents = [];
     },
     setUser(state, obj) {
       for (var key in obj) {
