@@ -7,6 +7,7 @@ var app = {
       msg: 'Welcome To Do-We! ' + this.$store.state.user.username
     };
   },
+
   methods: {
     TESTpublish: function() {
       this.$http.post('/event/start', {
@@ -18,6 +19,7 @@ var app = {
       })
       .catch((err) => console.error(err)); 
     },
+    
     TESTpublash: function() {
       this.$http.post('/event/setup', {
         eventName: 'Menergy'

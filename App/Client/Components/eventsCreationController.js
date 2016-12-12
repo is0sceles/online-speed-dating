@@ -10,6 +10,7 @@ var eventsCreate = {
       eventName: ''
     };
   },
+  
   methods: {
     submit ($http) {
       var body = {

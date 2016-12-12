@@ -8,6 +8,7 @@ var signup = {
       password: ''
     };
   },
+
   methods: {   
     signup: function($http) {
       var body = {
@@ -20,6 +21,7 @@ var signup = {
       .then((response) => {
         this.$router.push('/');
       })
+      
       .catch((err) => {
         alert('username already exists');
       });

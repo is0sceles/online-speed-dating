@@ -3,6 +3,7 @@ import template from '../Templates/activeDateTemplate.vue';
 
 const activeDate = {
   template: template.template,
+
   data () {
     return {
       event: {
@@ -23,9 +24,9 @@ const activeDate = {
         '__v': 0
       },
       number: null
-
     }; 
   },
+
   methods: {
     signalEventReady: function() {
       var eventId = this.event._id.$oid;
@@ -38,9 +39,9 @@ const activeDate = {
         channels: [eventId],
         withPresence: true, // also subscribe to presence instances.
       });
-
       this.$store.commit('signalEventReadyFlags');
     },
+
     signalCalleeReady: function() {
       this.$store.state.pubnub.publish({
 
@@ -50,15 +51,18 @@ const activeDate = {
       });
       this.$store.commit('signalCalleeReadyFlag');
     },
+
     callCallee: function() {
       this.$store.state.phone.dial(this.$store.state.user.callList[this.$store.state.currentRound]);
     },
+
     TESTcurrentRoundButton: function(number) {
       this.$store.state.pubnub.publish({
         message: number,
         channel: [this.event._id.$oid]
       });
     },
+
     TESTendEventButton: function() {
       this.$store.state.pubnub.publish({
         message: 'End',
@@ -70,6 +74,7 @@ const activeDate = {
       this.$store.state.soloViewFlag = !this.$store.state.soloViewFlag;
     }
   },
+  
   name: 'activeDate'
 };
 

@@ -14,7 +14,9 @@ var video = {
       myNumber: 0
     };
   },
+
   computed: mapState(['videoOut', 'sessionOut', 'username', 'name', 'phone', 'sessionIn']),
+
   methods: {
     makePhone: function(myNumber) {
       this.phone = window.phone = PHONE({
@@ -39,10 +41,12 @@ var video = {
         });
       });
     },
+
     dial (number) {
       var session = this.$store.state.phone.dial(number);
       if (!session) { return; }
     },
+    
     initStatePhone () {
       this.$store.commit('initPhone');
     }  

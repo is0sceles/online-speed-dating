@@ -12,6 +12,7 @@ const login = {
       password: ''
     }; 
   },
+  
   methods: {
     login: function() {
       this.$http.post('/auth/login', {

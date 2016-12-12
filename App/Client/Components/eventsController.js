@@ -13,18 +13,20 @@ var events = {
       joined: ''
     };
   },
+
   created () {
     this.getEvents();
   },
+
   methods: {
     getEvents () {
-
       this.$http.get('/api/events')
       .then((res) => { 
         this.result = res.body;
       })
       .catch((err) => { console.error('There was an err with your GET request, ', err); });
     },
+
     join (item) {
       //handles event creation within users array 
       var eventId = item._id;
@@ -41,7 +43,6 @@ var events = {
       var savedUserEvents = this.$store.state.user.savedEvents;
       currentUserEvents.push(eventId);
       this.$store.commit('setEvent', currentUserEvents);
-      
       //update db users
         //check to see if user is already joined
       if (!currentUserEvents.indexOf(eventId)) {
@@ -57,6 +58,7 @@ var events = {
         .catch((err) => { console.error('error ', err); });
       }
     },
+    
     moment: function (date) {
       return moment(date);
     }

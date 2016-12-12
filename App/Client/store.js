@@ -9,9 +9,6 @@ Vue.use(VueResource);
 
 var store = new Vuex.Store({
   state: {
-    user: {
-      username: '',
-    },
     videoOutSrc: '',
     myVideoSrc: '',
     beforeEventFlag: true,
@@ -21,7 +18,10 @@ var store = new Vuex.Store({
     beforeStartFlag: true,
     datePartnerOffline: false,
     currentRound: null,
-    savedEvents: []
+    savedEvents: [],
+    user: {
+      username: '',
+    }
   },
   getters: {
     getProfileInfo(state, name) {
@@ -111,7 +111,6 @@ var store = new Vuex.Store({
       state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
-        console.log(state.myVideo);
       });
       state.phone.receive(function (session) {
         state.soloViewFlag = false;
