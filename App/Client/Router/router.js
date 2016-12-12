@@ -40,7 +40,7 @@ var routes = [
   },
   {
     path: '/myprofile/:id',
-    meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
     component: blank,
     children: [
       {

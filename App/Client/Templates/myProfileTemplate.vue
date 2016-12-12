@@ -29,7 +29,7 @@
                         <h2 class="overhead">Events:</h2>
                         <ul v-for='event in savedEvents'>
                             <div id="event" class="row">
-                                <a id="clickEvent">
+                                <a v-on:click="toDate(event)" id="clickEvent">
                                     <li id="eventDetails"> {{ moment(event.date).format('MMMM Do YYYY, h:mm:ss a') }} </li>
                                     <li id="eventDetails"> {{ event.eventName }} </li>
                                     <li id="eventDetails"> {{ event.eventType }} </li>
@@ -97,8 +97,8 @@ h2.overhead {
     background-color: #5A666E;
 }
 #eventColumn {
-    border: 3px solid blue;
-    background-color: #334D61
+    border: 3px solid #759CF8;
+    background-color: #334D61;
 }
 #matchHorizon {
     border: 3px solid red;
@@ -112,7 +112,7 @@ h2.overhead {
     padding-bottom: 5px;
 }
 #event {
-    border: 1px solid tomato;
+    border: 1px solid #E5C9B0;
     background-color: black;
     padding-top: 2  px;
     padding-bottom: 2px;
@@ -131,6 +131,7 @@ h2.overhead {
 }*/
 #eventButton {
     float: right;
+    color: #75B2E1;
     padding-bottom: 3px;
 }
 
