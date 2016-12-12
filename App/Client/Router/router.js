@@ -14,7 +14,6 @@ import events from '../Components/eventsController.js';
 import activeDate from '../Components/activeDateController.js';
 import myProfile from '../Components/myProfileController.js';
 
-console.log('this is admin', admin);
 
 var routes = [
   {
@@ -76,7 +75,7 @@ var routes = [
     component: blank,
     children: [
       {
-        path: '/active',
+        path: 'active',
         component: activeDate,
       }
   //     {
