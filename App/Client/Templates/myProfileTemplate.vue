@@ -33,7 +33,7 @@
                                     <li id="eventDetails"> {{ moment(event.date).format('MMMM Do YYYY, h:mm:ss a') }} </li>
                                     <li id="eventDetails"> {{ event.eventName }} </li>
                                     <li id="eventDetails"> {{ event.eventType }} </li>
-                                    <li id="eventDetails">Go on date<button id="eventButton" class="glyphicon glyphicon-menu-right glyphicon glyphicon-glass"></button></li>
+                                    <li id="eventDetails">Go on date<button id="eventButton" class="glyphicon glyphicon-menu-right glyphicon glyphicon-glass" v-on:click="toDate(event)"></button></li>
                                 </a>
                             </div>
                         </ul>

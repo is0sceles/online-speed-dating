@@ -19,7 +19,8 @@ var store = new Vuex.Store({
     activeViewFlag: true,
     beforeStartFlag: true,
     datePartnerOffline: false,
-    currentRound: null
+    currentRound: null,
+    savedEvents: []
   },
   getters: {
     getProfileInfo(state, name) {
@@ -125,8 +126,11 @@ var store = new Vuex.Store({
     signalCalleeReadyFlag (state) {
       state.calleeReadyFlag = true;
     },
-    setEvent (state, arr) {
+    setEvents (state, arr) {
       state.user.events = arr;
+    },
+    setSavedEvents (state, arr) {
+      state.savedEvents = arr;
     }
   }
 });

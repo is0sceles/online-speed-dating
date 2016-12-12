@@ -27,9 +27,10 @@ exports.postEvent = (req, res) => {
 };
 
 exports.getSingleEvent = (req, res) => {
-  Event.findById(id, (err, event) => {
+  console.log(req.query)
+  Event.findOne(req.query, (err, event) => {
     if (err) {
-      res.status(404).send();
+      res.status(500).send();
     } else {
       res.status(200).send(event);
     }

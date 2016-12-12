@@ -20,15 +20,18 @@ const login = {
         var body = res.body;
         this.$store.commit('setUser', body);
         //change events into ._id
-        var userEvents =[];
+        var userEvents = [];
         var eventID = this.$store.state.user.events;  
         for(var i = 0; i < eventID.length; i++){
-          this.$http.put('/api/user/events', eventID[i])
+          console.log(eventID[i]);
+          this.$http.get('/api/user/events', {params: {_id: eventID[i]}})
           .then((res)=> {
             if (res.body._id) {
               userEvents.push(res.body); 
+            console.log(res.body);
             }
-            this.$store.commit('renderEvent', userEvents);
+            this.$store.commit('setSavedEvents', userEvents);
+            console.log('store is', this.$store.state.savedEvents)
           })
           .catch((err) => console.log(err));
         }
