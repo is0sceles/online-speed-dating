@@ -40,10 +40,8 @@ var store = new Vuex.Store({
         console.log(state.isCallerFlag = obj.callList[0]);
         state.isCallerFlag = obj.callList[0];
       }
-      console.log(state.user);
     },
     setSavedEvents(state, arr ) {
-      console.log('in setSaved')
       for (var i = 0; i < arr.length; i++) {
         console.log(arr[i]);
         Vue.http.get('/api/user/events', { params: { _id: arr[i] } })
