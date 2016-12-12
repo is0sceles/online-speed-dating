@@ -9,7 +9,10 @@
             <th>Event Type</th>
         </tr>
         <tr v-for='(item, index) in result' :key='item._id' v-bind="item">
-            <td><button v-on:click="join(item)">Join</button></td>
+        
+            <td v-if='!$store.state.user.username'>Sign in to join!</td>
+            <td v-else-if='hasJoined(item)'><button v-on:click="join(item)">Join</button></td>
+            <td v-else class='glyphicon glyphicon-ok'></td>
             <td> {{item._id.slice(20)}}</td>
             <td> {{ moment(item.date).format('MMMM Do YYYY, h:mm:ss a') }}  </td>
             <td> {{ item.eventName}}</td>

@@ -16,36 +16,60 @@ var events = {
   created () {
     this.getEvents();
   },
+  computed: {
+    result () {
+      return this.$store.state.allEvents;
+    }
+  },
+
   methods: {
     getEvents () {
       this.$http.get('/api/events')
       .then((res) => { 
-        this.result = res.body;
+        this.$store.commit('setAllEvents', res.body);
       })
       .catch((err) => { console.error('There was an err with your GET request, ', err); });
     },
-    join (item) {
+
+    hasJoined (event) {
+      if (this.$store.state.user.events.indexOf(event._id) === -1) {
+        return true;
+      }
+      return false;
+    },
+
+    join (event) {
       //handles event creation within users array 
-      var eventId = item._id;
-      var event = item;
       var currentUserEvents = this.$store.state.user.events;
       var savedUserEvents = this.$store.state.savedEvents;
 
-      if (currentUserEvents.indexOf(eventId) === -1 ) {
+      //check to see if event is in curren users event list
+      if (currentUserEvents.indexOf(event._id) === -1 ) {
+        //if not, then 
+        //put current users username on to given event's usernames property's array
         event.usernames.push(this.$store.state.user.username);
-        currentUserEvents.push(eventId);
+        //put eventID on current users events property's array
+        currentUserEvents.push(event._id);
         this.$store.commit('setEvents', currentUserEvents);
+
+        //update user on db with new events array
         this.$http.put('/api/user', this.$store.state.user)
         .then((res) => { 
           savedUserEvents.push(event);
+          //update savedEvents with new event added to user
           this.$store.commit('addToSavedEvents', savedUserEvents);
         })
         .catch((err) => { console.error('error ', err); });
+
+        //update event on db with new usernames array
         this.$http.put('/api/events', event)
-        .then((res) => { console.log('put on events!'); })
+        .then((res) => { 
+          this.getEvents(); 
+        })
         .catch((err) => { console.error('error ', err); });
       }
     },
+
     moment: function (date) {
       return moment(date);
     }

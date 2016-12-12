@@ -16,12 +16,10 @@ const login = {
       })
       .then((res) => { 
         var body = res.body;
-        if (body.admin) {
-          this.$http.get('/api/events')
+        this.$http.get('/api/events')
           .then((res) => {
             this.$store.commit('setAllEvents', res.body);
           });
-        }
         this.$store.commit('setUser', body);
         this.$store.commit('setSavedEvents', body.events);
       })
