@@ -18,9 +18,12 @@ var myProfile = {
     '$route': 'checkRoute'
   },
   methods: {
+<<<<<<< c0dfd077d53f4afb3697e4f4b49e51eaff870f04
     toDate (event) {
       this.$router.push('/date/' + event._id + '/active');
     },
+=======
+>>>>>>> remove zombie code
     editProfile () {
       this.$router.push('/myprofile/' + this.username + '/edit');
     }, 

@@ -11,12 +11,6 @@ exports.initiateEvent = function(req, res) {
     ssl: true
   });
   
-  // pubnub.publish(
-  //   {
-  //     message: 'Start',
-  //     channel: 'a',
-      
-  // );
   Event.findOne({ _id: req.body.eventId})
    .exec(function(err, event) {
      

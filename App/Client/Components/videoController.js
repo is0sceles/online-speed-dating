@@ -33,9 +33,6 @@ var video = {
       this.phone.receive(function(session) {
         console.log( 'i receieved');
         this.$store.state.videoIn = session;
-
-        // session.message(message);
-        // session.thumbnail(thumbnail);
         session.connected(sessionConnected);
         session.ended(function(idk) {
           console.log('sessionn ended');
