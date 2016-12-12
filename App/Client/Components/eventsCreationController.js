@@ -26,7 +26,6 @@ var eventsCreate = {
         this.date = '',
         this.eventType = '',
         this.eventName = '';
-        console.log('inside res: ', res); //deleteMe
         
       })
       .catch((err) => {

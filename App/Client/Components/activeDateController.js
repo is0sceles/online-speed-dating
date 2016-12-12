@@ -29,13 +29,11 @@ const activeDate = {
   methods: {
     signalEventReady: function() {
       var eventId = this.event._id.$oid;
-      console.log(eventId);
       //create instance of PubNub
       this.$store.commit('initPubNub');
       //create our Phone instance
       this.$store.commit('initPhone');
       //subscribe our pubnub to the channels that control calls
-      console.log(this.$store.state.pubnub);
       this.$store.state.pubnub.subscribe({
         channels: [eventId],
         withPresence: true, // also subscribe to presence instances.
