@@ -1,8 +1,5 @@
 <template>
     <div>
-        <input v-model='number' type="number">
-        <button v-on:click.prevent="TESTcurrentRoundButton(number)" type="submit" class="btn btn-primary btn-block">ROUND GO</button>
-        <button v-on:click.prevent="TESTendEventButton" type="submit" class="btn btn-primary btn-block">END THAT QUAN</button>
         <template v-if='$store.state.beforeEventFlag'>
             <button v-on:click.prevent='signalEventReady'>I'm ready to speed-date!</button>
         </template>
