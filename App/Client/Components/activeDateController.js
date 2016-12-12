@@ -67,6 +67,9 @@ const activeDate = {
         channel: [this.event._id.$oid]
       });
 
+    },
+    TESTSoloView: function() {
+      this.$store.state.soloViewFlag = !this.$store.state.soloViewFlag;
     }
   },
   name: 'activeDate'
