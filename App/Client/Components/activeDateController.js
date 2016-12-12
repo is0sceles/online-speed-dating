@@ -6,23 +6,6 @@ const activeDate = {
 
   data () {
     return {
-      event: {
-        '_id': {
-          '$oid': '584c66806dd04c5f1e5b1408'
-        },
-        'date': {
-          '$date': '1970-01-01T00:00:02.016Z'
-        },
-        'eventCallDuration': 300000,
-        'eventName': 'Menenergy',
-        'eventType': 'All',
-        'usernames': [
-          0,
-          1, 
-          2
-        ],
-        '__v': 0
-      },
       number: null
     }; 
   },

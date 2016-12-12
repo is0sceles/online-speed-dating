@@ -4,8 +4,8 @@ import moment from 'moment';
 var admin = {
   template: temp.template,
   data: function () {
-
     return {
+      number: 1,
       username: '',
       date: '', 
       eventType: '',
@@ -43,11 +43,16 @@ var admin = {
     },
 
     incrementRound(event) {
+      var number = this[event._id + 'number'];
+      console.log(number);
+      if (!number) {
+        number = 1;
+      }
       this.$store.state.pubnub.publish({
         message: number,
         channel: [event._id]
       });
-
+      number++;
     },
 
     moment: function (date) {
