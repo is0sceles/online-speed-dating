@@ -1,4 +1,4 @@
-import temp from '../Templates/appTemp.vue';
+import temp from '../Templates/landingPageTemplate.vue';
 
 var app = {
   template: temp.template,

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import AppTEST from '../Components/appController.js';
+import landingPage from '../Components/landingPageController.js';
 import login from '../Components/loginController.js';
 import admin from '../Components/adminController.js';
 import video from '../Components/videoController.js';
@@ -18,7 +18,7 @@ import myProfile from '../Components/myProfileController.js';
 var routes = [
   {
     path: '/', 
-    component: AppTEST
+    component: landingPage
   },  
   {
     path: '/video',
