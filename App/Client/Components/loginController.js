@@ -1,6 +1,6 @@
 
 import template from '../Templates/loginTemplate.vue';
-console.log(template);
+
 const login = {
   template: template.template,
   data () {
