@@ -18,10 +18,9 @@ var myProfile = {
     '$route': 'checkRoute'
   },
   methods: {
-        // v-on:click="toDate"
-    // toDate () {
-    //   this.$router.push('/date' + this.id.$oid);
-    // },
+    toDate (event) {
+      this.$router.push('/date/' + event._id + '/active');
+    },
     editProfile () {
       this.$router.push('/myprofile/' + this.username + '/edit');
     }, 
@@ -29,6 +28,7 @@ var myProfile = {
       for (var key in res) {
         this[key] = res[key];
       }
+      this.savedEvents = this.$store.state.savedEvents;
     },
     loadUserProfile () {
       if (this.$route.params.id !== this.$store.state.user.username) {

@@ -29,7 +29,7 @@ var routes = [
   },
   {
     path: '/Admin',
-    // meta: { requiresAdmin: true },
+    meta: { requiresAdmin: true },
     component: blank,
     children: [
       {
@@ -40,7 +40,7 @@ var routes = [
   },
   {
     path: '/myprofile/:id',
-    // meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
     component: blank,
     children: [
       {
@@ -56,7 +56,7 @@ var routes = [
   },
   {
     path: '/profile/:id',
-    // meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
     component: profile,
   },
   {
@@ -102,6 +102,7 @@ router.beforeEach((to, from, next) => {
       Vue.http.post('auth/authorize')
       .then((res) => {
         store.commit('setUser', res.body);
+        store.commit('setSavedEvents', res.body.events);
         next({
         });
       })

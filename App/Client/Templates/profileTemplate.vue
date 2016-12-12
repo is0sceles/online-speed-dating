@@ -9,7 +9,7 @@
                                 <h3 id="name">{{name}}</h3>
                             </div>
                             <div id="gender"class="col-md-3">
-                                <p>{{gender}}</p>
+                                <h3>{{gender}}</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -38,8 +38,9 @@ p {
     text-transform: capitalize;
 }
 #profileID {
-    border: 3px solid #BDBB9D;
-    background: linear-gradient(#2c4355, #4285F0);
+    border: 2px solid #F4FFF5;
+    background: linear-gradient(#2c4355, #FFFFFF);
+    border-radius: 10px;
     /*background: linear-gradient(#7d62b6, purple);*/
 }
 #name {
@@ -53,7 +54,7 @@ p {
     padding-bottom: 12.5%;
     border: #70705E 3px solid;
     border-radius: 40px;
-    color: #2E3062;
+    color: #3D403D;
     background: #DCF8C3;
 }
 #gender {
@@ -61,12 +62,10 @@ p {
     font-style: italic;
 }
 #location {
-    color: #DCF8C3;
-    font-style: oblique;
+    color: #E4DAFF;
     font-weight: bold;
 }
 #profilePic {
     width: 100%;
-    padding-top: 20%;
 }
 </style>

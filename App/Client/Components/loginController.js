@@ -1,6 +1,6 @@
 
 import template from '../Templates/loginTemplate.vue';
-console.log(template);
+
 const login = {
   template: template.template,
   data () {
@@ -11,7 +11,6 @@ const login = {
   },
   methods: {
     login: function() {
-      console.log('login called');
       this.$http.post('/auth/login', {
         username: this.username,
         password: this.password 
@@ -19,22 +18,10 @@ const login = {
       .then((res) => { 
         var body = res.body;
         this.$store.commit('setUser', body);
-        //change events into ._id
-        var userEvents = [];
-        var eventID = this.$store.state.user.events;  
-        for (var i = 0; i < eventID.length; i++) {
-          this.$http.put('/api/user/events', {_id: eventID[i]})
-          .then((res)=> {
-            if (res.body._id) {
-              userEvents.push(res.body); 
-            }
-            this.$store.commit('renderEvent', userEvents);
-          })
-          .catch((err) => console.log(err));
-        }
+        this.$store.commit('setSavedEvents', body.events);
       })
       .catch((err) => console.error(err)); 
-    },
+    }
   },
   name: 'login'
 };
