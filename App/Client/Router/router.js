@@ -102,6 +102,7 @@ router.beforeEach((to, from, next) => {
       Vue.http.post('auth/authorize')
       .then((res) => {
         store.commit('setUser', res.body);
+        store.commit('setSavedEvents', res.body.events);
         next({
         });
       })

@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueResource from 'vue-resource';
 import PubNub from 'pubnub';
 import PHONE from './Dependencies/pubnubWebrtc.js';
 
 Vue.use(Vuex);
-
+Vue.use(VueResource);
 
 var store = new Vuex.Store({
   state: {
@@ -28,27 +29,40 @@ var store = new Vuex.Store({
     }
   },
   mutations: {
-    clearUser (state) {
+    clearUser(state) {
       state.user = {
         username: ''
       };
     },
-    setUser (state, obj) {
+    setUser(state, obj) {
       for (var key in obj) {
         state.user[key] = obj[key];
         console.log(state.isCallerFlag = obj.callList[0]);
         state.isCallerFlag = obj.callList[0];
       }
-      console.log(state);
+      console.log(state.user);
     },
-    initPubNub (state) {
+    setSavedEvents(state, arr ) {
+      console.log('in setSaved')
+      for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+        Vue.http.get('/api/user/events', { params: { _id: arr[i] } })
+          .then((res) => {
+            if (res.body._id) {
+              state.savedEvents.push(res.body);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    },
+    initPubNub(state) {
       state.pubnub = new PubNub({
         publishKey: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Our Pub Key
         subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
         ssl: true
       });
       state.pubnub.addListener({
-        message: function(message) {
+        message: function (message) {
           console.log(message.message);
           if (message.message === 'Ready') {
             console.log('GotReadyMessageFromPartner');
@@ -58,7 +72,7 @@ var store = new Vuex.Store({
             state.activeViewFlag = false;
             state.pubnub.stop();
             state.phone.hangup();
-            
+
             state.phone.mystream.getVideoTracks()[0].stop();
 
           } else {
@@ -71,9 +85,9 @@ var store = new Vuex.Store({
             }
             console.log(message.message);
             state.currentRound = message.message;
-          //possibly check if corresponding user is online currently--use presence to do this
-          //alternatively use failed call error handling
-            if (state.user.callList[0]) { 
+            //possibly check if corresponding user is online currently--use presence to do this
+            //alternatively use failed call error handling
+            if (state.user.callList[0]) {
               state.pubnub.subscribe({
                 channels: ['eventId' + state.user.callList[state.currentRound]]
               });
@@ -81,57 +95,54 @@ var store = new Vuex.Store({
             state.soloViewFlag = true;
             state.beforeStartFlag = false;
             state.calleeReadyFlag = false;
-          }    
+          }
         },
-        status: function(statusEvent) {
+        status: function (statusEvent) {
           console.log(statusEvent);
         }
       });
     },
-    initPhone (state) {
+    initPhone(state) {
       state.phone = window.phone = new PHONE({
-        number: state.user.username, 
+        number: state.user.username,
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // ff Our Pub Key
         subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
         ssl: true
       });
 
-      var sessionConnected = function(session) {
+      var sessionConnected = function (session) {
         console.log('connected with', session);
         state.videoOut = session.video.outerHTML;
-      }; 
-      state.phone.ready(function() {
+      };
+      state.phone.ready(function () {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
         console.log(state.myVideo);
-        
+
       });
-      state.phone.receive(function(session) {
+      state.phone.receive(function (session) {
         state.soloViewFlag = false;
-        console.log( 'i receieved', session);
+        console.log('i receieved', session);
         state.videoIn = session;
 
         session.connected(sessionConnected);
-        session.ended(function(idk) {
+        session.ended(function (idk) {
           console.log('sessionn ended', idk);
         });
       });
     },
-    signalEventReadyFlags (state) {
+    signalEventReadyFlags(state) {
       state.beforeStartFlag = true;
       state.beforeEventFlag = false;
       state.soloViewFlag = true;
       state.activeEventFlag = true;
     },
-    signalCalleeReadyFlag (state) {
+    signalCalleeReadyFlag(state) {
       state.calleeReadyFlag = true;
     },
-    setEvents (state, arr) {
+    setEvents(state, arr) {
       state.user.events = arr;
     },
-    setSavedEvents (state, arr) {
-      state.savedEvents = arr;
-    }
   }
 });
 
