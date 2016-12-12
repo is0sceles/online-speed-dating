@@ -1,4 +1,4 @@
-import temp from './profileTemplate.vue';
+import temp from '../Templates/profileTemplate.vue';
 import { mapState } from 'vuex';
 
 var profile = {
@@ -46,7 +46,7 @@ var profile = {
       } 
     },
     hasUserInfo: function() {
-      if(this.userinfo) {
+      if (this.userinfo) {
         this.hasInfo = true;
       }
     }

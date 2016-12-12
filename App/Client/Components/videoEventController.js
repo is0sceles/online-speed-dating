@@ -18,7 +18,7 @@
     //allow for blocks/never speeddate again
     //check for matches--will probably need to be automated/happen later
 
-import template from './videoTemplate.vue';
+import template from '../Templates/videoTemplate.vue';
 import Vue from 'vue';
 
 

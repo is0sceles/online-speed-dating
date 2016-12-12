@@ -1,5 +1,5 @@
 
-import template from './activeDateTemplate.vue';
+import template from '../Templates/activeDateTemplate.vue';
 
 const activeDate = {
   template: template.template,
@@ -27,17 +27,6 @@ const activeDate = {
     }; 
   },
   methods: {
-    login: function() {
-      this.$http.post('/auth/login', {
-        username: this.username,
-        password: this.password 
-      })
-      .then((res) => { 
-        var body = res.body;
-        this.$store.commit('setUser', body);
-      })
-      .catch((err) => console.error(err)); 
-    },
     signalEventReady: function() {
       var eventId = this.event._id.$oid;
       console.log(eventId);

@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="login">Sign in</button>
+            <button type='button' class="btn btn-primary btn-block" v-on:click.prevent="login">Sign in</button>
         </div>
     </div>
 </template>

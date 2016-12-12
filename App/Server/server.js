@@ -8,6 +8,9 @@ var PORT = process.env.PORT || 4321;
 require('./middleware.js')(app, express);
 
 app.use('/', router);
+// app.use('/*', function(req, res) {
+//   res.send('you fked up');
+// });
 
 app.listen(PORT, function() {
   console.log('Express listening on port', PORT); 

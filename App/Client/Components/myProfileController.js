@@ -1,4 +1,4 @@
-import temp from './myProfileTemplate.vue';
+import temp from '../Templates/myProfileTemplate.vue';
 import { mapState } from 'vuex';
 import moment from 'moment';
 

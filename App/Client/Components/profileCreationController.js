@@ -1,4 +1,4 @@
-import temp from './profileCreationTemplate.vue';
+import temp from '../Templates/profileCreationTemplate.vue';
 import { mapState } from 'vuex';
 
 var profileCreation = {
