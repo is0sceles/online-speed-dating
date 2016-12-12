@@ -10,8 +10,7 @@ The Hot Date Boyz--back at it again!
 * [Setting up the Development Environment](#setting-up-the-development-environment)
 * [Starting the app](#starting-the-app)
 * [System Architecture](#system-architecture)
-* [Database Schema](#database-schema)
-* [API](#api)
+* [Database Schema](#database)
 * [Add Publishers](#add-publishers)
 * [Worker Description](#worker-description)
 * [License](#license)
@@ -26,37 +25,66 @@ The Hot Date Boyz--back at it again!
 [![Wasiff "White Shadow" Afzal](photo)](http://github.com/is0sceles)
 
 ##Tech Stack, API's and Third-party Tools
-* 
+* [Vue](Documentation/VUE.md) for rendering views
+* [Vuex](Documentation/VUEX.md) for managing state
+* [Vue-Router](Documentation/VUEROUTER.md) for controlling navigation within the client
+* [Node.js](https://nodejs.org/en/) and [Express](http://expressjs.com/) for serving static pages and services. 
+* [MongoDB](https://www.mongodb.com/) for database with [Mongoose](Documentation/MONGOOSE.md) as an ODM. See our [Database](#database) section for more details.
+* [PubNub](Documentation/PUBNUB.md) for controlling interactions between groups of clients with [WebRTC](https://webrtc.org/) for peer to peer video streaming. 
 * [Webpack](https://webpack.github.io/) & [Babel](https://babeljs.io/)
+* [Passport](Documentation/PASSPORT.md) for managing user authentication.
+
 
 
 ##Folder and File Structure
 
 ****EXAMPLE*****
-    news/
+    online-speed-dating/
     |
-    |--client/
+    |--App/
         |
-        |--app/
+        |--Client/
             |
-            |--React / Redux
-        |
-        |--styles/
+            |--Components/
+                |
+                |--Vue components (data/functionality)
+            |--Dependencies/
+                |
+                |--pubnub WebRTC SDK
+            |--Router/
+                |
+                |--routes (Vue-Router client-side routing)
+            |--Templates/ 
+                |
+                |--Vue templates
+            |--app
+            |--index
+            |--store (Vuex state management)
+            |--stylesheet
+        |--Database/
             |
-            |--CSS/MDL
+            |--models/
+                |
+                |--Mongoose models
+            |--config (connects to the database)
+            |--schema (establish mongodb schema for database entries)
+        |--Server/
+            |
+            |--handlers/
+                |
+                |--Handlers for server side functionality
+            |--routes
+                |
+                |--apiRouter
+                |--authRouter
+                |--eventRouter
+            |--middleware
+            |--router
+            |--server
     |
-    |--docs/
+    |--Documentation/
     |
-    |--server/
-        |
-        |--api/
-            |
-            |--Nodal Server
-        |
-        |--static/
-            |
-            |--Node / Express server
-
+    
 *******EXAMPLE*******
 
 ##Setting up the Development Environment
@@ -64,8 +92,14 @@ The Hot Date Boyz--back at it again!
 ##How to start the app
 
 ###Install dependencies: 
+- [ ] navigate to the root directory and run `npm install`
+- [ ] Make sure mongodb is installed and configured
 
 ####Get API Keys for PubNub
+- [ ] Register with [PubNub](https://www.pubnub.com/get-started/)
+- [ ] Create a project on your [PubNub user profile](https://admin.pubnub.com/)
+- [ ] Make sure that 'Presence' is toggled on in the 'Application Add-Ons' section for your keyset (Don't worry, it's free).
+- [ ] For further information on request/connection limits for free users, see [PubNub's pricing page](https://www.pubnub.com/pricing/)
 
 ###Starting the app
 - [ ] Start your 
@@ -82,33 +116,11 @@ The Hot Date Boyz--back at it again!
 ##System Architecture
 ![architecture](https://dl.dropboxusercontent.com/s/....)
 
-##Database Schema
+##Database
 ![schema](https://dl.dropboxusercontent.com/....)
-
-
-##API 
-Please see the [...md](...md) file
 
 ##Do the thing
 To do something that our app wants to do
-
-##Worker Description
-There are SOME NUMBER OF workers, or services running on in the background on the Node.js server.  Their source code is located in `FILE WHERE WORKERS ARE`.  Below is a description of their respective behaviors.
-
-#####error.js
-EXAMPLE This service logs all errors from the static server to a series of log files available at `server/static/logs`
-
-#####master.js
-EXAMPLE This service runs every 120 seconds.  It reads the list of publishers and channels, makes a get request to each of those channels checking the last updated date if the last updated date is later than the last time this publisher was updated the master passes this information to parseBot.js and then updates the last_updated field in the database.
-
-#####parseBot.js
-EXAMPLE This service receives instructions from master.js.  It gets all the articles listed in the publisher's  RSS feed and updates the articles table in the database with the new information.  parseBot.js also instructs topics.js to perform it's operations.
-
-#####topics.js
-EXAMPLE This service interfaces with the Open Calais API.  This API reads the articles provided by topics.js and returns an array of topics that are related to the article. These topics get stored in the topics table, and the art_topics join table is updated.
-
-#####snippetManager.js
-EXAMPLE This service runs every 120 seconds.  It makes a query to the database for any articles that don't have any content.  If any are found it then makes a query for the page text, slices the first 150 characters, and stores that in the content field in the database.
 
 ##License
 ???
