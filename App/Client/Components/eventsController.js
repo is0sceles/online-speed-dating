@@ -32,22 +32,20 @@ var events = {
       var eventId = item._id;
       var event = item;
       var currentUserEvents = this.$store.state.user.events;
-      var savedUserEvents = this.$store.state.user.savedEvents;
-      console.log(this.$store.state.user);
-      console.log(event._id)
+      var savedUserEvents = this.$store.state.savedEvents;
       // console.log(event); //deleteMe
       
       //update db users
         //check to see if user is already joined
-      if (!currentUserEvents.indexOf(eventId)) {
+        console.log(!!(currentUserEvents.indexOf(eventId)=== -1))
+      if (!!(currentUserEvents.indexOf(eventId)=== -1 )) {
         event.usernames.push(this.$store.state.user.username);
         currentUserEvents.push(eventId);
         this.$store.commit('setEvents', currentUserEvents);
         this.$http.put('/api/user', this.$store.state.user)
         .then((res) => { 
           savedUserEvents.push(event);
-          this.$store.commit('setSavedEvents', savedUserEvents);
-          console.log(this.$store.state.user);
+          this.$store.commit('addToSavedEvents', savedUserEvents);
         })
         .catch((err) => { console.error('error ', err); });
         this.$http.put('/api/events', event)

@@ -43,7 +43,6 @@ var store = new Vuex.Store({
     },
     setSavedEvents(state, arr ) {
       for (var i = 0; i < arr.length; i++) {
-        console.log(arr[i]);
         Vue.http.get('/api/user/events', { params: { _id: arr[i] } })
           .then((res) => {
             if (res.body._id) {
@@ -141,6 +140,9 @@ var store = new Vuex.Store({
     setEvents(state, arr) {
       state.user.events = arr;
     },
+    addToSavedEvents(state, arr) {
+      state.savedEvents = arr;
+    }
   }
 });
 

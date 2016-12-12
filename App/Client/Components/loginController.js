@@ -11,7 +11,6 @@ const login = {
   },
   methods: {
     login: function() {
-      console.log('login called');
       this.$http.post('/auth/login', {
         username: this.username,
         password: this.password 
