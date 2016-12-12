@@ -16,11 +16,6 @@
             <td> {{ item.eventType }} </td>
         </tr>
         </table>
-        <div id='eventLink'>
-            <a>
-                <router-link to='Admin/eventsCreate'>Create an Event</router-link>
-            </a>
-        </div>
     </div>
 </template>
 

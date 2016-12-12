@@ -3,7 +3,7 @@ var db = require('../../Database/config.js');
 
 
 //Request handlers
-exports.getEvent = (req, res) => {
+exports.getEvents = (req, res) => {
   Event.find({}).exec((err, results) => {
     if (err) { 
       throw err;

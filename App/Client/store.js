@@ -19,6 +19,8 @@ var store = new Vuex.Store({
     datePartnerOffline: false,
     currentRound: null,
     savedEvents: [],
+    allEvents: [],
+    
     user: {
       username: '',
     }
@@ -132,9 +134,19 @@ var store = new Vuex.Store({
     signalCalleeReadyFlag(state) {
       state.calleeReadyFlag = true;
     },
-    setEvents(state, arr) {
+
+    setEvents (state, arr) {
       state.user.events = arr;
     },
+
+    setAllEvents (state, arr) {
+      state.allEvents = arr;
+    },
+
+    setNewEvent (state, event) {
+      state.allEvents.push(event);
+    },
+
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;
     }
