@@ -4,11 +4,7 @@ var app = {
   template: temp.template,
   data: function() {
     return { 
-      msg: 'Welcome To Do-We! ' + this.$store.state.user.username,
-      dan: '../Images/dan.png',
-      elliott: '../Images/elliott.png',
-      eric: '../Images/eric.png',
-      wasiff: '../Images/wasiff.png'
+      msg: 'Welcome To Do-We! ' + this.$store.state.user.username
     };
   },
   methods: {

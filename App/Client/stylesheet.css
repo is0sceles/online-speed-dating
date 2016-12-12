@@ -1,12 +1,16 @@
-body {
-    background: #476c75;
+html {
+    overflow-x: hidden;
 }
 
+body {
+    background: #476c75;
+    /*overflow-x: hidden;*/
+
+}
 #logo {
     height: 50px;
     width: 50px;
 }
-
 .background {
     min-height: 100%;
     min-width: 100%;
@@ -19,11 +23,11 @@ body {
     top: 50%;
     transform:translateX(-50%) translateY(-50%);
 }
-
+/* section */
 #main {
   height: 100%;
 }
-
+/* section */
 #about {
   position: absolute;
   top:100%;
@@ -31,7 +35,6 @@ body {
   background: #d9b078;
   width: 100%;
 }
-
 .message {
     color: #fff;
     margin-left: 20px;
@@ -40,14 +43,12 @@ body {
     padding-left: 20px;
     font-size: 42px;
 }
-
 .img_icons {
     display: inline-block;
     width: 100px;
     height: 100px;
 
 }
-
 .icons {
     display: inline-block;
     width: 200px;
@@ -56,12 +57,11 @@ body {
     margin-top: 25%;
     padding: 10px 10px 10px 10px;
 }
-
-.us {
+.aboutUs {
 
     display: inline-flex;
 }
-
+/* section */
 #techStack {
   position: absolute;
   top:200%;
@@ -69,7 +69,6 @@ body {
   width: 100%;
   background: rgb(154, 171, 155);
 }
-
 .techicons {
     display: inline-block;
     width: 150px;
@@ -79,14 +78,14 @@ body {
     margin-top: 50px;
     
 }
-
+/* tech stack logo */
 #mongo {
     padding-right: 10px;
 }
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;
-    overflow: hidden;
+    /*overflow: visible !important;*/
     background-color:rgba(255,255,255,.8);
 }
 #login-dp .help-block{
