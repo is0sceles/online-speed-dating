@@ -34,9 +34,6 @@
 </template>
 
 <style>
-p {
-    text-transform: capitalize;
-}
 #profileID {
     border: 2px solid #F4FFF5;
     background: linear-gradient(#2c4355, #FFFFFF);
