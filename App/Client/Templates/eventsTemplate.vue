@@ -8,8 +8,7 @@
             <th>Event Name</th>
             <th>Event Type</th>
         </tr>
-        <tr v-for='(item, index) in result'>
-        
+        <tr v-for='item in result'>
             <td v-if='!$store.state.user.username'>Sign in to join!</td>
             <td v-else-if='hasNotJoined(item)'><button v-on:click="join(item)">Join</button></td>
             <td v-else class='glyphicon glyphicon-ok'></td>
