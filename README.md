@@ -38,7 +38,6 @@ The Hot Date Boyz--back at it again!
 
 ##Folder and File Structure
 
-****EXAMPLE*****
     online-speed-dating/
     |
     |--App/
@@ -84,8 +83,6 @@ The Hot Date Boyz--back at it again!
     |
     |--Documentation/
     |
-    
-*******EXAMPLE*******
 
 ##Setting up the Development Environment
 
