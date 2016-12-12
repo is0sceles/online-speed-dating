@@ -19,12 +19,30 @@ var signup = {
 
       this.$http.post('/api/user', body)
       .then((response) => {
-        this.$router.push('/');
+        this.login();
       })
       
       .catch((err) => {
         alert('username already exists');
       });
+    },
+    //need to port over login function correctly from login controller
+    login: function() {
+      this.$http.post('/auth/login', {
+        username: this.username,
+        password: this.password 
+      })
+      .then((res) => { 
+        var body = res.body;
+        this.$http.get('/api/events')
+          .then((res) => {
+            this.$store.commit('setAllEvents', res.body);
+          });
+        this.$store.commit('setUser', body);
+        this.$store.commit('setSavedEvents', body.events);
+        this.$router.push('/')
+      })
+      .catch((err) => console.error(err)); 
     }
   }
 };
