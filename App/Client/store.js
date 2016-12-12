@@ -12,7 +12,7 @@ var store = new Vuex.Store({
     user: {
       username: '',
     },
-    videoOut: '<video></video>',
+    videoOutSrc: '',
     myVideoSrc: '',
     beforeEventFlag: true,
     soloViewFlag: true,
@@ -109,13 +109,12 @@ var store = new Vuex.Store({
 
       var sessionConnected = function (session) {
         console.log('connected with', session);
-        state.videoOut = session.video.outerHTML;
-      };
-      state.phone.ready(function () {
+        state.videoOutSrc = session.video.src;
+      
+      }; 
+      state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
-        console.log(state.myVideo);
-
       });
       state.phone.receive(function (session) {
         state.soloViewFlag = false;
