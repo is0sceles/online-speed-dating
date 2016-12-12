@@ -33,12 +33,8 @@ var events = {
       var event = item;
       var currentUserEvents = this.$store.state.user.events;
       var savedUserEvents = this.$store.state.savedEvents;
-      // console.log(event); //deleteMe
-      
-      //update db users
-        //check to see if user is already joined
-        console.log(!!(currentUserEvents.indexOf(eventId)=== -1))
-      if (!!(currentUserEvents.indexOf(eventId)=== -1 )) {
+
+      if (currentUserEvents.indexOf(eventId)=== -1 ) {
         event.usernames.push(this.$store.state.user.username);
         currentUserEvents.push(eventId);
         this.$store.commit('setEvents', currentUserEvents);
