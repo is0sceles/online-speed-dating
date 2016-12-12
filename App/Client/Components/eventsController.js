@@ -10,7 +10,7 @@ var events = {
       username: this.username,
       date: this.date,
       result: '',
-      joined: ''
+      joined: '',
     };
   },
   created () {
