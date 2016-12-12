@@ -19,10 +19,6 @@ node_modules/
 db/
 client/lib
 compiled/
-<<<<<<< HEAD
-
-=======
->>>>>>> refactored http request. updated store to handle events
 public/
 
 
