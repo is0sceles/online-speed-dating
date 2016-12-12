@@ -31,11 +31,26 @@ var store = new Vuex.Store({
     }
   },
   mutations: {
-    clearUser(state) {
-      state.user = {
-        username: ''
+    clearState(state) {
+      state = { 
+        videoOutSrc: '',
+        myVideoSrc: '',
+        beforeEventFlag: true,
+        soloViewFlag: true,
+        calleeReadyFlag: false,
+        activeViewFlag: true,
+        beforeStartFlag: true,
+        datePartnerOffline: false,
+        currentRound: null,
+        savedEvents: [],
+        allEvents: [],
+    
+        user: {
+          username: '',
+        }
       };
-      state.savedEvents = [];
+      state.pubnub.stop();
+      state.phone.hangup();
     },
     setUser(state, obj) {
       for (var key in obj) {
@@ -44,12 +59,14 @@ var store = new Vuex.Store({
       }
     },
     setSavedEvents(state, arr ) {
+      var tempSavedEvents = [];
       for (var i = 0; i < arr.length; i++) {
         Vue.http.get('/api/user/events', { params: { _id: arr[i] } })
           .then((res) => {
             if (res.body._id) {
-              state.savedEvents.push(res.body);
+              tempSavedEvents.push(res.body);
             }
+            state.savedEvents = tempSavedEvents;
           })
           .catch((err) => console.log(err));
       }

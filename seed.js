@@ -12,16 +12,15 @@ db.collections.events.drop( function() {
 
 
 
-for (var i = 0; i < 5; i++) {
+// for (var i = 0; i < 5; i++) {
   
-  event.create({usernames: [i, i + 1, i + 2, i + 3], eventType: 'All', eventName: 'Menergy', date: 2016}, function(err) {
-    if (err) { console.error(err); }
-  });
+//   // event.create({eventType: 'All', eventName: 'Menergy', date: 2016}, function(err) {
+//   //   if (err) { console.error(err); }
+//   // });
 
-}
+// }
 
-for (var j = 0; j < 20; j++) {
-  user.create({username: j, events: ['Menergy', 'FunParty'], password: j, userinfo: 'a', name: 'b', age: j, location: 'c', admin: true}, function(err) {
-    if (err) { console.error(err); }
-  });
-}
+user.create({username: 'admin', password: 'a', admin: true}, function(err) {
+  if (err) { console.error(err); }
+});
+ 

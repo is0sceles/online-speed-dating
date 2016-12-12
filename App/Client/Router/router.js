@@ -91,11 +91,14 @@ const router = new VueRouter({
   routes
 });
 
+//we are not refreshing state to get changes on user between pages, if they are already logged in. 
+//refactor later to set flags on certain routes that require updated user info
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.state.user.username) {
-      Vue.http.post('auth/authorize')
+    // if (!store.state.user.username) {
+    Vue.http.post('auth/authorize')
       .then((res) => {
+        console.log(res.body);
         store.commit('setUser', res.body);
         store.commit('setSavedEvents', res.body.events);
         next({
@@ -105,9 +108,9 @@ router.beforeEach((to, from, next) => {
         window.alert('you must log in to do that');
         next(false);
       });
-    } else {
-      next();
-    }
+    // } else {
+    next();
+    // }
   } else {
     next(); // make sure to always call next()!
   }
