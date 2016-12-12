@@ -23,12 +23,10 @@
 </template>
 
 <style>
-
-
     a:hover {
         color: #fff;
     }
-
+    
     #eventLink {
         margin-top: 20px;
         font-weight: 800;
@@ -37,11 +35,12 @@
         background: #2c4355;
         width: 75%;
         color: #fff;
-
     }
+    
     #signIn {
         display: block;
     }
+    
     table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
@@ -50,16 +49,20 @@
         margin-left: 50px;
         text-align: center;
     }
-    td, th {
+    
+    td,
+    th {
         border: 1px solid rgba(165, 166, 167, 0.08);
         text-align: left;
         padding: 8px;
         font-weight: 800;
         text-align: center;
     }
+    
     tr:nth-child(even) {
         background-color: #ffffff;
     }
+    
     tr:nth-child(odd) {
         background-color: #d9b883;
     }

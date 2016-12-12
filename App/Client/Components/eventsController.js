@@ -10,7 +10,7 @@ var events = {
       username: this.username,
       date: this.date,
       result: '',
-      joined: ''
+      joined: '',
     };
   },
   created () {
@@ -72,6 +72,13 @@ var events = {
 
     moment: function (date) {
       return moment(date);
+    },
+    notSignedUp: function(id) {
+      if(this.$store.state.user.events.indexOf(id) === -1) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
