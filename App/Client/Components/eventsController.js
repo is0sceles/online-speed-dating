@@ -31,7 +31,7 @@ var events = {
       .catch((err) => { console.error('There was an err with your GET request, ', err); });
     },
 
-    hasJoined (event) {
+    hasNotJoined (event) {
       if (this.$store.state.user.events.indexOf(event._id) === -1) {
         return true;
       }
