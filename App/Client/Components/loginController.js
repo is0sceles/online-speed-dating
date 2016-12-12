@@ -19,7 +19,7 @@ const login = {
         if (body.admin) {
           this.$http.get('/api/events')
           .then((res) => {
-
+            this.$store.commit('setAllEvents', res.body);
           });
         }
         this.$store.commit('setUser', body);

@@ -5,7 +5,6 @@ var admin = {
   template: temp.template,
   data: function () {
     return {
-      number: 1,
       username: '',
       date: '', 
       eventType: '',
@@ -16,6 +15,10 @@ var admin = {
     allEvents () {
       return this.$store.state.allEvents;
     }
+  },
+
+  created () {
+    this.$store.commit('initPubNub');
   },
 
   methods: {
@@ -42,17 +45,15 @@ var admin = {
       });
     },
 
-    incrementRound(event) {
-      var number = this[event._id + 'number'];
-      console.log(number);
-      if (!number) {
-        number = 1;
+    incrementRound(event) { 
+      if (!this[event._id]) {
+        this[event._id] = 1;
       }
       this.$store.state.pubnub.publish({
-        message: number,
+        message: this[event._id],
         channel: [event._id]
       });
-      number++;
+      this[event._id]++;
     },
 
     moment: function (date) {
