@@ -21,14 +21,15 @@ We've then imported the template.vue files into their respective controllers and
 - VueX:
 
   At the center of every [Vuex](https://vuex.vuejs.org/en/getting-started.html) application is the store. A "store" is basically a container that holds your application state.
+
 There are two things that makes a Vuex store different from a plain global object:
 
 -Vuex stores are reactive. When Vue components retrieve state from it, they will reactively and efficiently update if the store's state changes.
 
--You cannot directly mutate the store's state. The only way to change a store's state is by explicitly committing mutations. 
+-You cannot directly mutate the store's state. The only way to change a store's state is by explicitly committing mutations.
 This ensures every state change leaves a track-able record, and enables tooling that helps us better understand our applications.
 
- VueX holds global state of the app and makes properties available throughout the application without having to deal with 
+ VueX holds global state of the app and makes properties available throughout the application without having to deal with
 passing data from parent to child (as it commonly flows in Vue) or between sibiings.
 
 The global state allows for executing async requests through actions.
