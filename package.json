@@ -4,6 +4,7 @@
   "description": "Online Speed Dating App",
   "main": "index.js",
   "scripts": {
+    "postinstall": "webpack -p --config ./webpack.prod.config.js --progress",
     "start": "node App/Server/server.js",
     "test": "mocha",
     "dev": "nodemon App/Server/server.js"
