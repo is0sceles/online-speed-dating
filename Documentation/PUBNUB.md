@@ -1,6 +1,6 @@
 # PubNub
 
-We used PubNub as the control system for connecting users to each other in our app. The [diagram](#diagram) below lays out the flow of signals in the app.
+[PubNub is a secure global Data Stream Network (DSN) and easy-to-use API](https://vimeo.com/181658949).We used PubNub as the control system for connecting users to each other in our app. The [diagram](#diagram) below lays out the flow of signals in the app.
 In its current form, an admin user will run functions which cause a pubnub instance on the server to emit messages which are in turn listened for by pubnub instances on each client.
 These signals trigger functions which allow users to connect and progress through a series of video calls. 
 
