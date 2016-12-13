@@ -34,18 +34,20 @@ module.exports = {
       js: 'babel'
     }
   },
-  // plugins: [
-  //   new webpackUglifyJsPlugin({
-  //     cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
-  //     debug: true,
-  //     minimize: true,
-  //     sourceMap: false,
-  //     output: {
-  //       comments: false
-  //     },
-  //     compressor: {
-  //       warnings: false
-  //     }
-  //   })
-  // ]
+  plugins: [
+    new webpackUglifyJsPlugin({
+      cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
+      debug: true,
+      minimize: true,
+      sourceMap: false,
+      output: {
+        path: path.join(__dirname, 'compiled/transpiled'),
+        filename: 'main.js',
+        publicPath: '/public/'
+      },
+      compressor: {
+        warnings: false
+      }
+    })
+  ]
 };
