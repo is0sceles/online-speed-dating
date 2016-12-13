@@ -7,7 +7,7 @@ var path = require('path');
 module.exports = {
   entry: './App/Client/app.js',
   output: {
-    path: './compiled/transpiled',
+    path: path.join(__dirname, '/compiled/transpiled'),
     publicPath: 'compiled/transpiled',
     filename: '[name].js'
   },
