@@ -95,22 +95,17 @@ const router = new VueRouter({
 //refactor later to set flags on certain routes that require updated user info
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    // if (!store.state.user.username) {
     Vue.http.post('auth/authorize')
       .then((res) => {
         console.log(res.body);
         store.commit('setUser', res.body);
         store.commit('setSavedEvents', res.body.events);
-        next({
-        });
+        next();
       })
       .catch((res) => {
         window.alert('you must log in to do that');
         next(false);
       });
-    // } else {
-    next();
-    // }
   } else {
     next(); // make sure to always call next()!
   }

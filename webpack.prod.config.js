@@ -41,7 +41,9 @@ module.exports = {
       minimize: true,
       sourceMap: false,
       output: {
-        comments: false
+        path: path.join(__dirname, 'compiled/transpiled'),
+        filename: 'main.js',
+        publicPath: '/public/'
       },
       compressor: {
         warnings: false

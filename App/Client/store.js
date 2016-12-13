@@ -32,7 +32,8 @@ var store = new Vuex.Store({
   },
   mutations: {
     clearState(state) {
-      state = { 
+      console.log('this is before ', state);
+      var initialState = { 
         videoOutSrc: '',
         myVideoSrc: '',
         beforeEventFlag: true,
@@ -49,6 +50,13 @@ var store = new Vuex.Store({
           username: '',
         }
       };
+
+      for (var key in initialState) {
+        state[key] = initialState[key];
+      }
+      
+      state = initialState;
+      console.log('this is asfter ', state);
       if (state.pubnub) {
         state.pubnub.stop();
       }
@@ -56,6 +64,7 @@ var store = new Vuex.Store({
         state.phone.hangup();
         state.phone.mystream.getVideoTracks()[0].stop();
       }
+
     },
     setUser(state, obj) {
       for (var key in obj) {
