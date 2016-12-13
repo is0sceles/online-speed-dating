@@ -49,8 +49,13 @@ var store = new Vuex.Store({
           username: '',
         }
       };
-      state.pubnub.stop();
-      state.phone.hangup();
+      if (state.pubnub) {
+        state.pubnub.stop();
+      }
+      if (state.phone) {
+        state.phone.hangup();
+        state.phone.mystream.getVideoTracks()[0].stop();
+      }
     },
     setUser(state, obj) {
       for (var key in obj) {
