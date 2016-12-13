@@ -15,4 +15,4 @@ These signals trigger functions which allow users to connect and progress throug
 * [PubNub For Developers](https://www.pubnub.com/docs)
 
 ##Diagram
-![PubNubDiagram](https://dl.dropboxusercontent.com/content_link/3nhTzcAbs6U1cXtRHGLwntIgwguuRLbtBaf93UonAerq3gTcNDQbZ0rtsT0sCwmD/file)
+![PubNubDiagram](https://www.dropbox.com/s/6inor2hc3u2cwie/PubNub%20Map.png?raw=1)
