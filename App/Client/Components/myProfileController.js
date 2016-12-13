@@ -11,6 +11,11 @@ var myProfile = {
       match: true
     };
   },
+  computed: {
+    savedEvents () {
+      return this.$store.state.savedEvents;
+    }
+  },
   created () {
     this.loadUserProfile();
   },
@@ -28,7 +33,6 @@ var myProfile = {
       for (var key in res) {
         this[key] = res[key];
       }
-      this.savedEvents = this.$store.state.savedEvents;
     },
     loadUserProfile () {
       if (this.$route.params.id !== this.$store.state.user.username) {

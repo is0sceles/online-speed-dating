@@ -3,7 +3,6 @@
         <table>
         <tr> 
             <th> Do-you? </th>
-            <th> Event Id </th>
             <th>Next Event</th>
             <th>Event Name</th>
             <th>Event Type</th>
@@ -12,7 +11,6 @@
             <td v-if='!$store.state.user.username'>Sign in to join!</td>
             <td v-else-if='hasNotJoined(item)'><button v-on:click="join(item)">Join</button></td>
             <td v-else class='glyphicon glyphicon-ok'></td>
-            <td> {{item._id.slice(20)}}</td>
             <td> {{ moment(item.date).format('MMMM Do YYYY, h:mm:ss a') }}  </td>
             <td> {{ item.eventName}}</td>
             <td> {{ item.eventType }} </td>

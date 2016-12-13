@@ -23,7 +23,7 @@ var admin = {
 
   methods: {
     startEvent(event) {
-
+      this[event._id] = 1;
     },
 
     setupEvent(event) {
@@ -46,9 +46,6 @@ var admin = {
     },
 
     incrementRound(event) { 
-      if (!this[event._id]) {
-        this[event._id] = 1;
-      }
       this.$store.state.pubnub.publish({
         message: this[event._id],
         channel: [event._id]

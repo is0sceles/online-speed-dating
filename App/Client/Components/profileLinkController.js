@@ -30,7 +30,7 @@ const profileLink = {
      
     logout: function() {
       this.$router.push('/'); 
-      this.$store.commit('clearUser');
+      this.$store.commit('clearState');
       this.$http.get('/auth/logout')
       .then(()=>{
 
