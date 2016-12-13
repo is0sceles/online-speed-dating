@@ -38,14 +38,14 @@ Our applications 'store.js' file is located in the Client folder.
 
 https://vuex.vuejs.org/en/getting-started.html
 
-- (Vue Resource)[https://github.com/pagekit/vue-resource/tree/master/docs]:
+- [Vue Resource](https://github.com/pagekit/vue-resource/tree/master/docs):
 
 Handles request to server.
 Has to be imported/required. That means NPM.
-Allows for AJAX style ($HTTP calls)[https://github.com/pagekit/vue-resource/blob/master/docs/http.md].
+Allows for AJAX style [$HTTP calls](https://github.com/pagekit/vue-resource/blob/master/docs/http.md).
 
 
-- (Vue Router)[https://router.vuejs.org/en/essentials/getting-started.html]:
+- [Vue Router](https://router.vuejs.org/en/essentials/getting-started.html):
 
 Similar to UI-Router from Angular. Handles path of application for single page applications. This allows children components to be mounted onto exisiting components.
 There is a construct called Route Guard which acts somewhat like middleware and executes a function before entering a route.
